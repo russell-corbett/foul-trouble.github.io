@@ -11,7 +11,8 @@ module.exports = {
 				'mi-navy': '#004b84',
 				'mi-teal': '#008b9a',
 				'edge-yellow': '#fff200',
-				'edge-blue': '#ed1c24'
+				'edge-blue': '#ed1c24',
+				'bell-blue': '#005d90'
 			},
 			fontFamily:{
 				myStyle:['MuseoModerno']
