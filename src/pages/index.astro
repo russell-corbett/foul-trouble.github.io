@@ -1,80 +1,57 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro'
+import ELCard from '../components/External-Link-Card.astro'
+import ILCard from '../components/Internal-Link-Card.astro'
 ---
 
 <Layout title="Russell Corbett">
-	<main>
-		<h1>Welcome to </h1>
-		<h1><span class="text-gradient">Russell Corbett</span></h1>
-		<p class="instructions">This website is currently under development.<br /><strong>For now:</strong> Please feel free to follow the four links below.</p>
+	<main class='m-auto p-6 max-w-lg'>
+		<h1 class='text-4xl font-extrabold m-0'>Welcome to </h1>
+		<h1 class='text-5xl font-extrabold m-0'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Russell Corbett</span></h1>
+		<p class="bg-white rounded-xl border p-3 mt-3">This website is currently under development.<br /><strong>For now:</strong> Please feel free to follow the links below.</p>
 		<img src="../RC_logo_png_transparent.png" alt="RC Logo.">
-		<ul role="list" class="link-card-grid">
-			<Card
+		<ul role="list" class="grid gap-4 p-0 grid-cols-2">
+			<ILCard
 				href="https://russellcorbett.ca/resume/"
 				title="Resume"
-				body="View my current engineering resume."
+				body="View my current engineering resume!"
 			/>
-			<Card
+			<ELCard
 				href="https://support.cancer.ca/site/TR/RelayForLife/RFLY_NW_even_?px=14295830&pg=personal&fr_id=28684&s_locale=en_CA"
 				title="Relay for Life"
-				body="Sponsor me at this year's MUN Relay for Life."
+				body="Sponsor me at this year's MUN Relay for Life!"
 			/>
-			<Card
+			<ELCard
 				href="https://www.easternedgerobotics.com"
 				title="Eastern Edge Robotics"
-				body="Visit my underwater robotics team website."
+				body="Visit my underwater robotics team website!"
 			/>
-			<Card
+			<ELCard
 				href="https://fmuntenth.com"
 				title="FMUNTENTH"
 				body="Visit my autonomous vehicle team website. We are looking for sponsors!"
+			/>
+			<ILCard
+				href="/teams/"
+				title="My Teams"
+				body="View more info on the teams I am a part of!"
+			/>
+			<ILCard
+				href="/work-terms/"
+				title="Work Placements"
+				body="View each of the companies I have worked at!"
+			/>
+			<ILCard
+				href="/projects/"
+				title="Solo Projects"
+				body="View the solo projects I work on!"
+			/>
+			<ILCard
+				href="/volunteering/"
+				title="Philanthropy"
+				body="View where I like to volunteer!"
 			/>
 		</ul>
 	</main>
 </Layout>
 
-<style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-</style>
