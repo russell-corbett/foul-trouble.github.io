@@ -12,7 +12,17 @@ module.exports = {
 				'mi-teal': '#008b9a',
 				'edge-yellow': '#fff200',
 				'edge-blue': '#ed1c24',
-				'bell-blue': '#005d90'
+				'bell-blue': '#00549a',
+				'avalon-blue': '#2b3b7f',
+				'avalon-orange': '#faa541',
+				'maverick-green': '#3c746b',
+				'maverick-blue': '#0a408a',
+				'mcdonalds-red': '#DA291C',
+				'mcdonalds-yellow': '#FFC72C',
+				'mcdonalds-black': '#27251F',
+				'staples-red': '#b02b20',
+				'mpmba-blue': '#304D6D',
+				'mpmba-orange': '#B18344'
 			},
 			fontFamily:{
 				myStyle:['MuseoModerno']
