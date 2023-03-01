@@ -1,10 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Work from '../components/Work-Term.astro'
 ---
 
 <Layout title="Russell Corbett - Employment">
     <main class='m-5 md:m-20 space-y-10 flex flex-col justify-center'>
+        <div class="">
+            <h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>Engineering Work Terms and Technical Experience</h1>
+            <h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'>2 Work Terms - 1 Internship</h1>
+        </div>
         <div class='bg-bell-blue p-10 rounded-xl border-stone-400 border'>
             <a href="https://aliant.bell.ca/" class='md:flex text-white' target="_blank">
                 <img src="/work/bell/bell_logo_blue.png" class='object-contain h-48 w-96'>
@@ -24,7 +27,7 @@ import Work from '../components/Work-Term.astro'
                 <img src="/work/avalon_controls/avaloncontrolsbanner.png" class='object-contain h-48 w-96'>
                 <div class='md:ml-10'>
                     <h1 class='font-extrabold text-lg md:text-2xl underline'>Avalon Controls Ltd.</h1>
-                    <h2 class='font-extrabold md:text-l'>Co-op Engineering Intern</h2>
+                    <h2 class='font-extrabold md:text-l'>Co-op Engineering Student</h2>
                     <li class='ml-8'>Upgraded networking equipment to increase data transmission speeds by 10x</li>
                     <li class='ml-8'>Improved office communication systems to allow for greater online connectivity</li>
                     <li class='ml-8'>Assisted the engineering group with production of a number of design deliverables</li>
@@ -46,10 +49,10 @@ import Work from '../components/Work-Term.astro'
                 </div>
             </a>
         </div>
-        <button class='bg-stone-800 rounded-xl p-5 text-white font-extrabold lg:m-80 hover:animation-pulse'>Show Non-Engineering Positions</button>
-        <div class='space-y-10'>
+        <button class='non-engineering bg-stone-800 rounded-xl p-5 text-white font-extrabold lg:m-80 hover:animate-pulse'>Non-Engineering Positions</button>
+        <div class='space-y-10' id='non-engineering'>
             <div class="bg-white p-10 rounded-xl border-stone-400 border">
-                <a href="https://maverickcollectables.com/" class='md:flex text-' target="_blank">
+                <a href="https://maverickcollectables.com/" class='md:flex' target="_blank">
                     <img src="/work/maverick_sports/maverick_logo.jpg" class='object-contain h-48 w-96'>
                     <div class='md:ml-10 '>
                         <h1 class='font-extrabold text-lg md:text-2xl underline text-black'>Maverick Sports and Collectables</h1>
@@ -69,8 +72,8 @@ import Work from '../components/Work-Term.astro'
                         <h2 class='font-extrabold md:text-l'>Kitchen, Front Counter, and Crew Cleaning</h2>
                         <li class='ml-8 text-mcdonalds-black font-semibold'></li>
                         <li class='ml-8 text-mcdonalds-black font-semibold'></li>
-                        <li class='ml-8 text-mcdonalds-black font-semibold'></li>
-                        <li class='ml-8 text-mcdonalds-black font-semibold'></li>
+                        <li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with restocking and stock rotation ensuring minimum of unsaleables</li>
+                        <li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with maintaining cleanliness in line with company standards</li>
                     </div>
                 </a>
             </div>
@@ -90,7 +93,7 @@ import Work from '../components/Work-Term.astro'
             <div class="bg-mpmba-blue p-10 rounded-xl border-stone-400 border">
                 <a href="https://www.staples.ca/" class='md:flex text-mpmba-orange' target="_blank">
                     <img src="/work/mpmba/mpmba_logo.jpeg" class='object-contain h-48 w-96'>
-                    <div class='md:ml-10 '>
+                    <div class='mt-5 md:ml-10 md:mt-0'>
                         <h1 class='font-extrabold text-lg md:text-2xl underline'>Mount Pearl Minor Basketball Assciation</h1>
                         <h2 class='font-extrabold md:text-l'>Coach</h2>
                         <li class='ml-8 text-mcdonalds-black font-semibold'></li>
@@ -103,3 +106,21 @@ import Work from '../components/Work-Term.astro'
         </div>
     </main>
 </Layout>
+
+<script>
+    // Find all buttons with the `non-engineering` class on the page.
+    const buttons = document.querySelectorAll('button.non-engineering');
+    var x = document.getElementById("non-engineering");
+    x.style.display = "none";
+  
+    // Handle clicks on each button.
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+      }); 
+    });
+  </script>

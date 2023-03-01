@@ -3,13 +3,26 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Russell Corbett - Teams">
-    <main class='m-auto p-6 max-w-3xl'>
-        <h1 class='text-4xl font-extrabold m-0'>This is where my teams will be!</h1>
-        <div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")]'>
-            <img src="../teams/eastern_edge/eastern_edge_logo.png" alt="Eastern Edge Logo.">
-        </div>
-        <div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")]'>
-            <img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo.">
+    <main class='m-auto p-6'>
+            <h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>Engineering Teams</h1>
+            <h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'>2 Internationally Acclaimed Companies</h1>
+        <div class='md:flex md:justify-evenly'>
+            <div class='border rounded-2xl'>
+                <div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl'> 
+                    <img src="../teams/eastern_edge/eastern_edge_logo.png" alt="Eastern Edge Logo." class='max-h-96'>
+                </div>
+                <div>
+                    <h1 class='text-4xl font-extrabold'>Eastern Edge Robotics</h1>
+                </div>
+            </div>
+            <div class='border rounded-2xl'>
+                <div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")] rounded-t-2xl w-96'>
+                    <img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo." class='max-h-96'>
+                </div>
+                <div>
+                    <h1 class='text-4xl font-extrabold'>FMUNTENTH</h1>
+                </div>
+            </div>
         </div>
     </main>
 </Layout>

@@ -1,9 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Form from '../components/Contact-Form.astro'
 ---
-
 <Layout title="Russell Corbett - Contact Me">
-    <main class='m-auto p-6 max-w-3xl'>
-        <h1 class='text-4xl font-extrabold m-0'>This is where my contact info will be!</h1>
+    <main class='flex flex-col items-center m-auto p-6 max-w-3xl'>
+        <h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>Contact Me</h1>
+        <h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'></h1>
+        <div class='md:flex md:justify-evenly md:space-x-10 space-y-5 md:space-y-0'>
+            <div class="block p-6 max-w-4xl md:w-[30rem] w-full bg-white rounded-lg border border-gray-200 shadow-md">
+                <div class='flex justify-evenly'>
+                    <img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-full w-40 border'>
+                    <div class='flex flex-col items-center justify-evenly'>
+                        <h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Russell Corbett</h4>
+                        <h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">rjcorbett@mun.ca</h4>
+                        <h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">+1 (709) 746-6644</h4>
+                        <h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">St. John's, Newfoundland</h4>
+                    </div>
+                </div>
+            </div>
+            <Form></Form>
+        </div>
     </main>
 </Layout>
