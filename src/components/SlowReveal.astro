@@ -1,0 +1,25 @@
+
+
+<script>
+import { useState } from "react";
+
+  export default function SlowReveal() {
+    const [isRevealed, setIsRevealed] = useState(false);
+
+    const handleClick = () => {
+      setIsRevealed(true);
+    }
+
+    return (
+      <div class="bg-gray-200 h-48 flex justify-center items-center">
+        <button class="px-4 py-2 bg-blue-500 text-white rounded-md" onclick={handleClick}>Reveal</button>
+        {isRevealed && (
+          <div class="bg-white rounded-md p-6 mt-6 opacity-0 transition-opacity duration-1000">
+            <h2 class="text-2xl font-bold mb-2">Slow Reveal</h2>
+            <p class="text-gray-700">This div slowly appears after the button is clicked.</p>
+          </div>
+        )}
+      </div>
+    )
+  }
+</script>
