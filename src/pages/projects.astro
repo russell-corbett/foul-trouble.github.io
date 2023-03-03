@@ -1,16 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Project from '../components/Project-Card.astro'
 ---
 
 <Layout title="Russell Corbett - Projects">
-    <main class='m-auto p-6 max-w-3xl'>
-        <h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>Design Projects</h1>
-        <h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'>Self Motivated and Major School Projects</h1>
-        <h2 class='text-2xl font-extrabold m-0'>Homelab</h2>
-        <h2 class='text-2xl font-extrabold m-0'>Makerspace</h2>
-        <h2 class='text-2xl font-extrabold m-0'>Poker Scoretracker</h2>
-        <h2 class='text-2xl font-extrabold m-0'>Russell Corbett Computing</h2>
-        <h2 class='text-2xl font-extrabold m-0'>Russell Corbett Website</h2>
-        <h2 class='text-2xl font-extrabold m-0'>Engineering One Survival Game</h2>
+    <main class='m-auto pl-32 pr-32 pt-6'>
+        <h1 class='flex justify-center text-5xl text-center font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>Design Projects</h1>
+        <h1 class='flex justify-center text-2xl text-center font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'>Self Motivated and Major School Projects</h1>
+        <div class='grid place-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+            <Project title='Homelab' body='Designed and created a "Smart Home" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+            <Project title='Makerspace' body='' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+            <Project title='Poker Scoretracker' body='' href='https://ubiquiti.com' image='../projects/Southlands.png'></Project>
+            <Project title='Russell Corbett Computing' body='' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+            <Project title='Russell Corbett Website' body='' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+            <Project title='Engineering One Survival Game' body='' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+        </div>
     </main>
 </Layout>

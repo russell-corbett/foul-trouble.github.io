@@ -1,17 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ELCard from '../components/External-Link-Card.astro'
-import ILCard from '../components/Internal-Link-Card.astro'
-import FLCard from '../components/Fancy-Link-Card.astro'
-import Blog_Card from '../components/Blog-Card.astro'
+import ELCard from '../components/External-Link-Card.astro';
+import ILCard from '../components/Internal-Link-Card.astro';
+import FLCard from '../components/Fancy-Link-Card.astro';
+import Blog_Card from '../components/Blog-Card.astro';
 ---
 
 <Layout title="Russell Corbett">
-	<main class='m-auto p-6 max-w-2xl'>
-		<img src="../RC_logo_png_transparent_no_name.jpg" alt="RC Logo.">
-		<h1 class='text-7xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Russell Corbett</span></h1>
-		<h1 class='text-4xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Software &#8226; Robotics &#8226; Automation</span></h1>
+	<main class=''>
+		<div class='m-auto p-6 max-w-2xl'>
+			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo">
+			<h1 class='text-7xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Russell Corbett</span></h1>
+			<h1 class='text-4xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Software &#8226; Robotics &#8226; Automation</span></h1>
+		</div>
+		<div class='md:pl-40 md:pr-40'>
+			<div class='grid grid-cols-1 md:grid-cols-3 md:content-evenly place-items-center md:mr-20 md:ml-20'>
+				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-xl border w-80 md:w-96 bg-white'>
+				<div class='col-span-2 mb-40 border bg-white'>
+					<!-- <img src="../MUN_Logo.png" alt="MUN Logo" class='w-60 h-60'> -->
+					<h1 class=''>Hello, my name is Russell Corbett</h1>
+					<h1 class=''>I am a second year Computer Engineering Student at Memorial University of Newfoundland.</h1>
+				</div>
+			</div>
+			<div class='hidden'>
+				<img src="../lang-soft/python.png" alt="Python Logo" class='w-60 h-60'>
+				<img src="../lang-soft/c++.png" alt="C++ Logo" class='w-60 h-60'>
+				<img src="../lang-soft/html.png" alt="HTML Logo" class='w-60 h-60'>
+				<img src="../lang-soft/css.png" alt="CSS Logo" class='w-60 h-60'>
+				<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class='w-60 h-60'>
+				<img src="../lang-soft/astro.png" alt="AstroJS Logo" class='w-60 h-60'>
+				<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class='w-60 h-60'>
+				<img src="../lang-soft/react.png" alt="React Logo" class='w-60 h-60'>
+			</div>
+		</div>
 	</main>
+</Layout>
 
 
 
