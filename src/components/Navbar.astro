@@ -1,4 +1,4 @@
-<nav class="flex justify-between bg-[size:400%_400%] bg-gradient-to-br from-russell-red to-russell-blue text-3xl gap-4 animate-[gradient_20s_ease_infinite]">
+<nav id='nav_bar' class="body flex justify-between bg-[size:400%_400%] bg-gradient-to-br from-russell-red to-russell-blue text-3xl gap-4 animate-[gradient_20s_ease_infinite] w-screen">
     <a class="logo" href="/"><img src='/RC_logo_png_transparent_no_name.jpg' class="hover:bg-white transition bg-zinc-300 rounded-r-3xl w-24 content-center"></a>
     <ul class="items-center font-bold gap-8 xl:gap-12 hidden lg:flex">
         <li><a href="/experience/" class='hover:text-white transition text-zinc-300 font-mono'>Experience</a></li>
@@ -6,9 +6,15 @@
         <li><a href="/projects/" class='hover:text-white transition text-zinc-300 font-mono'>Projects</a></li>
         <li><a href="/volunteering/" class='hover:text-white transition text-zinc-300 font-mono'>Philanthropy</a></li>
     </ul>
-    <!-- <a class=""><img src='' class="bg-zinc-300 rounded-l-3xl w-24 content-center hidden lg:flex"></a> -->
-    <a class="" href="/"><img src='/hamburger.png' class="bg-zinc-300 rounded-l-3xl p-5 w-24 h-20 lg:invisible"></a>
+    <button id='hamburger_button'><img src='/hamburger.png' id='hamburger_icon' class="hamburger bg-zinc-300 rounded-l-3xl p-5 w-24 h-20 lg:invisible"></button>
 </nav>
+<div class='hidden bg-opacity-95 bg-zinc-300 flex-col items-center absolute w-screen space-y-20 p-20 rounded-b-3xl' id='hamburger_menu'>
+    <li class='list-none'><a href="/experience/" class='hover:text-white transition text-zinc-300 font-mono text-3xl bg-stone-700 rounded-full p-5'>Experience</a></li>
+    <li class='list-none'><a href="/teams/" class='hover:text-white transition text-zinc-300 font-mono text-3xl bg-stone-700 rounded-full p-5'>Teams</a></li>
+    <li class='list-none'><a href="/projects/" class='hover:text-white transition text-zinc-300 font-mono text-3xl bg-stone-700 rounded-full p-5'>Projects</a></li>
+    <li class='list-none'><a href="/volunteering/" class='hover:text-white transition text-zinc-300 font-mono text-3xl bg-stone-700 rounded-full p-5'>Philanthropy</a></li>
+    <li class='list-none'><a href="/contact-me/" class='hover:text-white transition text-zinc-300 font-mono text-3xl bg-stone-700 rounded-full p-5'>Contact Me</a></li>
+</div>
 
 <style>
     @keyframes gradient {
@@ -23,3 +29,48 @@
         }
     }
 </style>
+
+<script>
+    // script to overlay a div when hamburger button is clicked
+    const hamburger = document.getElementById('hamburger_button');
+    const hamburger_icon = document.getElementById('hamburger_icon');
+    const hamburger_menu = document.getElementById('hamburger_menu');
+    const nav_bar = document.getElementById('nav_bar');
+    var opacity = 0;
+    hamburger.addEventListener('click', () => {
+        if (hamburger_menu.classList.contains('hidden')) {
+            opacity = 0;
+            hamburger_menu.style.opacity = opacity;
+            hamburger_menu.classList.toggle('hidden');
+            hamburger_menu.classList.toggle('flex');
+            var intervalID = setInterval(function() {
+                // function to increase opacity over 3 seconds from 0 to 1
+                if (opacity < 1) {
+                    opacity = opacity + 0.05;
+                    hamburger_menu.style.opacity = opacity;
+                } else {
+                    clearInterval(intervalID);
+                }}, 2);
+        } else {
+            opacity = 1;
+            hamburger_menu.style.opacity = opacity;
+            var intervalID = setInterval(function() {
+                // function to increase opacity over 3 seconds from 0 to 1
+                if (opacity > 0) {
+                    opacity = opacity - 0.05;
+                    hamburger_menu.style.opacity = opacity;
+                } else {
+                    clearInterval(intervalID);
+                    hamburger_menu.classList.toggle('hidden');
+                    hamburger_menu.classList.toggle('flex');
+                }}, 2);
+        }
+        // nav_bar.classList.toggle('fixed');
+    });
+    // script to animate the gradient
+    // const body = document.querySelector('.body');
+    // body.classList.add('animate-gradient');
+</script>
+
+
+

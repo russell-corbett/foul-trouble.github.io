@@ -8,29 +8,81 @@ import Blog_Card from '../components/Blog-Card.astro';
 
 <Layout title="Russell Corbett">
 	<main class=''>
-		<div class='m-auto p-6 max-w-2xl'>
-			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo">
+		<div class='m-auto p-6 max-w-2xl h-screen align-middle'>
+			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class=''>
 			<h1 class='text-7xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Russell Corbett</span></h1>
 			<h1 class='text-4xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Software &#8226; Robotics &#8226; Automation</span></h1>
 		</div>
 		<div class='md:pl-40 md:pr-40'>
-			<div class='grid grid-cols-1 md:grid-cols-3 md:content-evenly place-items-center md:mr-20 md:ml-20'>
-				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-xl border w-80 md:w-96 bg-white'>
-				<div class='col-span-2 mb-40 border bg-white'>
-					<!-- <img src="../MUN_Logo.png" alt="MUN Logo" class='w-60 h-60'> -->
-					<h1 class=''>Hello, my name is Russell Corbett</h1>
+			<div class='grid grid-cols-1 md:grid-cols-3 md:content-evenly place-items-center md:mr-20 md:ml-20 md:rounded-xl border bg-zinc-300 pt-10 pb-10'>
+				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-xl border h-96 bg-white'>
+				<div class='col-span-2 border rounded-xl bg-white h-96 ml-3 mr-3 xl:mt-3 p-3'>
+					<img src="../MUN_Logo.png" alt="MUN Logo" class='object-scale-down h-36'>
+					<h1 class='text-xl font-extrabold'>Hello, my name is Russell Corbett</h1>
 					<h1 class=''>I am a second year Computer Engineering Student at Memorial University of Newfoundland.</h1>
 				</div>
 			</div>
-			<div class='hidden'>
-				<img src="../lang-soft/python.png" alt="Python Logo" class='w-60 h-60'>
-				<img src="../lang-soft/c++.png" alt="C++ Logo" class='w-60 h-60'>
-				<img src="../lang-soft/html.png" alt="HTML Logo" class='w-60 h-60'>
-				<img src="../lang-soft/css.png" alt="CSS Logo" class='w-60 h-60'>
-				<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class='w-60 h-60'>
-				<img src="../lang-soft/astro.png" alt="AstroJS Logo" class='w-60 h-60'>
-				<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class='w-60 h-60'>
-				<img src="../lang-soft/react.png" alt="React Logo" class='w-60 h-60'>
+			<script>
+				var run = false;
+				window.addEventListener('scroll', function (event) {
+					if (isInViewport(document.getElementById('images')) && run === false) {
+						run = true;
+						console.log('in viewport');
+						var images = document.getElementById('images').children;
+						var i = -1;
+						var r = setInterval(function() {
+							i = (i + 1) % images.length;
+							images[i].style.opacity = 0;
+							var opacity = 0;
+							var t = setInterval(function() {
+								if (opacity < 1) {
+									opacity += 0.05;
+									images[i].style.opacity = opacity;
+								};
+							}, 15);
+							if (i > images.length - 2) {
+								clearInterval(r);
+							};
+						}, 400);
+					}
+				}, false);
+				function isInViewport(element) {
+					// Get the bounding client rectangle position in the viewport
+					var bounding = element.getBoundingClientRect();
+					
+					// Checking part. Here the code checks if it's *fully* visible
+					// Edit this part if you just want a partial visibility
+
+					if (
+						bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+					) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+			</script>
+			<div class='grid place-content-evenly grid-cols-2 md:grid-cols-3 xl:grid-cols-6 2xl:grid-cols-8 gap-y-5 gap-x-5 xl:gap-x-0 xl:rounded-full border p-10 mt-10 bg-zinc-300' id='images'>
+				<img src="../lang-soft/python.png" alt="Python Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+				<img src="../lang-soft/c++.png" alt="C++ Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+				<img src="../lang-soft/html.png" alt="HTML Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+				<img src="../lang-soft/css.png" alt="CSS Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+				<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class='w-40 h-40 opacity-0 hover:scale-125 transition'>
+				<img src="../lang-soft/astro.png" alt="AstroJS Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+				<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+				<img src="../lang-soft/react.png" alt="React Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+			</div>
+			<div class='hidden place-content-center gap-6 md:mr-20 md:ml-20 md:rounded-xl border bg-zinc-300 mt-10 pt-3 pb-3'>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Project Coordinator</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Time Management</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
+				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Focused</h4>
 			</div>
 		</div>
 	</main>
@@ -38,12 +90,7 @@ import Blog_Card from '../components/Blog-Card.astro';
 
 
 
-
-
-
-
-
-
+<!-- 
 	<main class='hidden m-auto p-6 max-w-lg'>
 		<h1 class='text-4xl font-extrabold m-0'>Welcome to </h1>
 		<h1 class='text-5xl font-extrabold m-0'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Russell Corbett</span></h1>
@@ -92,5 +139,5 @@ import Blog_Card from '../components/Blog-Card.astro';
 			/>
 		</ul>
 	</main>
-</Layout>
+</Layout> -->
 
