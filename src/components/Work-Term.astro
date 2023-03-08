@@ -5,24 +5,12 @@ export interface Props {
 	body: string;
 	href: string;
     image: string;
-    background: string
+    background: string;
+	bullets: string[];
 }
 
-const { href, title, subtitle, body, image, background } = Astro.props;
+const { href, title, subtitle, body, image, background, bullets } = Astro.props;
 ---
-
-<li class={background}>
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-        <img src={image} class='object-contain h-48 w-96'>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
 
 <div class='p-10 rounded-xl border-stone-400 border shadow-xl'>
 	<a href={href} class='md:flex text-white' target="_blank">
