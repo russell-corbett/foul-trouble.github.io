@@ -9,7 +9,7 @@ import Nav from '../components/Navbar.astro'
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class='scroll-smooth'>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -17,8 +17,7 @@ import Nav from '../components/Navbar.astro'
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<Nav />
+	<body class='bg-black'>
 		<slot />
 		<Footer />
 	</body>
@@ -36,4 +35,18 @@ import Nav from '../components/Navbar.astro'
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
+</style>
+
+<style>
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
 </style>

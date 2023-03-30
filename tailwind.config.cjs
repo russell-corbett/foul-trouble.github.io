@@ -25,7 +25,10 @@ module.exports = {
 				'mpmba-orange': '#B18344'
 			},
 			fontFamily:{
-				myStyle:['MuseoModerno']
+				techmono: ['ShareTechMono', 'monospace'],
+				tech: ['ShareTech', 'sans-serif'],
+				russo: ['RussoOne', 'sans-serif'],
+				bebas: ['BebasNeue', 'cursive'],
 			}
 		},
 	},

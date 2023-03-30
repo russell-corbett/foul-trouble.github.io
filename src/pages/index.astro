@@ -1,67 +1,192 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import UpcomingEvents from '../components/Upcoming-Events.astro';
+import Form from '../components/Contact-Form.astro'
+import Nav from "../components/Navbar.astro";
+import FLink from "../components/Fancy-Link-Card.astro";
+import Project from "../components/Project-Card.astro";
 ---
 
 <Layout title="Russell Corbett">
 	<main class=''>
-		<div class='m-auto p-6 max-w-2xl h-screen align-middle'>
-			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class=''>
-			<h1 class='text-7xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Russell Corbett</span></h1>
-			<h1 class='text-4xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Software &#8226; Robotics &#8226; Automation</span></h1>
+		<div class='m-auto p-6 max-w-2xl h-screen place-items-center'>
+			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class='' id='main_logo'>
+			<h1 class='text-7xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Russell Corbett</span></h1>
+			<h1 class='text-4xl font-extrabold m-0 text-center mb-5'><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Software &#8226; Robotics &#8226; Automation</span></h1>
+			<nav id='navbar'>
+				<div class='flex m-auto max-w-2xl place-content-evenly mt-5 gap-x-10 -z50'>
+					<button class='text-3xl font-bold text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]' id='nav_button' onclick="document.getElementById('about').scrollIntoView();">About</button>
+					<button class='text-3xl font-bold text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]' id='nav_button' onclick="document.getElementById('teams').scrollIntoView();">Teams</button>
+					<button class='text-3xl font-bold text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]' id='nav_button' onclick="document.getElementById('projects').scrollIntoView();">Projects</button>
+					<button class='text-3xl font-bold text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]' id='nav_button' onclick="document.getElementById('engineering').scrollIntoView();">Engineering</button>
+					<button class='text-3xl font-bold text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]' id='nav_button' onclick="document.getElementById('contact').scrollIntoView();">Contact</button>
+				</div>
+			</nav>
 		</div>
 		<div class='md:pl-40 md:pr-40'>
-			<div class='grid grid-cols-1 md:grid-cols-3 md:content-evenly place-items-center md:mr-20 md:ml-20 md:rounded-xl border bg-zinc-300 pt-10 pb-10'>
-				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-xl border h-96 bg-white'>
-				<div class='col-span-2 border rounded-xl bg-white h-96 ml-3 mr-3 xl:mt-3 p-3'>
-					<!-- <img src="../MUN_Logo.png" alt="MUN Logo" class='object-scale-down h-36'> -->
-					<h1 class='text-xl font-extrabold'>Hello, my name is Russell Corbett</h1>
-					<h1 class=''>I am a second year Computer Engineering Student at Memorial University of Newfoundland.</h1>
+			<div id='about' class='h-20'></div>
+			<div class='grid grid-cols-1 md:grid-cols-3 md:content-evenly md:mr-20 md:ml-20 md:rounded-xl border bg-zinc-300 pt-10 pb-10'>
+				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-xl border h-96 bg-white ml-16'>
+				<div class='col-span-2 border rounded-xl bg-white h-96 mr-16'>
+					<h1 class='text-3xl font-extrabold font-techmono text-center pt-3' id='introduction'></h1>
+					<h1 class='text-xl pt-5 pr-3 pl-3 text-center'>I am a Term IV Computer Engineering Student at Memorial University of Newfoundland. </h1>
+					<h1 class='text-xl pt-5 pr-3 pl-3 text-center'>I am a problem solver with an inquisitive mind. I value time management and organization as important virtues to manage a full academic and extra-curricular schedule. Furthermore, I thrive on new challenges and finding innovative ways to solve them. I am a team player who values the ideas and experience of others. </h1>
+					<div class='flex justify-evenly'>
+						<img src="../MUN_ENG_Logo.jpg" alt="MUN Logo." class='h-32'>
+						<img src="../MUN_Logo.png" alt="MUN Logo." class='h-32'>
+					</div>
 				</div>
 			</div>
-			<script>
-				var run = false;
-				window.addEventListener('scroll', function (event) {
-					if (isInViewport(document.getElementById('images')) && run === false) {
-						run = true;
-						console.log('in viewport');
-						const images = document.getElementById('images').children;
-						var i = -1;
-						const r = setInterval(function() {
-							i = (i + 1) % images.length;
-							images[i].style.opacity = 0;
-							var opacity = 0;
-							var t = setInterval(function() {
-								if (opacity < 1) {
-									opacity += 0.05;
-									images[i].style.opacity = opacity;
-								};
-							}, 15);
-							if (i > images.length - 2) {
-								clearInterval(r);
-							};
-						}, 400);
-					}
-				}, false);
-				function isInViewport(element) {
-					const bounding = element.getBoundingClientRect();
-					if (
-						bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-					) {
-						return true;
-					} else {
-						return false;
-					}
-				}
-			</script>
-			<div class='grid place-content-evenly grid-cols-2 md:grid-cols-3 xl:grid-cols-6 2xl:grid-cols-8 gap-y-5 gap-x-5 xl:gap-x-0 xl:rounded-full border p-10 mt-10 bg-zinc-300' id='images'>
-				<img src="../lang-soft/python.png" alt="Python Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
-				<img src="../lang-soft/c++.png" alt="C++ Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
-				<img src="../lang-soft/html.png" alt="HTML Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
-				<img src="../lang-soft/css.png" alt="CSS Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
-				<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class='w-40 h-40 opacity-0 hover:scale-125 transition'>
-				<img src="../lang-soft/astro.png" alt="AstroJS Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
-				<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
-				<img src="../lang-soft/react.png" alt="React Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+			<div class='flex justify-center relative w-auto h-64 mt-10' id='images-space'>
+				<div class='grid place-content-evenly grid-cols-2 md:grid-cols-3 xl:grid-cols-6 2xl:grid-cols-8 gap-y-5 gap-x-5 xl:gap-x-0 xl:rounded-full border p-10 bg-zinc-300 absolute w-0 transition transform h-0 -translate-y-36 opacity-0' id='images'>
+					<img src="../lang-soft/python.png" alt="Python Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+					<img src="../lang-soft/c++.png" alt="C++ Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+					<img src="../lang-soft/html.png" alt="HTML Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+					<img src="../lang-soft/css.png" alt="CSS Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+					<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class='w-40 h-40 opacity-0 hover:scale-125 transition'>
+					<img src="../lang-soft/astro.png" alt="AstroJS Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+					<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+					<img src="../lang-soft/react.png" alt="React Logo" class='w-40 h-40 object-contain opacity-0 hover:scale-125 transition'>
+				</div>
+			</div>
+			<div id='teams' class='h-24'></div>
+			<div class='md:mr-20 md:ml-20 md:rounded-xl border bg-zinc-300 pt-10 pb-10'>
+				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Engineering Teams</h1>
+				<div class='md:flex md:place-content-evenly'>
+					<div class='flex flex-col place-items-center border rounded-2xl hover:scale-105 transition'>
+						<div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl'> 
+							<img src="../teams/eastern_edge/eastern_edge_logo.png" alt="Eastern Edge Logo." class='h-96 object-contain hover:scale-110 transition pl-3 pr-3'>
+						</div>
+						<div class='flex flex-col place-items-center max-w-xl'>
+							<h1 class='text-4xl font-extrabold text-center'>Eastern Edge Robotics</h1>
+							<h1 class='text-2xl font-extrabold text-center'>Chief Technology Officer - Software</h1>
+							<p class='pl-4 pr-4 text-center'>Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition.</p>
+							<FLink href="../easternedge/" title="Read More"/>
+						</div>
+					</div>
+					<div class='flex flex-col place-items-center border rounded-2xl hover:scale-105 transition'>
+						<div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")] rounded-t-2xl bg-cover'>
+							<img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo." class='h-96 object-contain hover:scale-110 transition pl-24 pr-24'>
+						</div>
+						<div class='flex flex-col place-items-center max-w-xl'>
+							<h1 class='text-4xl font-extrabold text-center'>FMUNTENTH</h1>
+							<h1 class='text-2xl font-extrabold text-center'>Software Team Member</h1>
+							<p class='pl-4 pr-4 text-center'>FMUNTENTH is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the international F1TENTH Competition.</p>
+							<FLink href="../fmuntenth/" title="Read More"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id='projects' class='h-24'></div>
+			<div class='md:mr-20 md:ml-20 md:rounded-xl border bg-zinc-300 pt-10 pb-10'>
+				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Projects</h1>
+				<div class='flex place-content-evenly'>
+					<Project title='Homelab' body='Designed and created a "Smart Home" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+					<Project title='Russell Corbett Website' body='' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+					<Project title='Engineering One Survival Game' body='' href='https://ubiquiti.com' image='../projects/home_assistant_logo.png'></Project>
+				</div>
+			</div>
+			<div class='flex justify-center relative w-auto h-64 mt-10'>
+				<div class='flex xl:rounded-full border p-10 bg-zinc-300 relative w-full overflow-hidden icon-container' id='applications'>
+					<div class='icons gap-x-10'>
+						<div class='icon'><img src="../applications/365.png" alt="365 Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/word.png" alt="Microsoft Word Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/excel.png" alt="Microsoft Excel Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/drive.png" alt="Google Drive Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/docs.png" alt="Google Docs Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/sheets.png" alt="Google Sheets Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/slides.png" alt="Google Slides Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+
+						<div class='icon'><img src="../applications/git.png" alt="Git Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/github.png" alt="GitHub Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/proxmox.png" alt="Proxmox Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/jyra.png" alt="Jyra Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/salesforce.png" alt="Salesforce Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/onshape.png" alt="Onshape Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/webex.png" alt="Webex Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+
+						<div class='icon'><img src="../applications/365.png" alt="365 Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/word.png" alt="Microsoft Word Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/excel.png" alt="Microsoft Excel Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/drive.png" alt="Google Drive Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/docs.png" alt="Google Docs Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/sheets.png" alt="Google Sheets Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/slides.png" alt="Google Slides Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+
+						<div class='icon'><img src="../applications/git.png" alt="Git Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/github.png" alt="GitHub Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/proxmox.png" alt="Proxmox Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/jyra.png" alt="Jyra Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/salesforce.png" alt="Salesforce Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/onshape.png" alt="Onshape Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class='icon'><img src="../applications/webex.png" alt="Webex Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+					</div>
+				</div>
+			</div>
+			<div id='events' class='h-20'></div>
+			<div class='md:mr-20 md:ml-20 md:rounded-xl border mt-7 bg-zinc-300 pt-10 pb-10'>
+				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>Upcoming Events</h1>
+				<div class='grid grid-cols-1 md:grid-cols-3 md:content-evenly place-items-center'>
+					<UpcomingEvents 
+						title='MUN Relay for Life'
+						img='../volunteering/relay/relay_logo.png' 
+						countdown='Apr 2, 2023 17:00:00' 
+						location="St. John's, Newfoundland, Canada"
+						call='Donate to Relay for Life!'
+						link='https://support.cancer.ca/site/TR/RelayForLife/RFLY_NW_even_?px=14295830&pg=personal&fr_id=28684&s_locale=en_CA'
+						/>
+					<UpcomingEvents 
+						title='F1Tenth International'
+						img='../teams/fmuntenth/f1tenth_logo.gif' 
+						countdown='May 6, 2023 00:00:00' 
+						location='San Antonio, Texas, USA'
+						call='Learn More!'
+						link='https://f1tenth.org/'
+						/>
+					<UpcomingEvents 
+						title='MATE International 2023'
+						img='../teams/eastern_edge/mate_logo_color.png' 
+						countdown='June 20, 2023 17:00:00' 
+						location='Longmont, Colorado, USA'
+						call='Dive In!'
+						link='https://materovcompetition.org/'
+						/>
+				</div>
+			</div>
+			<div id='contact' class='h-16'></div>
+			<div class='md:mr-20 md:ml-20 md:rounded-xl border mt-7 bg-zinc-300 pb-10 mb-10'>
+				<main class='flex flex-col items-center m-auto p-6 max-w-3xl'>
+					<h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-6'>Contact Me</h1>
+					<h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'></h1>
+					<div class='lg:flex lg:justify-evenly lg:space-x-10 space-y-5 lg:space-y-0'>
+						<div class="block p-6 max-w-4xl md:w-[30rem] w-full bg-white rounded-lg border-2 border-gray-300 shadow-xl">
+							<div class='flex justify-evenly'>
+								<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-full w-40'>
+								<div class='flex flex-col items-center justify-evenly'>
+									<h4 class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Russell Corbett</h4>
+									<a href='mailto:rjcorbett@mun.ca'><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">rjcorbett@mun.ca</h4></a>
+									<a href="tel:123-456-7890"><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">+1 (709) 746-6644</h4></a>
+									<h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">St. John's, Newfoundland</h4>
+								</div>
+							</div>
+							<div>
+								<img src="../newfoundland.png" alt="Newfoundland Location." class='rounded-xl border hidden lg:block mt-5'>
+							</div>
+							<div class='grid grid-rows-1 justify-center rounded-xl mt-5 pb-3'>
+								<h1 class='flex justify-center text-3xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>My Resume</h1>
+								<div class='flex justify-evenly space-x-3'>
+									<a href="../RussellCorbettResume.pdf" class='bg-gradient-to-r from-russell-red to-russell-blue text-white text-xl font-bold rounded-l-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110'>View</a>
+									<a href="../RussellCorbettResume.pdf" class='bg-gradient-to-l from-russell-red to-russell-blue text-white text-xl font-bold rounded-r-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110' download>Download</a>
+								</div>
+							</div>
+						</div>
+						<Form></Form>
+					</div>
+				</main>
 			</div>
 			<div class='hidden place-content-center gap-6 md:mr-20 md:ml-20 md:rounded-xl border bg-zinc-300 mt-10 pt-3 pb-3'>
 				<h4 class='p-3 rounded-full font-bold bg-white hover:scale-125 transition'>Project Coordinator</h4>
@@ -79,31 +204,159 @@ import Layout from '../layouts/Layout.astro';
 	</main>
 </Layout>
 
+<script>
+	var intro = false;
+	var logos = false;
+	window.addEventListener('scroll', function (event) {
+		if (isInViewport(document.getElementById('introduction')) && intro === false) {
+			intro = true;
+			var i = 0;
+			var txt = 'Hello! My name is Russell Corbett'; /* The text */
+			var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+			function typeWriter() {
+				if (i < txt.length) {
+					document.getElementById("introduction")!.innerHTML += txt.charAt(i);
+					i++;
+					setTimeout(typeWriter, speed);
+  				}
+			}
+			typeWriter();
+		}
+	}, false);
+	window.addEventListener('scroll', function (event) {
+		if (isInViewport(document.getElementById('images-space')) && logos === false && intro === true) {
+			logos = true;
+			const images = document.getElementById('images')!.children;
+			var i = -1;
+			let j = 0;
+			let k = 0;
+			let o = 0;
+			const holder = document.getElementById('images-space')!;
+			const bounds = holder.getBoundingClientRect().width
+			const t = setInterval(function() {
+				let box = document.getElementById('images')!;
+				box.style.transform = 'scale(100%)'
+				box.style.width = `${j}px`;
+				box.style.height = `${k}px`;
+				box.style.opacity = `${o}`;
+				o += 0.05
+				j += 50;
+				if (k < 240) {
+				k += 12;
+				}
+				if (j === bounds) {
+					clearInterval(t);
+					box.style.width = `100%`;
+					box.style.transform = 'scale(105%)'
+					const r = setInterval(function() {
+						i = (i + 1) % images.length;
+						images[i].style.opacity = 0;
+						var opacity = 0;
+						var t = setInterval(function() {
+							if (opacity < 1) {
+								opacity += 0.05;
+								images[i].style.opacity = opacity;
+							};
+						}, 15);
+						images[i].style.opacity = 1;
+					if (i > images.length - 2) {
+					clearInterval(r);
+					setTimeout(function() {
+						box.style.transform = 'scale(100%)'
+					}, 500);
+					};
+					}, 400);
+				}
+				}, 2);
+		}
+	}, false);
+	function isInViewport(element: HTMLElement | null) {
+		const bounding = element!.getBoundingClientRect();
+		if (
+			bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+		) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
+	// find the slideshow container and its dimensions
+	var iconContainer = document.querySelector('.icon-container');
+	var containerWidth = iconContainer.offsetWidth;
+
+	// find the slideshow element and its slides
+	var icon = document.querySelector('.icons');
+
+	// set the initial position of the slideshow to the left of the container
+	icon.style.transform = `translateX(-${containerWidth}px)`;
+
+	// add a listener for when the slideshow animation ends
+	icon.addEventListener('animationiteration', function() {
+		// calculate the new position of the slideshow
+		var currentPosition = parseInt(icon.style.transform.replace('translateX(', '').replace(')', ''));
+		var newPosition = currentPosition - containerWidth / 2;
+		// update the position of the slideshow
+		icon.style.transform = `translateX(${newPosition}px)`;
+	});
+
+	window.addEventListener('scroll', function() {
+	var navbar = document.getElementById('navbar');
+	var logo = document.getElementById('main_logo');
+	if (window.pageYOffset > navbar.offsetTop) {
+		navbar.classList.add('fixed-nav');
+	} else {
+		navbar.classList.remove('fixed-nav');
+	}
+	});
 
 
-<!-- 
-	<main class='hidden m-auto p-6 max-w-lg'>
-		<h1 class='text-4xl font-extrabold m-0'>Welcome to </h1>
-		<h1 class='text-5xl font-extrabold m-0'><span class="text-transparent bg-clip-text bg-gradient-to-r from-russell-red to-russell-blue">Russell Corbett</span></h1>
-		<p class="bg-white rounded-xl border p-3 mt-3">This website is currently under development.<br /><strong>For now:</strong> Please feel free to follow the links below.</p>
-		<img src="../RC_logo_png_transparent.png" alt="RC Logo.">
-		<ul role="list" class="grid gap-4 p-0 grid-cols-2">
-			<ELCard
-				href="https://support.cancer.ca/site/TR/RelayForLife/RFLY_NW_even_?px=14295830&pg=personal&fr_id=28684&s_locale=en_CA"
-				title="Relay for Life"
-				body="Sponsor me at this year's MUN Relay for Life!"
-			/>
-			<ELCard
-				href="https://www.easternedgerobotics.com"
-				title="Eastern Edge Robotics"
-				body="Visit my underwater robotics team website!"
-			/>
-			<ELCard
-				href="https://fmuntenth.com"
-				title="FMUNTENTH"
-				body="Visit my autonomous vehicle team website. We are looking for sponsors!"
-			/>
-		</ul>
-	</main>
-</Layout> -->
+
+
+</script>
+<style>
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+	@keyframes scroll {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
+	}
+
+	.icons {
+	display: flex;
+	position: absolute;
+	width: 400%;
+	animation: slide 40s linear infinite;
+	}
+
+	@keyframes slide {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+	}
+
+	.fixed-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	}
+</style>
 
