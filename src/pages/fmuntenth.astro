@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Russell Corbett - FMUNTENTH">
+    <main class='body bg-[size:400%_400%] bg-gradient-to-br from-red-900 to-stone-400 animate-[gradient_10s_ease_infinite]'>
+        <div class='flex flex-col justify-center xl:pr-96 xl:pl-96'>
+            <img src="../teams/fmuntenth/transparent(1).png" alt="FMUNTENTH Logo." class=''>
+            <div class='flex flex-col place-items-center'>
+                <h1 class='text-5xl text-white font-bold'>FMUNTENTH</h1>
+                <p class='text-xl text-white font-bold text-center'>FMUNTENTH is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the international F1TENTH Competition.</p>
+            </div>
+            <div class='flex justify-evenly'>
+                <p id="days" class='lg:text-5xl text-white font-bold'></p>
+                <p id="hours" class='lg:text-5xl text-white font-bold'></p>
+                <p id="mins" class='lg:text-5xl text-white font-bold'></p>
+                <p id="secs" class='lg:text-5xl text-white font-bold'></p>
+                <h2 id="end" class='lg:text-5xl text-white font-bold'></h2>
+            </div>
+            <div class='flex justify-center'>
+                <p class='lg:text-5xl text-white font-bold'>Until Competition</p>
+            </div>
+        </div>
+    </main>
+</Layout>
+<script>
+    // The data/time we want to countdown to
+    var countDownDate = new Date("May 8, 2023 00:00:00").getTime();
+
+    // Run myfunc every second
+    var myfunc = setInterval(function() {
+
+    var now = new Date().getTime();
+    var timeleft = countDownDate - now;
+        
+    // Calculating the days, hours, minutes and seconds left
+    var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+        
+    // Result is output to the specific element
+    if (days === 1) {
+        document.getElementById("days").innerHTML = days + " Day, "
+    }
+    else {
+        document.getElementById("days").innerHTML = days + " Days, "
+    };
+    if (hours === 1) {
+        document.getElementById("hours").innerHTML = hours + " Hour, " 
+    }
+    else {
+        document.getElementById("hours").innerHTML = hours + " Hours, " 
+    };
+    if (minutes === 1) {
+        document.getElementById("mins").innerHTML = minutes + " Minute, and " 
+    }
+    else {
+        document.getElementById("mins").innerHTML = minutes + " Minutes, and " 
+    };
+    if (seconds === 1) {
+        document.getElementById("secs").innerHTML = seconds + " Second " 
+    }
+    else {
+        document.getElementById("secs").innerHTML = seconds + " Seconds " 
+    };
+        
+    // Display the message when countdown is over
+    if (timeleft < 0) {
+        clearInterval(myfunc);
+        document.getElementById("days").innerHTML = ""
+        document.getElementById("hours").innerHTML = "" 
+        document.getElementById("mins").innerHTML = ""
+        document.getElementById("secs").innerHTML = ""
+        document.getElementById("end").innerHTML = "TIME UP!!";
+    }
+    }, 1000);
+</script>

@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Russell Corbett - Eastern Edge">
+    <main class='body bg-[size:400%_400%] bg-gradient-to-br from-mi-teal to-mi-navy animate-[gradient_10s_ease_infinite]'>
+        <div class='flex flex-col justify-center xl:pr-96 xl:pl-96'>
+            <img src="../teams/eastern_edge/eastern_edge_yellow_logo.png" alt="Eastern Edge Logo." class=''>
+            
+            
+            <div class='flex flex-col place-items-center'>
+                <h1 class='text-5xl text-white font-bold'>Eastern Edge</h1>
+                <p class='text-xl text-white font-bold text-center'>Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition.</p>
+            </div>
+            
+            <div class='flex justify-evenly'>
+                <p id="days" class='lg:text-5xl text-white font-bold'></p>
+                <p id="hours" class='lg:text-5xl text-white font-bold'></p>
+                <p id="mins" class='lg:text-5xl text-white font-bold'></p>
+                <p id="secs" class='lg:text-5xl text-white font-bold'></p>
+                <h2 id="end" class='lg:text-5xl text-white font-bold'></h2>
+            </div>
+            <div class='flex justify-center'>
+                <p class='lg:text-5xl text-white font-bold'>Until Competition</p>
+            </div>
+            <div id='canvas' class='h-80 w-auto rounded-full overflow-hidden'></div>
+            <div>
+                <script type="module">
+                    import * as THREE from 'three';
+                    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+                    const loader = new GLTFLoader();
+
+                    loader.load( 'scene.gltf', function ( gltf ) {
+
+                        scene.add( gltf.scene );
+
+                    }, undefined, function ( error ) {
+
+                        console.error( error );
+
+                    } );
+                    const canvas = document.getElementById('canvas');
+                    let width = document.getElementById('canvas').offsetWidth;
+                    let height = document.getElementById('canvas').offsetHeight;
+                    const scene = new THREE.Scene();
+                    const camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+        
+                    const renderer = new THREE.WebGLRenderer();
+                    renderer.setSize( width, height );
+                    canvas.appendChild( renderer.domElement );
+        
+                    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+                    const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+                    const cube = new THREE.Mesh( geometry, material );
+                    scene.add( cube );
+        
+                    camera.position.z = 5;
+        
+                    function animate() {
+                        requestAnimationFrame( animate );
+        
+                        cube.rotation.x += 0.01;
+                        cube.rotation.y += 0.01;
+        
+                        renderer.render( scene, camera );
+                    }
+                    animate();
+                </script>
+            </div>
+    
+            <div id="" class='hidden xl:block'>
+                <img src="../teams/eastern_edge/ocean-background.gif" id='tank' class='border rounded-3xl mb-10 static'>
+                <div id="rovs_dock" class='flex justify-center -translate-y-96 gap-20'>
+                    <img src='../teams/eastern_edge/calypso.png' id="calypso" class='calypso w-48 transition'>
+                    <img src='../teams/eastern_edge/calypso.png' id="happy" class='happy w-48 transition'>
+                    <img src='../teams/eastern_edge/calypso.png' id="caribou" class='caribou w-48 transition'>
+                </div>
+                <!-- <div class="hidden">
+                    <button id='calypso_b' class='rounded-full border bg-zinc-300 text-black p-2'>Calypso</button>
+                    <button id='happy_b' class='rounded-full border bg-zinc-300 text-black p-2'>Happy Adventure</button>
+                    <button id='caribou_b' class='rounded-full border bg-zinc-300 text-black p-2'>Caribou</button>
+                </div> -->
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<script>
+    function getTranslateValues (element) {
+    const style = window.getComputedStyle(element)
+    const matrix = style['transform'] || style.webkitTransform || style.mozTransform
+
+    // No transform property. Simply return 0 values.
+    if (matrix === 'none' || typeof matrix === 'undefined') {
+        return {
+        x: 0,
+        y: 0,
+        z: 0
+        };
+    }
+
+    // Can either be 2d or 3d transform
+    const matrixType = matrix.includes('3d') ? '3d' : '2d'
+    const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ')
+
+    // 2d matrices have 6 values
+    // Last 2 values are X and Y.
+    // 2d matrices does not have Z value.
+    if (matrixType === '2d') {
+        return {
+        x: matrixValues[4],
+        y: matrixValues[5],
+        z: 0
+        }
+    }
+
+    // 3d matrices have 16 values
+    // The 13th, 14th, and 15th values are X, Y, and Z
+    if (matrixType === '3d') {
+        return {
+        x: matrixValues[12],
+        y: matrixValues[13],
+        z: matrixValues[14]
+        }
+    }
+    }
+    // move images around a box without them colliding or going out of bounds
+    const rovs = document.getElementById('rovs_dock').children;
+    const tank = document.getElementById('tank');
+    var tank_bounds = tank.getBoundingClientRect();
+    var translate_x = 0;
+    var translate_y = 0;
+    var new_x = 0;
+    var new_y = 0;
+    var direction = []
+    var change = 0;
+    var t = setInterval(function() {
+        tank_bounds = tank.getBoundingClientRect();
+        for (let i = 0; i < rovs.length; i++) {
+            if (direction.length < rovs.length) {
+                direction.push([1, -1, -1, 4, 4])
+                };
+            var rov_bounds = rovs[i].getBoundingClientRect();
+            var pos = getTranslateValues(rovs[i]);
+
+            translate_x = parseInt(pos['x']);
+            new_x = translate_x + (direction[i][3] * direction[i][0]);
+
+            translate_y = parseInt(pos['y']);
+            new_y = translate_y + (direction[i][4] * direction[i][1]);
+
+            if (rov_bounds.x > tank_bounds.x + tank_bounds.width - rov_bounds.width) {
+                direction[i][0] = -1;
+                direction[i][2] = 1;
+                direction[i][3] = Math.ceil(Math.random()*10)
+            }
+            else if (rov_bounds.x < tank_bounds.x) {
+                direction[i][0] = 1;
+                direction[i][2] = -1;
+                direction[i][3] = Math.ceil(Math.random()*10)
+            }
+            else if (rov_bounds.y < tank_bounds.y) {
+                direction[i][1] = 1;
+                direction[i][4] = Math.ceil(Math.random()*10)
+            }
+            else if (rov_bounds.y > tank_bounds.y + tank_bounds.height - rov_bounds.height) {
+                direction[i][1] = -1;
+                direction[i][4] = Math.ceil(Math.random()*10)
+            }
+            else {
+                change = Math.ceil(Math.random()*100);
+                if (change === 99) {
+                    direction[i][0] = direction[i][0] * -1;
+                    direction[i][2] = direction[i][2] * -1;
+                    direction[i][3] = Math.ceil(Math.random()*10)
+                }
+                else if (change === 1) {
+                    direction[i][1] = direction[i][1] * -1;
+                    direction[i][4] = Math.ceil(Math.random()*10)
+                }
+            };
+            rovs[i].style.transform = `translate(${new_x}px, ${new_y}px) scaleX(${direction[i][2]})`;
+        } 
+    }, 50);
+
+</script>
+<script>
+    // The data/time we want to countdown to
+    var countDownDate = new Date("Jun 24, 2023 00:00:00").getTime();
+
+    // Run myfunc every second
+    var myfunc = setInterval(function() {
+
+    var now = new Date().getTime();
+    var timeleft = countDownDate - now;
+        
+    // Calculating the days, hours, minutes and seconds left
+    var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+        
+    // Result is output to the specific element
+    if (days === 1) {
+        document.getElementById("days").innerHTML = days + " Day, "
+    }
+    else {
+        document.getElementById("days").innerHTML = days + " Days, "
+    };
+    if (hours === 1) {
+        document.getElementById("hours").innerHTML = hours + " Hour, " 
+    }
+    else {
+        document.getElementById("hours").innerHTML = hours + " Hours, " 
+    };
+    if (minutes === 1) {
+        document.getElementById("mins").innerHTML = minutes + " Minute, and " 
+    }
+    else {
+        document.getElementById("mins").innerHTML = minutes + " Minutes, and " 
+    };
+    if (seconds === 1) {
+        document.getElementById("secs").innerHTML = seconds + " Second " 
+    }
+    else {
+        document.getElementById("secs").innerHTML = seconds + " Seconds " 
+    };
+        
+    // Display the message when countdown is over
+    if (timeleft < 0) {
+        clearInterval(myfunc);
+        document.getElementById("days").innerHTML = ""
+        document.getElementById("hours").innerHTML = "" 
+        document.getElementById("mins").innerHTML = ""
+        document.getElementById("secs").innerHTML = ""
+        document.getElementById("end").innerHTML = "TIME UP!!";
+    }
+    }, 1000);
+</script>
+<style>
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+</style>
+

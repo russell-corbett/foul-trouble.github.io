@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Testing Area">
+    <div class="slideshow-container h-96">
+        <div class="slideshow bg-white">
+            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
+            <div class='slide'><img src="../hamburger.png" class=''></div>
+            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
+            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
+            <div class='slide'><img src="../hamburger.png" class=''></div>
+            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
+            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
+            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
+            <div class='slide'><img src="../hamburger.png" class=''></div>
+        </div>
+    </div>
+</Layout>
+<style>
+    .slideshow-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    }
+
+    .slideshow {
+    display: flex;
+    position: absolute;
+    width: 200%;
+    animation: slide 20s linear infinite;
+    }
+
+    .slide {
+    flex: 1;
+    margin: 0;
+    }
+
+    .slide img {
+    width: 100%;
+    height: auto;
+    }
+
+    @keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+    }
+
+</style>
+<script>
+    // optional: set the slideshow speed in seconds
+var slideshowSpeed = 10;
+
+// find the slideshow container and its dimensions
+var slideshowContainer = document.querySelector('.slideshow-container');
+var containerWidth = slideshowContainer.offsetWidth;
+
+// find the slideshow element and its slides
+var slideshow = document.querySelector('.slideshow');
+var slides = slideshow.querySelectorAll('.slide');
+
+// set the initial position of the slideshow to the left of the container
+slideshow.style.transform = 'translateX(-' + containerWidth / 2 + 'px)';
+
+// add a listener for when the slideshow animation ends
+slideshow.addEventListener('animationiteration', function() {
+  // calculate the new position of the slideshow
+  var currentPosition = parseInt(slideshow.style.transform.replace('translateX(', '').replace(')', ''));
+  var newPosition = currentPosition - containerWidth / 2;
+
+  // update the position of the slideshow
+  slideshow.style.transform = 'translateX(' + newPosition + 'px)';
+});
+
+// optional: set the slideshow speed
+if (slideshowSpeed) {
+  slideshow.style.animationDuration = slideshowSpeed + 's';
+}
+
+</script>  
