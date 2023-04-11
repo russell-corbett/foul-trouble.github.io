@@ -302,7 +302,8 @@ import Project from "../components/Project-Card.astro";
 						<img src='../teams/eastern_edge/mate_logo_color.png' alt='MATE ROV Logo' class='h-60 w-60 object-contain' />
 						<div class='flex flex-col m-5 bg-mate-blue border rounded-xl p-3'>
 							<h1 class='text-4xl font-bold text-center text-mate-orange'>MATE ROV Regional</h1>
-							<h1 class='text-5xl font-bold text-center text-mate-orange'>Newfoundland</h1>
+							<h1 class='text-4xl md:text-5xl font-bold text-center text-mate-orange'>Newfoundland</h1>
+							<p class='text-center text-white mt-3'>Hosted by: The Fisheries and Marine Institute of the Memorial University of Newfoundland</p>
 						</div>
 					</div>
 					<div class='flex flex-col bg-white border rounded-xl'>
@@ -419,36 +420,19 @@ import Project from "../components/Project-Card.astro";
 		}
 	};
 
-	// find the slideshow container and its dimensions
+	// Icon Slideshow
 	var iconContainer = document.querySelector('.icon-container');
 	var containerWidth = iconContainer.offsetWidth;
-
-	// find the slideshow element and its slides
 	var icon = document.querySelector('.icons');
-
-	// set the initial position of the slideshow to the left of the container
 	icon.style.transform = `translateX(-${containerWidth}px)`;
-
-	// add a listener for when the slideshow animation ends
 	icon.addEventListener('animationiteration', function() {
-		// calculate the new position of the slideshow
 		var currentPosition = parseInt(icon.style.transform.replace('translateX(', '').replace(')', ''));
 		var newPosition = currentPosition - containerWidth / 2;
-		// update the position of the slideshow
 		icon.style.transform = `translateX(${newPosition}px)`;
 	});
 
-	// window.addEventListener('scroll', function() {
-	// var navbar = document.getElementById('navbar');
-	// var logo = document.getElementById('main_logo');
-	// if (window.pageYOffset > navbar.offsetTop) {
-	// 	navbar.classList.add('fixed-nav');
-	// } else {
-	// 	navbar.classList.remove('fixed-nav');
-	// }
-	// });
-	    // Find all buttons with the `non-engineering` class on the page.
-	const buttons = document.querySelectorAll('button.non-engineering');
+	// Find all buttons with the `non-engineering` class on the page.
+	const non_eng_button = document.querySelectorAll('button.non-engineering');
     const other_work = document.getElementById("non-engineering");
     var totalHeight = document.body.scrollHeight;
     if (other_work != null){    
@@ -458,9 +442,8 @@ import Project from "../components/Project-Card.astro";
         var new_height = height + totalHeight;
     };
    
-
     // Handle clicks on each button.
-    buttons.forEach((button) => {
+    non_eng_button.forEach((button) => {
         button.addEventListener(
             'click', () => {
                 if (other_work != null) { 
@@ -469,7 +452,6 @@ import Project from "../components/Project-Card.astro";
                         other_work.style.display = "block";
                         var opacity = 0;
                         var intervalID = setInterval(function() {
-                            // function to increase opacity over 3 seconds from 0 to 1
                             if (opacity < 1) {
                                 opacity = opacity + 0.01;
                                 other_work.style.opacity = opacity;
@@ -487,8 +469,8 @@ import Project from "../components/Project-Card.astro";
         )
     }
 	);
-
 </script>
+
 <style>
     @keyframes gradient {
         0% {
@@ -509,14 +491,6 @@ import Project from "../components/Project-Card.astro";
 			transform: translateX(-50%);
 		}
 	}
-
-	.icons {
-	display: flex;
-	position: absolute;
-	width: 8800px;
-	animation: slide 40s linear infinite;
-	}
-
 	@keyframes slide {
 	0% {
 		transform: translateX(0);
@@ -526,11 +500,11 @@ import Project from "../components/Project-Card.astro";
 	}
 	}
 
-	.fixed-nav {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
+	.icons {
+	display: flex;
+	position: absolute;
+	width: 8800px;
+	animation: slide 40s linear infinite;
 	}
 </style>
 
