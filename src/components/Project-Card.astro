@@ -10,7 +10,7 @@ const { href, title, body, image } = Astro.props;
 import LearnMore from './Learn-More.astro';
 ---
 
-<div class='grid grid-cols-1 w-60 xl:w-80 rounded-t-full rounded-b-xl bg-zinc-300 text-center border border-gray-200 shadow-md'>
+<div class='grid grid-cols-1 w-60 xl:w-80 rounded-t-full rounded-b-3xl  bg-stone-300 text-center border border-black shadow-xl'>
     <img src={image} class='w-60 h-60 xl:w-80 xl:h-80 rounded-full p-3'>
     <h1 class='text-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pl-3 pr-3'>{title}</h1>
     <p class='p-5'>{body}</p>

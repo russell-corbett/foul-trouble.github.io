@@ -159,10 +159,10 @@ import Project from "../components/Project-Card.astro";
 				<div class='grid grid-cols-1 xl:grid-cols-2 gap-y-10'>
 
 					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition  ml-5 mr-5'>
-						<div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl'> 
+						<div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl max-w-xl'> 
 							<img src="../teams/eastern_edge/eastern_edge_logo.png" alt="Eastern Edge Logo." class='h-96 object-contain md:hover:scale-110 transition pl-3 pr-3'>
 						</div>
-						<div class='flex flex-col place-items-center max-w-xl'>
+						<div class='flex flex-col place-items-center max-w-xl bg-stone-300 border border-black rounded-b-xl'>
 							<h1 class='text-4xl font-extrabold text-center'>Eastern Edge Robotics</h1>
 							<h1 class='text-2xl font-extrabold text-center'>Chief Technology Officer - Software</h1>
 							<p class='pl-4 pr-4 text-center'>Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition.</p>
@@ -170,11 +170,11 @@ import Project from "../components/Project-Card.astro";
 						</div>
 					</div>
 
-					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition ml-5 mr-5'>
-						<div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")] rounded-t-2xl bg-cover'>
+					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition ml-5 mr-5 '>
+						<div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")] rounded-t-2xl bg-cover max-w-xl'>
 							<img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo." class='h-96 object-contain md:hover:scale-110 transition pl-24 pr-24'>
 						</div>
-						<div class='flex flex-col place-items-center max-w-xl'>
+						<div class='flex flex-col place-items-center max-w-xl bg-stone-300 border border-black rounded-b-xl'>
 							<h1 class='text-4xl font-extrabold text-center'>FMUNTENTH</h1>
 							<h1 class='text-2xl font-extrabold text-center'>Software Team Member</h1>
 							<p class='pl-4 pr-4 text-center'>FMUNTENTH is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the international F1TENTH Competition.</p>
@@ -200,7 +200,7 @@ import Project from "../components/Project-Card.astro";
 						title='Russell Corbett Website' 
 						body='Built using AstroJS and Tailwind, my personal portfolio website. I am currently working on adding more projects and applications to the site.' 
 						href='' 
-						image='../RC_logo_png_transparent_no_name.jpg'
+						image='../projects/website.png'
 						>
 					</Project>
 					<Project 
@@ -214,14 +214,14 @@ import Project from "../components/Project-Card.astro";
 						title='Makerspace' 
 						body='For 3D printing and a test bench for new electronics, the makerspace was created to allow for a more hands-on approach to learning. The makerspace is currently in development.' 
 						href='' 
-						image='../makerspace.jpg'
+						image='../projects/makerspace.jpg'
 						>
 					</Project>
 					<Project 
 						title='Engineering One Survival Game' 
 						body='Created as a ENGI 1020 final project, EOS challenges players to survive the difficulties of Engineering One at Memorial. Avoid fails, collect tokens, and try to make it to the end.' 
 						href='' 
-						image='../eosurvival.jpg'
+						image='../projects/eosurvival.jpg'
 						>
 					</Project>
 				</div>
@@ -298,7 +298,7 @@ import Project from "../components/Project-Card.astro";
 							<p class='text-center text-white font-bold'>Relay for Life is our opportunity to give back to the doctors and researches who put in their time to fight cancer. </p>
 						</div>
 					</div>
-					<div class='flex flex-col bg-white border rounded-xl'>
+					<div class='flex flex-col bg-white border rounded-xl place-items-center'>
 						<img src='../teams/eastern_edge/mate_logo_color.png' alt='MATE ROV Logo' class='h-60 w-60 object-contain' />
 						<div class='flex flex-col m-5 bg-mate-blue border rounded-xl p-3'>
 							<h1 class='text-4xl font-bold text-center text-mate-orange'>MATE ROV Regional</h1>
@@ -306,15 +306,18 @@ import Project from "../components/Project-Card.astro";
 							<p class='text-center text-white mt-3'>Hosted by: The Fisheries and Marine Institute of the Memorial University of Newfoundland</p>
 						</div>
 					</div>
-					<div class='flex flex-col bg-white border rounded-xl'>
-						<img src='../volunteering/first/fll-logo-horizontal.png' alt='First Lego League Logo' class='h-60 w-60 object-contain' />
+					<div class='flex flex-col bg-white border rounded-xl place-items-center'>
+						<img src='../volunteering/first/fll-logo-horizontal.png' alt='First Lego League Logo' class='w-60 object-contain' />
 						<div class='flex flex-col m-5 bg-first-blue border rounded-xl p-3'>
 							<h1 class='text-4xl font-bold text-center text-white'>FIRST Lego League</h1>
 							<p>FIRST LEGO League introduces science, technology, engineering, and math (STEM) to children ages 4-16 through fun, exciting hands-on learning. Participants gain real-world problem-solving experiences through a guided, global robotics program, helping today’s students and teachers build a better future together.</p>
+							<div class='flex justify-center pt-3 pb-3'>
+								<img src='../volunteering/first/edge.jpg' alt='' class='h-48 rounded-xl object-contain' />
+							</div>
 						</div>
 					</div>
-					<div class='md:col-span-2 flex flex-col md:flex-row bg-white border rounded-xl'>
-						<img src='../volunteering/OD4D/od4d_logo.png' alt='OD-4D Logo' class='h-60 w-60 object-contain' />
+					<div class='md:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl'>
+						<img src='../volunteering/OD4D/od4d_logo.png' alt='OD-4D Logo' class='h-60 w-60 object-contain mt-5'>
 						<div class='flex flex-col m-5 bg-black border rounded-xl p-3'>
 							<h1 class='text-4xl font-bold text-center text-white'>O'Donel Senior High School</h1>
 							<h1 class='text-5xl font-bold text-center text-white'>OD-4D Robotics</h1>
@@ -352,39 +355,8 @@ import Project from "../components/Project-Card.astro";
 						link='https://materovcompetition.org/'
 						/>
 				</div>
-			</div>  
-
-			<!-- Contact Me -->
-			<div class='xl:mr-20 xl:ml-20 rounded-xl border bg-zinc-300 pb-10'>
-				<main class='flex flex-col items-center m-auto p-6 max-w-3xl'>
-					<h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-6'>Contact Me</h1>
-					<h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'></h1>
-					<div class='lg:flex lg:justify-evenly lg:space-x-10 space-y-5 lg:space-y-0'>
-						<div class="block p-6 max-w-4xl md:w-[30rem] w-full bg-white rounded-lg border-2 border-gray-300 shadow-xl">
-							<div class='flex justify-evenly'>
-								<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-full w-40'>
-								<div class='flex flex-col items-center justify-evenly'>
-									<h4 class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Russell Corbett</h4>
-									<a href='mailto:rjcorbett@mun.ca'><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">rjcorbett@mun.ca</h4></a>
-									<a href="tel:709-746-6644"><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">+1 (709) 746-6644</h4></a>
-									<h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">St. John's, Newfoundland</h4>
-								</div>
-							</div>
-							<div>
-								<img src="../newfoundland.png" alt="Newfoundland Location." class='rounded-xl border hidden lg:block mt-5'>
-							</div>
-							<div class='grid grid-rows-1 justify-center rounded-xl mt-5 pb-3'>
-								<h1 class='flex justify-center text-3xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>My Resume</h1>
-								<div class='flex justify-evenly space-x-3'>
-									<a href="../RussellCorbettResume.pdf" class='bg-gradient-to-r from-russell-red to-russell-blue text-white text-xl font-bold rounded-l-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110'>View</a>
-									<a href="../RussellCorbettResume.pdf" class='bg-gradient-to-l from-russell-red to-russell-blue text-white text-xl font-bold rounded-r-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110' download>Download</a>
-								</div>
-							</div>
-						</div>
-						<Form></Form>
-					</div>
-				</main>
-			</div>
+			</div> 
+			<div class='h-3'></div> 		
 		</div>
 	</main>
 </Layout>

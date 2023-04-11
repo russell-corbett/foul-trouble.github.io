@@ -3,32 +3,40 @@ import Layout from '../layouts/Layout.astro';
 import Form from '../components/Contact-Form.astro'
 ---
 <Layout title="Russell Corbett - Contact Me">
-    <main class='flex flex-col items-center m-auto p-6 max-w-3xl'>
-        <h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-6'>Contact Me</h1>
-        <h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'></h1>
-        <div class='lg:flex lg:justify-evenly lg:space-x-10 space-y-5 lg:space-y-0'>
-            <div class="block p-6 max-w-4xl md:w-[30rem] w-full bg-white rounded-lg border-2 border-gray-300 shadow-xl">
-                <div class='flex justify-evenly'>
-                    <img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-full w-40'>
-                    <div class='flex flex-col items-center justify-evenly'>
-                        <h4 class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Russell Corbett</h4>
-                        <a href='mailto:rjcorbett@mun.ca'><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">rjcorbett@mun.ca</h4></a>
-                        <a href="tel:123-456-7890"><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">+1 (709) 746-6644</h4></a>
-                        <h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">St. John's, Newfoundland</h4>
+
+    <!-- Contact Me -->
+    <div class='md:pl-40 md:pr-40 space-y-10'> 
+        <div class='h-3'></div>
+        <div class='xl:mr-20 xl:ml-20 rounded-xl border bg-zinc-300 pb-10'>
+            <main class='flex flex-col items-center m-auto p-6 max-w-3xl'>
+                <h1 class='flex justify-center text-5xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-6'>Contact Me</h1>
+                <h1 class='flex justify-center text-2xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text'></h1>
+                <div class='lg:flex lg:justify-evenly lg:space-x-10 space-y-5 lg:space-y-0'>
+                    <div class="block p-6 max-w-4xl md:w-[30rem] w-full bg-white rounded-lg border-2 border-gray-300 shadow-xl">
+                        <div class='flex justify-evenly'>
+                            <img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-full w-40'>
+                            <div class='flex flex-col items-center justify-evenly'>
+                                <h4 class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Russell Corbett</h4>
+                                <a href='mailto:rjcorbett@mun.ca'><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">rjcorbett@mun.ca</h4></a>
+                                <a href="tel:709-746-6644"><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">+1 (709) 746-6644</h4></a>
+                                <h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">St. John's, Newfoundland</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <img src="../newfoundland.png" alt="Newfoundland Location." class='rounded-xl border hidden lg:block mt-5'>
+                        </div>
+                        <div class='grid grid-rows-1 justify-center rounded-xl mt-10 border bg-gray-300 pt-5 pb-5'>
+                            <h1 class='flex justify-center text-3xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>My Resume</h1>
+                            <div class='flex justify-evenly space-x-3'>
+                                <a href="../RussellCorbettResume.pdf" class='bg-gradient-to-r from-russell-red to-russell-blue text-white text-xl font-bold rounded-l-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110'>View</a>
+                                <a href="../RussellCorbettResume.pdf" class='bg-gradient-to-l from-russell-red to-russell-blue text-white text-xl font-bold rounded-r-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110' download>Download</a>
+                            </div>
+                        </div>
                     </div>
+                    <Form></Form>
                 </div>
-                <div>
-                    <img src="../newfoundland.png" alt="Newfoundland Location." class='rounded-xl border hidden lg:block mt-5'>
-                </div>
-                <div class='grid grid-rows-1 justify-center rounded-xl mt-5 pb-3'>
-                    <h1 class='flex justify-center text-3xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3'>My Resume</h1>
-                    <div class='flex justify-evenly space-x-3'>
-                        <a href="../RussellCorbettResume.pdf" class='bg-gradient-to-r from-russell-red to-russell-blue text-white text-xl font-bold rounded-l-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110'>View</a>
-                        <a href="../RussellCorbettResume.pdf" class='bg-gradient-to-l from-russell-red to-russell-blue text-white text-xl font-bold rounded-r-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110' download>Download</a>
-                    </div>
-                </div>
-            </div>
-            <Form></Form>
+            </main>
         </div>
-    </main>
+        <div class='h-3'></div>
+    </div> 
 </Layout>
