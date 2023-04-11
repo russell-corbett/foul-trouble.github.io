@@ -158,7 +158,7 @@ import Project from "../components/Project-Card.astro";
 				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Engineering Teams</h1>
 				<div class='grid grid-cols-1 xl:grid-cols-2 gap-y-10'>
 
-					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition'>
+					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition  ml-5 mr-5'>
 						<div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl'> 
 							<img src="../teams/eastern_edge/eastern_edge_logo.png" alt="Eastern Edge Logo." class='h-96 object-contain md:hover:scale-110 transition pl-3 pr-3'>
 						</div>
@@ -170,7 +170,7 @@ import Project from "../components/Project-Card.astro";
 						</div>
 					</div>
 
-					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition'>
+					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition ml-5 mr-5'>
 						<div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")] rounded-t-2xl bg-cover'>
 							<img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo." class='h-96 object-contain md:hover:scale-110 transition pl-24 pr-24'>
 						</div>
@@ -181,6 +181,7 @@ import Project from "../components/Project-Card.astro";
 							<FLink href="https://fmuntenth.com" title="Read More"/>
 						</div>
 					</div>
+
 				</div>
 			</div>
 
@@ -191,35 +192,36 @@ import Project from "../components/Project-Card.astro";
 					<Project 
 						title='Homelab' 
 						body='Designed and created a "Smart Home" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control' 
-						href='https://ubiquiti.com' 
+						href='' 
 						image='../projects/home_assistant_logo.png'
 						>
 					</Project>
 					<Project 
 						title='Russell Corbett Website' 
-						body='' 
-						href='https://ubiquiti.com' 
-						image='../projects/home_assistant_logo.png'
+						body='Built using AstroJS and Tailwind, my personal portfolio website. I am currently working on adding more projects and applications to the site.' 
+						href='' 
+						image='../RC_logo_png_transparent_no_name.jpg'
 						>
 					</Project>
 					<Project 
 						title='Poker Scoretracker' 
-						body='' 
-						href='https://ubiquiti.com' 
+						body='Created to assist neighbors in tracking the local games of poker. Runs on any computer. The application is currently in development.' 
+						href='' 
 						image='../projects/Southlands.png'
 						>
 					</Project>
 					<Project 
 						title='Makerspace' 
-						body='' 
-						href='https://ubiquiti.com' 
-						image='../projects/home_assistant_logo.png'
+						body='For 3D printing and a test bench for new electronics, the makerspace was created to allow for a more hands-on approach to learning. The makerspace is currently in development.' 
+						href='' 
+						image='../makerspace.jpg'
 						>
 					</Project>
 					<Project 
 						title='Engineering One Survival Game' 
-						body='' href='https://ubiquiti.com' 
-						image='../projects/home_assistant_logo.png'
+						body='Created as a ENGI 1020 final project, EOS challenges players to survive the difficulties of Engineering One at Memorial. Avoid fails, collect tokens, and try to make it to the end.' 
+						href='' 
+						image='../eosurvival.jpg'
 						>
 					</Project>
 				</div>
@@ -277,6 +279,51 @@ import Project from "../components/Project-Card.astro";
 					</div>
 				</div>
 			</div>
+
+			<!-- Volunteering -->
+			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
+				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Volunteering</h1>
+				<div class='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 place-items-center gap-y-5 gap-x-5 ml-5 mr-5'>
+					<div class='col-span-2 flex flex-col md:flex-row bg-white border rounded-xl'>
+						<img src='../volunteering/relay/relay_logo.png' alt='Relay for Life Logo' class='h-60 w-60 m-10' />
+						<div class='flex flex-col m-5 bg-relay-blue border rounded-xl p-3'>
+							<h1 class='text-4xl font-bold text-center text-relay-yellow'>Memorial University</h1>
+							<h1 class='text-5xl font-bold text-center text-relay-yellow'>Relay for Life</h1>
+							<p class='text-center text-white mt-3'>At Relay For Life events, participants of all ages gather at a community space and take turns walking around a track or path to symbolize the perseverance and action needed to change the future of cancer.</p>
+							<div class='flex justify-center pt-3 pb-3'>
+								<img src='../volunteering/relay/relay_group.jpeg' alt='Relay for Life Group' class='h-60 rounded-xl object-contain' />
+							</div>
+							<p class='text-center text-white'>I relay for my Pop. Gerry Robert Russell was a fighter all his life. He lost both his parents by the time he was 5 then was constantly moving houses until he was 10. Later in life, he was in and out of hospital every couple months. From four hip replacements to winning many fights against cancer, he was always optimistic and kept a smile on his face. In August 2022, Gerry passed away but he will always be in our memories. </p>
+							<p class='text-center text-white'>Many other members of my family have had run-ins with cancer, some were able to fight it off, some were not. I hope that someday, we can put an end to this disease.</p>
+							<p class='text-center text-white'>Relay for Life is our oppertunity to give back to the doctors and researches who put in their time to fight cancer. </p>
+						</div>
+					</div>
+					<div class='col-span-1 flex flex-col bg-white border rounded-xl'>
+						<img src='../teams/eastern_edge/mate_logo_color.png' alt='MATE ROV Logo' class='h-60 w-60 object-contain' />
+						<h1 class='text-4xl font-bold'>MATE ROV Regional: Newfoundland</h1>
+					</div>
+					<div class='col-span-1 flex flex-col bg-white border rounded-xl'>
+						<img src='../volunteering/first/fll-logo-horizontal.png' alt='First Lego League Logo' class='h-60 w-60 object-contain' />
+						<h1 class='text-4xl font-bold'>First Lego League</h1>
+						<p>FIRST LEGO League introduces science, technology, engineering, and math (STEM) to children ages 4-16 through fun, exciting hands-on learning. Participants gain real-world problem-solving experiences through a guided, global robotics program, helping today’s students and teachers build a better future together.</p>
+					</div>
+					<div class='col-span-2 flex bg-white border rounded-xl'>
+						<img src='../volunteering/OD4D/od4d_logo.png' alt='OD-4D Logo' class='h-60 w-60 object-contain' />
+						<div class='flex flex-col m-5 bg-black border rounded-xl p-3'>
+							<h1 class='text-4xl font-bold text-center text-white'>O'Donel Senior High School</h1>
+							<h1 class='text-5xl font-bold text-center text-white'>OD-4D Robotics</h1>
+							<p class='text-center text-white mt-3'>OD-4D is a wholly owned subsidiary of O’Donel High School, in Mount Pearl, Newfoundland, Canada. OD-4D undertakes technological development and fabrication in underwater, sea exploration.</p>
+							<div class='flex justify-center pt-3 pb-3'>
+								<img src='../volunteering/OD4D/ice_2_2019.jpg' alt='' class='h-60 rounded-xl object-contain' />
+							</div>
+							<p class='text-center text-white'></p>
+							<p class='text-center text-white'></p>
+							<p class='text-center text-white'></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 
 			<!-- Upcoming Events -->
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>

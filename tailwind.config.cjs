@@ -22,7 +22,9 @@ module.exports = {
 				'mcdonalds-black': '#27251F',
 				'staples-red': '#b02b20',
 				'mpmba-blue': '#304D6D',
-				'mpmba-orange': '#B18344'
+				'mpmba-orange': '#B18344',
+				'relay-blue': '#3d62ab',
+				'relay-yellow': '#e2bc5d'
 			},
 			fontFamily:{
 				techmono: ['ShareTechMono', 'monospace'],
