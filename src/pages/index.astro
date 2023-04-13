@@ -14,12 +14,12 @@ import Project from "../components/Project-Card.astro";
 			<h1 class='text-4xl font-extrabold m-0 text-center mb-5'><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Software &#8226; Robotics &#8226; Automation</span></h1>
 		</div>
 
-		<div class='md:pl-40 md:pr-40 space-y-10'> 
+		<div class='xl:pl-40 xl:pr-40 space-y-10'> 
 			<!-- Intro and Bio-->
-			<div class='grid grid-cols-1 lg:grid-cols-3 place-items-center lg:content-evenly lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 p-10'>
+			<div class='grid grid-cols-1 2xl:grid-cols-3 place-items-center lg:content-evenly lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 p-10'>
 				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-xl border h-96 bg-white'>
-				<div class='col-span-2 border rounded-xl bg-white mt-10 lg:mt-0'>
-					<h1 class='text-3xl font-extrabold font-techmono text-center pt-3 md:pt-0' id='introduction'></h1>
+				<div class='col-span-2 border rounded-xl bg-white 2xl:mt-0 mt-10'>
+					<h1 class='text-3xl font-extrabold font-techmono text-center pt-3 xl:pt-0' id='introduction'></h1>
 					<h1 class='text-xl pt-5 pr-3 pl-3 text-center'>I am a Term IV Computer Engineering Student at Memorial University of Newfoundland. </h1>
 					<h1 class='text-xl pt-5 pr-3 pl-3 text-center'>I am a problem solver with an inquisitive mind. I value time management and organization as important virtues to manage a full academic and extra-curricular schedule. Furthermore, I thrive on new challenges and finding innovative ways to solve them. I am a team player who values the ideas and experience of others. </h1>
 					<div class='grid grid-cols-1 lg:grid-cols-2 place-items-center p-3'>
@@ -35,7 +35,7 @@ import Project from "../components/Project-Card.astro";
 
 			<!-- Known Languages -->
 			<div class='flex justify-center w-auto'>
-				<div class='grid grid-cols-2 xl:grid-cols-8 place-items-center xl:place-items-evenly rounded-xl lg:rounded-full border gap-y-10 p-10 bg-zinc-300 relative w-full'>
+				<div class='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-8 place-items-center xl:place-items-evenly rounded-xl lg:rounded-full border gap-y-10 p-10 bg-zinc-300 relative w-full'>
 					<img src="../lang-soft/python.png" alt="Python Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
 					<img src="../lang-soft/c++.png" alt="C++ Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
 					<img src="../lang-soft/html.png" alt="HTML Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
@@ -46,6 +46,8 @@ import Project from "../components/Project-Card.astro";
 					<img src="../lang-soft/react.png" alt="React Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
 				</div>
 			</div>
+
+			<div class='h-10 hidden bg-white sm:bg-pink-500 md:bg-orange-700 lg:bg-purple-700 xl:bg-green-700 2xl:bg-red-700'></div>
 
 			<!-- Engineering Experience -->
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
@@ -115,7 +117,7 @@ import Project from "../components/Project-Card.astro";
 							<img src="/work/mcdonalds/mcdonalds_logo.svg" class='object-contain h-48 w-96'>
 							<div class='mt-5 md:ml-10 md:mt-0'>
 								<h1 class='font-extrabold text-lg md:text-2xl underline'>McDonalds</h1>
-								<h2 class='font-extrabold md:text-l'>Kitchen, Front Counter, and Crew Cleaning</h2>
+								<h2 class='font-extrabold md:text-l'>Kitchen, Front Counter, and Crew Cleaning &#x2022 June 2020 - September 2021</h2>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Collaborated with a team of 10+ crew members during breakfast, lunch, and weekend shifts to complete orders in a timely manner</li>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with restocking and stock rotation ensuring minimum of unsaleables</li>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with maintaining cleanliness in line with company standards</li>
@@ -188,7 +190,7 @@ import Project from "../components/Project-Card.astro";
 			<!-- Projects -->
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
 				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Projects</h1>
-				<div class='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 place-items-center gap-y-5'>
+				<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5'>
 					<Project 
 						title='Homelab' 
 						body='Designed and created a "Smart Home" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control' 
@@ -283,8 +285,9 @@ import Project from "../components/Project-Card.astro";
 			<!-- Volunteering -->
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
 				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Volunteering</h1>
-				<div class='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 place-items-center gap-y-5 gap-x-5 ml-5 mr-5'>
-					<div class='md:col-span-2 flex flex-col md:flex-row bg-white border rounded-xl'>
+				<div class='grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5 gap-x-5 ml-5 mr-5'>
+
+					<div class='xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl'>
 						<img src='../volunteering/relay/relay_logo.png' alt='Relay for Life Logo' class='h-60 w-60 m-10' />
 						<div class='flex flex-col m-5 bg-relay-blue border rounded-xl p-3'>
 							<h1 class='text-4xl font-bold text-center text-relay-yellow'>Memorial University</h1>
@@ -298,6 +301,7 @@ import Project from "../components/Project-Card.astro";
 							<p class='text-center text-white font-bold'>Relay for Life is our opportunity to give back to the doctors and researches who put in their time to fight cancer. </p>
 						</div>
 					</div>
+
 					<div class='flex flex-col bg-white border rounded-xl place-items-center'>
 						<img src='../teams/eastern_edge/mate_logo_color.png' alt='MATE ROV Logo' class='h-60 w-60 object-contain' />
 						<div class='flex flex-col m-5 bg-mate-blue border rounded-xl p-3'>
@@ -306,6 +310,7 @@ import Project from "../components/Project-Card.astro";
 							<p class='text-center text-white mt-3'>Hosted by: The Fisheries and Marine Institute of the Memorial University of Newfoundland</p>
 						</div>
 					</div>
+
 					<div class='flex flex-col bg-white border rounded-xl place-items-center'>
 						<img src='../volunteering/first/fll-logo-horizontal.png' alt='First Lego League Logo' class='w-60 object-contain' />
 						<div class='flex flex-col m-5 bg-first-blue border rounded-xl p-3'>
@@ -316,7 +321,8 @@ import Project from "../components/Project-Card.astro";
 							</div>
 						</div>
 					</div>
-					<div class='md:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl'>
+
+					<div class='xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl'>
 						<img src='../volunteering/OD4D/od4d_logo.png' alt='OD-4D Logo' class='h-60 w-60 object-contain mt-5'>
 						<div class='flex flex-col m-5 bg-black border rounded-xl p-3'>
 							<h1 class='text-4xl font-bold text-center text-white'>O'Donel Senior High School</h1>
@@ -337,7 +343,7 @@ import Project from "../components/Project-Card.astro";
 			<!-- Upcoming Events -->
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
 				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>Upcoming Events</h1>
-				<div class='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:content-evenly place-items-center gap-y-10'>
+				<div class='grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 md:content-evenly place-items-center gap-y-10'>
 					<UpcomingEvents 
 						title='F1Tenth International'
 						img='../teams/fmuntenth/f1tenth_logo.gif' 
