@@ -8,6 +8,11 @@ import Project from "../components/Project-Card.astro";
 
 <Layout title="Russell Corbett">
 	<main class=''>
+		<nav class="fixed hidden h-screen items-center">
+			<div class="rounded-tr-3xl rounded-br-3xl bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite] w-20 h-3/4">
+				<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class='h-10 w-10' id='main_logo'>
+			</div>
+		</nav>
 		<div class='m-auto p-6 max-w-2xl h-screen place-items-center'>
 			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class='' id='main_logo'>
 			<h1 class='text-7xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Russell Corbett</span></h1>
@@ -53,10 +58,10 @@ import Project from "../components/Project-Card.astro";
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
 				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Technical Experience</h1>
 				<div class='bg-bell-blue p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl'>
-					<a href="https://aliant.bell.ca/" class='md:flex text-white md:justify-between' target="_blank">
+					<div class='md:flex text-white md:justify-between'>
 						<img src="/work/bell/bell_logo_blue.png" class='object-contain h-48 w-96'>
 						<div class='md:ml-10'>
-							<h1 class='font-extrabold text-lg md:text-2xl underline'>Bell Canada Enterprises</h1>
+							<a href="https://aliant.bell.ca/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Bell Canada Enterprises</h1></a>
 							<h2 class='font-extrabold md:text-l'>System Analyst</h2>
 							<li class='ml-8'>Created automations to analize large data reports, decreasing required effort time by approximately 99.7%</li>
 							<li class='ml-8'>Identified and solved migration issues</li>
@@ -64,13 +69,13 @@ import Project from "../components/Project-Card.astro";
 							<li class='ml-8'>Interfaced directly with SharePoint end users as needed</li>
 							<li class='ml-8'>Participated in various process improvement initiatives as we continued to streamline processes and improve the quality of project deliverables</li>
 						</div>
-					</a>
+					</div>
 				</div>
 				<div class="bg-gradient-to-br from-avalon-orange via-white to-avalon-blue p-10 ml-5 mr-5 mt-5 rounded-xl border-stone-400 border shadow-xl">
-					<a href="https://avaloncontrols.ca/" class='md:flex text-avalon-blue md:justify-between' target="_blank">
+					<div class='md:flex text-avalon-blue md:justify-between'>
 						<img src="/work/avalon_controls/avaloncontrolsbanner.png" class='object-contain h-48 w-96 lg:hidden'>
 						<div class='md:ml-10'>
-							<h1 class='font-extrabold text-lg md:text-2xl underline'>Avalon Controls Ltd.</h1>
+							<a href="https://avaloncontrols.ca/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Avalon Controls Ltd.</h1></a>
 							<h2 class='font-extrabold md:text-l'>Co-op Engineering Student</h2>
 							<li class='ml-8'>Upgraded networking equipment to increase data transmission speeds by up to 10,000%</li>
 							<li class='ml-8'>Improved office communication systems to allow for greater online connectivity</li>
@@ -79,30 +84,30 @@ import Project from "../components/Project-Card.astro";
 							<li class='ml-8'>Worked with the shop and field service team to install IT hardware upgrades</li>
 						</div>
 						<img src="/work/avalon_controls/avaloncontrolsbanner.png" class='object-contain h-48 w-96 hidden lg:block'>
-					</a>
+					</div>
 				</div>
 				<div class="bg-black p-10 ml-5 mr-5 mt-5 rounded-xl border-stone-400 border shadow-xl">
-					<a href="https://www.celtx.com/" class='md:flex text-white' target="_blank">
+					<div class='md:flex text-white'>
 						<img src="/work/celtx/celtx_logo.jpg" class='object-contain h-48 w-96'>
 						<div class='md:ml-10'>
-							<h1 class='font-extrabold text-lg md:text-2xl underline'>Celtx</h1>
+							<a href="https://www.celtx.com/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Celtx</h1></a>
 							<h2 class='font-extrabold md:text-l'>High School Summer Intern</h2>
 							<li class='ml-8'>Assisted in the creation of a webpage for an upcoming company event</li>
 							<li class='ml-8'>Provided education market data into potential clients for the company to follow up</li>
 							<li class='ml-8'>Developed Python programming skills with Keyin College in collaboration with TechNL</li>
 							<li class='ml-8'>Worked closely with the sales department on a research initiative within the SalesForce platform</li>
 						</div>
-					</a>
+					</div>
 				</div>
 				<div class='w-full flex place-content-center mt-5'>
-					<button class='non-engineering bg-stone-800 rounded-xl p-5 text-white font-extrabold hover:animate-pulse'>Show Non-Engineering Positions</button>
+					<button class='non-engineering bg-stone-800 rounded-xl p-5 text-white font-extrabold hover:animate-pulse focus:ring focus:ring-russell-red'>Show Non-Engineering Positions</button>
 				</div>
 				<div class='space-y-5' id='non-engineering'>
 					<div class="bg-white p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl mt-5">
-						<a href="https://maverickcollectables.com/" class='md:flex md:justify-between' target="_blank">
+						<div class='md:flex md:justify-between'>
 							<img src="/work/maverick_sports/maverick_logo.jpg" class='object-contain h-48 w-96 lg:hidden'>
 							<div class='md:ml-10 '>
-								<h1 class='font-extrabold text-lg md:text-2xl underline text-black'>Maverick Sports and Collectables</h1>
+								<a href="https://maverickcollectables.com/"  target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline text-black hover:animate-pulse'>Maverick Sports and Collectables</h1></a>
 								<h2 class='font-extrabold md:text-l text-maverick-blue'>IT Specialist</h2>
 								<li class='ml-8 text-maverick-green'>Managed climate, POS systems, and security systems. </li>
 								<li class='ml-8 text-maverick-green'>Broadcasted live streams</li>
@@ -110,26 +115,26 @@ import Project from "../components/Project-Card.astro";
 								<li class='ml-8 text-maverick-green'>Kept the company up to date with the online e-commerce space</li>
 							</div>
 							<img src="/work/maverick_sports/maverick_logo.jpg" class='object-contain h-48 w-96 hidden lg:block'>
-						</a>
+						</div>
 					</div>
 					<div class="bg-mcdonalds-red p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<a href="https://careers.mcdonalds.ca/" class='md:flex text-mcdonalds-yellow' target="_blank">
+						<div class='md:flex text-mcdonalds-yellow'>
 							<img src="/work/mcdonalds/mcdonalds_logo.svg" class='object-contain h-48 w-96'>
 							<div class='mt-5 md:ml-10 md:mt-0'>
-								<h1 class='font-extrabold text-lg md:text-2xl underline'>McDonalds</h1>
+								<a href="https://careers.mcdonalds.ca/"  target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>McDonalds</h1></a>
 								<h2 class='font-extrabold md:text-l'>Kitchen, Front Counter, and Crew Cleaning</h2>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Collaborated with a team of 10+ crew members during breakfast, lunch, and weekend shifts to complete orders in a timely manner</li>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with restocking and stock rotation ensuring minimum of unsaleables</li>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with maintaining cleanliness in line with company standards</li>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Awarded Rookie of the Month</li>
 							</div>
-						</a>
+						</div>
 					</div>
 					<div class="bg-white p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<a href="https://www.staples.ca/" class='md:flex text-staples-red md:justify-between' target="_blank">
+						<div class='md:flex text-staples-red md:justify-between' >
 							<img src="/work/staples/staples_logo.png" class='object-contain h-48 w-96 lg:hidden'>
 							<div class='md:ml-10 '>
-								<h1 class='font-extrabold text-lg md:text-2xl underline'>Staples</h1>
+								<a href="https://www.staples.ca/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Staples</h1></a>
 								<h2 class='font-extrabold md:text-l'>Sales; Technology</h2>
 								<li class='ml-8 text-black'></li>
 								<li class='ml-8 text-black'></li>
@@ -137,33 +142,32 @@ import Project from "../components/Project-Card.astro";
 								<li class='ml-8 text-black'></li>
 							</div>
 							<img src="/work/staples/staples_logo.png" class='object-contain h-48 w-96 hidden lg:block'>
-						</a>
+						</div>
 					</div>
 					<div class="bg-mpmba-blue p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<a href="" class='md:flex text-mpmba-orange ' target="_blank">
+						<div class='md:flex text-mpmba-orange' >
 							<div class='h-48 w-96 flex justify-center'>
 								<img src="/work/mpmba/mpmba_logo.jpeg" class='rounded-2xl h-48'>
 							</div>
 							<div class='mt-5 md:ml-10 md:mt-0'>
-								<h1 class='font-extrabold text-lg md:text-2xl underline'>Mount Pearl Minor Basketball Assciation</h1>
+								<a href="http://mountpearlbasketball.com/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Mount Pearl Minor Basketball Assciation</h1></a>
 								<h2 class='font-extrabold md:text-l'>Coach</h2>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Supervised and coached elementary and middle school students in fundamental basketball skills</li>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Assessed and evaluated student learning needs and weakness areas</li>
 								<li class='ml-8 text-mcdonalds-black font-semibold'>Implemented teaching plans with coaches that addressed specific individual learning styles and needs</li>
 							</div>
-						</a>
+						</div>
 					</div>
 				</div>
 			</div>
 			
-
 			<!-- Engineering Teams -->
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
 				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Engineering Teams</h1>
 				<div class='grid grid-cols-1 xl:grid-cols-2 gap-y-10'>
 
 					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition  ml-5 mr-5'>
-						<div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl max-w-xl'> 
+						<div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl max-w-xl border border-black'> 
 							<img src="../teams/eastern_edge/eastern_edge_logo.png" alt="Eastern Edge Logo." class='h-96 object-contain md:hover:scale-110 transition pl-3 pr-3'>
 						</div>
 						<div class='flex flex-col place-items-center max-w-xl bg-stone-300 border border-black rounded-b-xl'>
@@ -176,7 +180,7 @@ import Project from "../components/Project-Card.astro";
 
 					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition ml-5 mr-5 '>
 						<div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")] rounded-t-2xl bg-cover max-w-xl'>
-							<img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo." class='h-96 object-contain md:hover:scale-110 transition pl-24 pr-24'>
+							<img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo." class='h-96 object-contain md:hover:scale-110 transition pl-24 pr-24 border-black'>
 						</div>
 						<div class='flex flex-col place-items-center max-w-xl bg-stone-300 border border-black rounded-b-xl'>
 							<h1 class='text-4xl font-extrabold text-center'>FMUNTENTH</h1>
