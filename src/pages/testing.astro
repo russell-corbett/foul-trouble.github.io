@@ -3,82 +3,58 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Testing Area">
-    <div class="slideshow-container h-96">
-        <div class="slideshow bg-white">
-            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
-            <div class='slide'><img src="../hamburger.png" class=''></div>
-            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
-            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
-            <div class='slide'><img src="../hamburger.png" class=''></div>
-            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
-            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
-            <div class="slide"><img src="../MUN_Logo.png" class=''></div>
-            <div class='slide'><img src="../hamburger.png" class=''></div>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="p-4 border rounded-md cursor-pointer" onclick="showDetails(this)">
+        <h2 class="text-lg font-medium">Item 1</h2>
+        <p>Some details about Item 1</p>
+        <div id="details-1" class="hidden mt-4">
+          <h3 class="text-base font-medium">More details about Item 1</h3>
+          <p>Here's even more information about Item 1.</p>
         </div>
+      </div>
+      <div class="p-4 border rounded-md cursor-pointer" onclick="showDetails(this)">
+        <h2 class="text-lg font-medium">Item 2</h2>
+        <p>Some details about Item 2</p>
+        <div id="details-2" class="hidden mt-4">
+          <h3 class="text-base font-medium">More details about Item 2</h3>
+          <p>Here's even more information about Item 2.</p>
+        </div>
+      </div>
+      <div class="p-4 border rounded-md cursor-pointer" onclick="showDetails(this)">
+        <h2 class="text-lg font-medium">Item 3</h2>
+        <p>Some details about Item 3</p>
+        <div id="details-3" class="hidden mt-4">
+          <h3 class="text-base font-medium">More details about Item 3</h3>
+          <p>Here's even more information about Item 3.</p>
+        </div>
+      </div>
+      <div class="p-4 border rounded-md cursor-pointer" onclick="showDetails(this)">
+        <h2 class="text-lg font-medium">Item 4</h2>
+        <p>Some details about Item 4</p>
+        <div id="details-4" class="hidden mt-4">
+          <h3 class="text-base font-medium">More details about Item 4</h3>
+          <p>Here's even more information about Item 4.</p>
+        </div>
+      </div>
     </div>
-</Layout>
-<style>
-    .slideshow-container {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    }
+  
+    <script>
+      function showDetails(item) {
+        // Hide all other items in the grid
+        const gridItems = document.querySelectorAll('.grid > div');
+        for (let i = 0; i < gridItems.length; i++) {
+          if (gridItems[i] !== item) {
+            gridItems[i].classList.add('hidden');
+          }
+        }
+  
+        // Show details of the clicked item
+        const details = item.querySelector('#details');
+        if (details) {
+          details.classList.remove('hidden');
+        }
+      }
+    </script>
+  </Layout>
+  
 
-    .slideshow {
-    display: flex;
-    position: absolute;
-    width: 200%;
-    animation: slide 20s linear infinite;
-    }
-
-    .slide {
-    flex: 1;
-    margin: 0;
-    }
-
-    .slide img {
-    width: 100%;
-    height: auto;
-    }
-
-    @keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-    }
-
-</style>
-<script>
-    // optional: set the slideshow speed in seconds
-var slideshowSpeed = 10;
-
-// find the slideshow container and its dimensions
-var slideshowContainer = document.querySelector('.slideshow-container');
-var containerWidth = slideshowContainer.offsetWidth;
-
-// find the slideshow element and its slides
-var slideshow = document.querySelector('.slideshow');
-var slides = slideshow.querySelectorAll('.slide');
-
-// set the initial position of the slideshow to the left of the container
-slideshow.style.transform = 'translateX(-' + containerWidth / 2 + 'px)';
-
-// add a listener for when the slideshow animation ends
-slideshow.addEventListener('animationiteration', function() {
-  // calculate the new position of the slideshow
-  var currentPosition = parseInt(slideshow.style.transform.replace('translateX(', '').replace(')', ''));
-  var newPosition = currentPosition - containerWidth / 2;
-
-  // update the position of the slideshow
-  slideshow.style.transform = 'translateX(' + newPosition + 'px)';
-});
-
-// optional: set the slideshow speed
-if (slideshowSpeed) {
-  slideshow.style.animationDuration = slideshowSpeed + 's';
-}
-
-</script>  
