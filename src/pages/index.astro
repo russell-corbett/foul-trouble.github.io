@@ -374,7 +374,6 @@ import Project from "../components/Project-Card.astro";
 
 <script>
 	var intro = false;
-	var logos = false;
 	window.addEventListener('scroll', function (event) {
 		if (isInViewport(document.getElementById('introduction')) && intro === false) {
 			intro = true;
@@ -392,6 +391,7 @@ import Project from "../components/Project-Card.astro";
 			typeWriter();
 		}
 	}, false);
+
 	function isInViewport(element: HTMLElement | null) {
 		const bounding = element!.getBoundingClientRect();
 		if (
