@@ -4,6 +4,7 @@ import UpcomingEvents from '../components/Upcoming-Events.astro';
 import Form from '../components/Contact-Form.astro'
 import FLink from "../components/Fancy-Link-Card.astro";
 import Project from "../components/Project-Card.astro";
+import Team from "../components/Engineering-Team.astro";
 ---
 
 <Layout title="Russell Corbett">
@@ -162,31 +163,43 @@ import Project from "../components/Project-Card.astro";
 			<!-- Engineering Teams -->
 			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
 				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Engineering Teams</h1>
-				<div class='grid grid-cols-1 xl:grid-cols-2 gap-y-10'>
+				<div class='grid grid-cols-1 2xl:grid-cols-2 gap-y-10'>
 
-					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition  ml-5 mr-5'>
-						<div class='bg-[url("../teams/eastern_edge/edge-ocean.jpg")] rounded-t-2xl max-w-xl border border-black'> 
-							<img src="../teams/eastern_edge/eastern_edge_logo.png" alt="Eastern Edge Logo." class='h-96 object-contain md:hover:scale-110 transition pl-3 pr-3'>
-						</div>
-						<div class='flex flex-col place-items-center max-w-xl bg-stone-300 border border-black rounded-b-xl'>
-							<h1 class='text-4xl font-extrabold text-center'>Eastern Edge Robotics</h1>
-							<h1 class='text-2xl font-extrabold text-center'>Chief Technology Officer - Software</h1>
-							<p class='pl-4 pr-4 text-center'>Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition.</p>
-							<FLink href="https://easternedgerobotics.com" title="Read More"/>
-						</div>
-					</div>
+					<Team
+						name='Eastern Edge Robotics'
+						title='Chief Technology Officer - Software'
+						logo='../teams/eastern_edge/eastern_edge_logo.png'
+						background='../teams/eastern_edge/edge-ocean.jpg'
+						text='Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition.'
+						link='https://easternedgerobotics.com'
+					/>
 
-					<div class='flex flex-col place-items-center rounded-2xl md:hover:scale-105 transition ml-5 mr-5 '>
-						<div class='bg-[url("../teams/fmuntenth/fmuntenth-road.jpg")] rounded-t-2xl bg-cover max-w-xl'>
-							<img src="../teams/fmuntenth/transparent.png" alt="FMUNTENTH Logo." class='h-96 object-contain md:hover:scale-110 transition pl-24 pr-24 border-black'>
-						</div>
-						<div class='flex flex-col place-items-center max-w-xl bg-stone-300 border border-black rounded-b-xl'>
-							<h1 class='text-4xl font-extrabold text-center'>FMUNTENTH</h1>
-							<h1 class='text-2xl font-extrabold text-center'>Software Team Member</h1>
-							<p class='pl-4 pr-4 text-center'>FMUNTENTH is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the international F1TENTH Competition.</p>
-							<FLink href="https://fmuntenth.com" title="Read More"/>
-						</div>
-					</div>
+					<Team
+						name='MUN E-Motorsports'
+						title='Software Team Member'
+						logo='../teams/munemotorsports/munemotorsports.png'
+						background='../teams/munemotorsports/gokart-track.jpg'
+						text='MUN E-Motorsports is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the international eV Grand Prix Competition.'
+						link="https://munemotorsports.com"
+					/>
+
+					<Team
+						name='Engineering Student Society'
+						title='Director of Communications'
+						logo='../teams/engineeringsociety/engineering_logo.png'
+						background='../teams/engineeringsociety/engineering_building.jpg'
+						text='The Engineering Student Society is a student-run organization that represents the interests of engineering students at Memorial University. The society organizes events and initiatives to enhance the student experience.'
+						link='http://www.munengineeringsociety.ca/'
+					/>
+
+					<Team
+						name='FMUNTENTH'
+						title='Software Team Member'
+						logo='../teams/fmuntenth/transparent.png'
+						background='../teams/fmuntenth/fmuntenth-road.jpg'
+						text='FMUNTENTH was an undergraduate-based team that focused on developing an autonomous self-driving vehicle to compete in the 2023 North America F1Tenth Competition in San Antonio, Texas.'
+						link='https://fmuntenth.com/'
+					/>
 
 				</div>
 			</div>
