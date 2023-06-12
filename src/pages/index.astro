@@ -325,6 +325,9 @@ import Team from "../components/Engineering-Team.astro";
 							<h1 class='text-4xl font-bold text-center text-mate-orange'>MATE ROV Regional</h1>
 							<h1 class='text-4xl md:text-5xl font-bold text-center text-mate-orange'>Newfoundland</h1>
 							<p class='text-center text-white mt-3'>Hosted by: The Fisheries and Marine Institute of the Memorial University of Newfoundland</p>
+							<div class='flex justify-center pt-3 pb-3'>
+								<img src='../teams/eastern_edge/camera.JPG' alt='Operating Camera Over Pool' class='h-60 rounded-xl object-contain' />
+							</div>
 						</div>
 					</div>
 
@@ -377,21 +380,22 @@ import Team from "../components/Engineering-Team.astro";
 </Layout>
 
 <script>
+	var i = 0;
+	var txt = 'Hello! My name is Russell Corbett'; /* The text */
+	var speed = 50; /* The speed/duration of the effect in milliseconds */
+
+	function typeWriter() {
+		if (i < txt.length) {
+			document.getElementById("introduction")!.innerHTML += txt.charAt(i);
+			i++;
+			setTimeout(typeWriter, speed);
+		}
+	}
+	
 	var intro = false;
 	window.addEventListener('scroll', function (event) {
 		if (isInViewport(document.getElementById('introduction')) && intro === false) {
 			intro = true;
-			var i = 0;
-			var txt = 'Hello! My name is Russell Corbett'; /* The text */
-			var speed = 50; /* The speed/duration of the effect in milliseconds */
-
-			function typeWriter() {
-				if (i < txt.length) {
-					document.getElementById("introduction")!.innerHTML += txt.charAt(i);
-					i++;
-					setTimeout(typeWriter, speed);
-  				}
-			}
 			typeWriter();
 		}
 	}, false);

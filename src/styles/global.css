@@ -4,20 +4,20 @@
 
 @font-face {
   font-family: "RussoOne";
-  src: url("../fonts/RussoOne-Regular.ttf");
+  src: url("fonts/RussoOne-Regular.ttf");
 }
 
 @font-face {
     font-family: "ShareTech";
-    src: url("../fonts/ShareTech-Regular.ttf");
+    src: url("fonts/ShareTech-Regular.ttf");
   }
 
 @font-face {
     font-family: "ShareTechMono";
-    src: url("../fonts/ShareTechMono-Regular.ttf");
+    src: url("fonts/ShareTechMono-Regular.ttf");
   }
 
 @font-face {
     font-family: "BebasNeue";
-    src: url("../fonts/BebasNeue-Regular.ttf");
+    src: url("fonts/BebasNeue-Regular.ttf");
   }
