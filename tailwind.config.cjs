@@ -16,6 +16,8 @@ module.exports = {
 				'mate-blue': '#164072',
 				'first-red': '#ed1c24',
 				'first-blue': '#0066b3',
+				'angler-blue': '#0E2257',
+				'angler-green': '#175315',
 				'bell-blue': '#00549a',
 				'avalon-blue': '#2b3b7f',
 				'avalon-orange': '#faa541',
