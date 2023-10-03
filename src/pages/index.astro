@@ -1,442 +1,344 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import UpcomingEvents from '../components/Upcoming-Events.astro';
-import Form from '../components/Contact-Form.astro'
+import Layout from "../layouts/Layout.astro";
+import UpcomingEvents from "../components/Upcoming-Events.astro";
+import Form from "../components/Contact-Form.astro";
 import FLink from "../components/Fancy-Link-Card.astro";
 import Project from "../components/Project-Card.astro";
 import Team from "../components/Engineering-Team.astro";
+import upcoming_events from "../json/events.json";
 ---
 
 <Layout title="Russell Corbett">
-	<main class=''>
+	<main class="">
 		<nav class="fixed hidden h-screen items-center">
 			<div class="rounded-tr-3xl rounded-br-3xl bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite] w-20 h-3/4">
-				<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class='h-10 w-10' id='main_logo'>
+				<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class="h-10 w-10" id="main_logo" />
 			</div>
 		</nav>
-		<div class='m-auto p-6 max-w-2xl h-screen place-items-center'>
-			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class='' id='main_logo'>
-			<h1 class='text-7xl font-extrabold m-0 text-center'><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Russell Corbett</span></h1>
-			<h1 class='text-4xl font-extrabold m-0 text-center mb-5'><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Software &#8226; Robotics &#8226; Automation</span></h1>
+		<div class="m-auto p-6 max-w-2xl h-screen place-items-center">
+			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class="" id="main_logo" />
+			<h1 class="text-7xl font-extrabold m-0 text-center"><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Russell Corbett</span></h1>
+			<h1 class="text-4xl font-extrabold m-0 text-center mb-5"><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Software &#8226; Robotics &#8226; Automation</span></h1>
 		</div>
 
-		<div class='xl:pl-40 xl:pr-40 space-y-10'> 
+		<div class="xl:pl-40 xl:pr-40 space-y-10">
 			<!-- Intro and Bio-->
-			<div class='grid grid-cols-1 2xl:grid-cols-3 place-items-center lg:content-evenly lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 p-10'>
-				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class='rounded-xl border h-96 bg-white'>
-				<div class='col-span-2 border rounded-xl bg-white 2xl:mt-0 mt-10'>
-					<h1 class='text-3xl font-extrabold font-techmono text-center pt-3 xl:pt-0' id='introduction'></h1>
-					<h1 class='text-xl pt-5 pr-3 pl-3 text-center'>I am a third year Computer Engineering Student at Memorial University of Newfoundland. </h1>
-					<h1 class='text-xl pt-5 pr-3 pl-3 text-center'>I am a problem solver with an inquisitive mind. I value time management and organization as important virtues to manage a full academic and extra-curricular schedule. Furthermore, I thrive on new challenges and finding innovative ways to solve them. I am a team player who values the ideas and experience of others. </h1>
-					<div class='grid grid-cols-1 lg:grid-cols-2 place-items-center p-3'>
-						<img src="../MUN_ENG_Logo.jpg" alt="MUN Logo." class='h-32'>
-						<img src="../MUN_Logo.png" alt="MUN Logo." class='h-32'>
+			<div class="grid grid-cols-1 2xl:grid-cols-3 place-items-center lg:content-evenly lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 p-10">
+				<img src="../personal/russell_white_bg.jpg" alt="RC Logo." class="rounded-xl border h-96 bg-white shadow-xl" />
+				<div class="col-span-2 border rounded-xl bg-white 2xl:mt-0 mt-10 shadow-xl">
+					<h1 class="text-3xl font-extrabold font-techmono text-center pt-3 xl:pt-0" id="introduction"></h1>
+					<h1 class="text-xl pt-5 pr-3 pl-3 text-center">I am a third year Computer Engineering Student at Memorial University of Newfoundland.</h1>
+					<h1 class="text-xl pt-5 pr-3 pl-3 text-center">I am a problem solver with an inquisitive mind. I value time management and organization as important virtues to manage a full academic and extra-curricular schedule. Furthermore, I thrive on new challenges and finding innovative ways to solve them. I am a team player who values the ideas and experience of others.</h1>
+					<div class="grid grid-cols-1 lg:grid-cols-2 place-items-center p-3">
+						<img src="../MUN_ENG_Logo.jpg" alt="MUN Logo." class="h-32" />
+						<img src="../MUN_Logo.png" alt="MUN Logo." class="h-32" />
 					</div>
 				</div>
 			</div>
 			<div class="xl:mr-20 xl:ml-20 rounded-xl border bg-fixed bg-center hidden" style="background-image:url('MUN_Logo.png');">
-				<div class="h-96">
-				</div>
+				<div class="h-96"></div>
 			</div>
 
 			<!-- Known Languages -->
-			<div class='flex justify-center w-auto'>
-				<div class='grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-8 place-items-center xl:place-items-evenly rounded-xl xl:rounded-full border gap-y-10 p-10 bg-zinc-300 relative w-full'>
-					<img src="../lang-soft/python.png" alt="Python Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
-					<img src="../lang-soft/c++.png" alt="C++ Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
-					<img src="../lang-soft/html.png" alt="HTML Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
-					<img src="../lang-soft/css.png" alt="CSS Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
-					<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class='w-40 h-40 hover:scale-125 transition'>
-					<img src="../lang-soft/astro.png" alt="AstroJS Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
-					<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
-					<img src="../lang-soft/react.png" alt="React Logo" class='w-40 h-40 object-contain hover:scale-125 transition'>
+			<div class="flex justify-center w-auto">
+				<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-8 place-items-center xl:place-items-evenly rounded-xl xl:rounded-full border gap-y-10 p-10 bg-zinc-300 relative w-full">
+					<img src="../lang-soft/python.png" alt="Python Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
+					<img src="../lang-soft/c++.png" alt="C++ Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
+					<img src="../lang-soft/html.png" alt="HTML Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
+					<img src="../lang-soft/css.png" alt="CSS Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
+					<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class="w-40 h-40 hover:scale-125 transition" />
+					<img src="../lang-soft/astro.png" alt="AstroJS Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
+					<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
+					<img src="../lang-soft/react.png" alt="React Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
 				</div>
 			</div>
 
-			<div class='h-10 hidden bg-white sm:bg-pink-500 md:bg-orange-700 lg:bg-purple-700 xl:bg-green-700 2xl:bg-red-700'></div>
+			<div class="h-10 hidden bg-white sm:bg-pink-500 md:bg-orange-700 lg:bg-purple-700 xl:bg-green-700 2xl:bg-red-700"></div>
 
 			<!-- Engineering Experience -->
-			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
-				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Technical Experience</h1>
+			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Technical Experience</h1>
 				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class='md:flex text-angler-blue md:justify-between'>
-						<img src="/work/angler/angler_logo.jpeg" class='object-contain h-48 w-96 lg:hidden'>
-						<div class='md:ml-10'>
-							<a href="https://www.anglersolutions.ca/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Angler Solutions</h1></a>
-							<h2 class='font-extrabold md:text-l'>Project Engineering Student &#x2022; Fall 2023</h2>
+					<div class="md:flex text-angler-blue md:justify-between">
+						<img src="/work/angler/angler_logo.jpeg" class="object-contain h-48 w-96 lg:hidden" />
+						<div class="md:ml-10">
+							<a href="https://www.anglersolutions.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Angler Solutions Inc.</h1></a>
+							<h2 class="font-extrabold md:text-l">Project Engineering Student &#x2022; Fall 2023</h2>
 							<!-- <li class='ml-8'></li>
 							<li class='ml-8'></li> -->
-							<li class='ml-8'>Demonstrated expertise in Renewable Energy Project Engineering, contributing to sustainable and eco-friendly initiatives.</li>
-							<li class='ml-8'>Engaged in Research and Development activities, driving innovation and enhancing project efficiency.</li>
-							<li class='ml-8'>Skillfully prepared and managed Funding Applications, securing vital resources for project advancement.</li>
+							<li class="ml-8">Demonstrated expertise in Renewable Energy Project Engineering, contributing to sustainable and eco-friendly initiatives.</li>
+							<li class="ml-8">Engaged in Research and Development activities, driving innovation and enhancing project efficiency.</li>
+							<li class="ml-8">Skillfully prepared and managed Funding Applications, securing vital resources for project advancement.</li>
 						</div>
-						<img src="/work/angler/angler_logo.jpeg" class='object-contain h-48 w-96 hidden lg:block'>
+						<img src="/work/angler/angler_logo.jpeg" class="object-contain h-48 w-96 hidden lg:block" />
 					</div>
 				</div>
 
-				<div class='bg-bell-blue p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl'>
-					<div class='md:flex text-white md:justify-between'>
-						<img src="/work/bell/bell_logo_blue.png" class='object-contain h-48 w-96'>
-						<div class='md:ml-10'>
-							<a href="https://aliant.bell.ca/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Bell Canada Enterprises</h1></a>
-							<h2 class='font-extrabold md:text-l'>System Analyst &#x2022; Winter 2023</h2>
-							<li class='ml-8'>Created automations to analize large data reports, decreasing required effort time by approximately 99.7%</li>
-							<li class='ml-8'>Identified and solved migration issues</li>
-							<li class='ml-8'>Created comprehensive system documentation and support procedures for all project deliverables, ensuring seamless and efficient project delivery and ongoing maintenance</li>
-							<li class='ml-8'>Interfaced directly with SharePoint end users as needed</li>
-							<li class='ml-8'>Participated in various process improvement initiatives as we continued to streamline processes and improve the quality of project deliverables</li>
+				<div class="bg-bell-blue p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
+					<div class="md:flex text-white md:justify-between">
+						<img src="/work/bell/bell_logo_blue.png" class="object-contain h-48 w-96" />
+						<div class="md:ml-10">
+							<a href="https://aliant.bell.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Bell Canada Enterprises</h1></a>
+							<h2 class="font-extrabold md:text-l">System Analyst &#x2022; Winter 2023</h2>
+							<li class="ml-8">Created automations to analize large data reports, decreasing required effort time by approximately 99.7%</li>
+							<li class="ml-8">Identified and solved migration issues</li>
+							<li class="ml-8">Created comprehensive system documentation and support procedures for all project deliverables, ensuring seamless and efficient project delivery and ongoing maintenance</li>
+							<li class="ml-8">Interfaced directly with SharePoint end users as needed</li>
+							<li class="ml-8">Participated in various process improvement initiatives as we continued to streamline processes and improve the quality of project deliverables</li>
 						</div>
 					</div>
 				</div>
 
 				<div class="bg-gradient-to-br from-avalon-orange via-white to-avalon-blue p-10 ml-5 mr-5 mt-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class='md:flex text-avalon-blue md:justify-between'>
-						<img src="/work/avalon_controls/avaloncontrolsbanner.png" class='object-contain h-48 w-96 lg:hidden'>
-						<div class='md:ml-10'>
-							<a href="https://avaloncontrols.ca/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Avalon Controls Ltd.</h1></a>
-							<h2 class='font-extrabold md:text-l'>Co-op Engineering Student &#x2022; Summer 2022</h2>
-							<li class='ml-8'>Upgraded networking equipment to increase data transmission speeds by up to 10,000%</li>
-							<li class='ml-8'>Improved office communication systems by implementing new online connectivity tools, resulting in enhanced collaboration and productivity among team members</li>
-							<li class='ml-8'>Assisted the engineering group with production of a number of design deliverables</li>
-							<li class='ml-8'>Worked with the procurement team to manage purchase orders for IT upgrades</li>
-							<li class='ml-8'>Worked with the shop and field service team to install IT hardware upgrades</li>
+					<div class="md:flex text-avalon-blue md:justify-between">
+						<img src="/work/avalon_controls/avaloncontrolsbanner.png" class="object-contain h-48 w-96 lg:hidden" />
+						<div class="md:ml-10">
+							<a href="https://avaloncontrols.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Avalon Controls Ltd.</h1></a>
+							<h2 class="font-extrabold md:text-l">Co-op Engineering Student &#x2022; Summer 2022</h2>
+							<li class="ml-8">Upgraded networking equipment to increase data transmission speeds by up to 10,000%</li>
+							<li class="ml-8">Improved office communication systems by implementing new online connectivity tools, resulting in enhanced collaboration and productivity among team members</li>
+							<li class="ml-8">Assisted the engineering group with production of a number of design deliverables</li>
+							<li class="ml-8">Worked with the procurement team to manage purchase orders for IT upgrades</li>
+							<li class="ml-8">Worked with the shop and field service team to install IT hardware upgrades</li>
 						</div>
-						<img src="/work/avalon_controls/avaloncontrolsbanner.png" class='object-contain h-48 w-96 hidden lg:block'>
+						<img src="/work/avalon_controls/avaloncontrolsbanner.png" class="object-contain h-48 w-96 hidden lg:block" />
 					</div>
 				</div>
-				
+
 				<div class="bg-black p-10 ml-5 mr-5 mt-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class='md:flex text-white'>
-						<img src="/work/celtx/celtx_logo.jpg" class='object-contain h-48 w-96'>
-						<div class='md:ml-10'>
-							<a href="https://www.celtx.com/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Celtx</h1></a>
-							<h2 class='font-extrabold md:text-l'>High School Summer Intern &#x2022; Summer 2021</h2>
-							<li class='ml-8'>Collaborated in the development of a captivating webpage for an upcoming company event</li>
-							<li class='ml-8'>Supplied valuable education market insights to potential clients for effective follow-up by the company</li>
-							<li class='ml-8'>Developed Python programming skills with Keyin College in collaboration with TechNL</li>
-							<li class='ml-8'>Worked closely with the sales department on a research initiative within the SalesForce platform</li>
+					<div class="md:flex text-white">
+						<img src="/work/celtx/celtx_logo.jpg" class="object-contain h-48 w-96" />
+						<div class="md:ml-10">
+							<a href="https://www.celtx.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Celtx</h1></a>
+							<h2 class="font-extrabold md:text-l">High School Summer Intern &#x2022; Summer 2021</h2>
+							<li class="ml-8">Collaborated in the development of a captivating webpage for an upcoming company event</li>
+							<li class="ml-8">Supplied valuable education market insights to potential clients for effective follow-up by the company</li>
+							<li class="ml-8">Developed Python programming skills with Keyin College in collaboration with TechNL</li>
+							<li class="ml-8">Worked closely with the sales department on a research initiative within the SalesForce platform</li>
 						</div>
 					</div>
 				</div>
-				<div class='w-full flex place-content-center mt-5'>
-					<button class='non-engineering bg-stone-800 rounded-xl p-5 text-white font-extrabold hover:animate-pulse focus:ring focus:ring-russell-red'>Show Non-Engineering Positions</button>
+
+				<div class="w-full flex place-content-center mt-5">
+					<button class="non-engineering bg-stone-800 shadow-xl rounded-xl p-5 text-white font-extrabold hover:animate-pulse focus:ring focus:ring-russell-red">Show Non-Engineering Positions</button>
 				</div>
-				<div class='space-y-5' id='non-engineering'>
+
+				<div class="space-y-5" id="non-engineering">
 					<div class="bg-white p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl mt-5">
-						<div class='md:flex md:justify-between'>
-							<img src="/work/maverick_sports/maverick_logo.jpg" class='object-contain h-48 w-96 lg:hidden'>
-							<div class='md:ml-10 '>
-								<a href="https://maverickcollectables.com/"  target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline text-black hover:animate-pulse'>Maverick Sports and Collectables</h1></a>
-								<h2 class='font-extrabold md:text-l text-maverick-blue'>IT Specialist &#x2022; Ongoing</h2>
-								<li class='ml-8 text-maverick-green'>Managed climate, POS systems, and security systems</li>
-								<li class='ml-8 text-maverick-green'>Broadcasted live streams</li>
-								<li class='ml-8 text-maverick-green'>Organized and upgraded online profiles</li>
-								<li class='ml-8 text-maverick-green'>Kept the company up to date with the online e-commerce space</li>
+						<div class="md:flex md:justify-between">
+							<img src="/work/maverick_sports/maverick_logo.jpg" class="object-contain h-48 w-96 lg:hidden" />
+							<div class="md:ml-10">
+								<a href="https://maverickcollectables.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline text-black hover:animate-pulse">Maverick Sports and Collectables</h1></a>
+								<h2 class="font-extrabold md:text-l text-maverick-blue">IT Specialist &#x2022; Ongoing</h2>
+								<li class="ml-8 text-maverick-green">Managed climate, POS systems, and security systems</li>
+								<li class="ml-8 text-maverick-green">Broadcasted live streams</li>
+								<li class="ml-8 text-maverick-green">Organized and upgraded online profiles</li>
+								<li class="ml-8 text-maverick-green">Kept the company up to date with the online e-commerce space</li>
 							</div>
-							<img src="/work/maverick_sports/maverick_logo.jpg" class='object-contain h-48 w-96 hidden lg:block'>
+							<img src="/work/maverick_sports/maverick_logo.jpg" class="object-contain h-48 w-96 hidden lg:block" />
 						</div>
 					</div>
 					<div class="bg-mcdonalds-red p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<div class='md:flex text-mcdonalds-yellow'>
-							<img src="/work/mcdonalds/mcdonalds_logo.svg" class='object-contain h-48 w-96'>
-							<div class='mt-5 md:ml-10 md:mt-0'>
-								<a href="https://careers.mcdonalds.ca/"  target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>McDonalds</h1></a>
-								<h2 class='font-extrabold md:text-l'>Kitchen, Front Counter, and Crew Cleaning &#x2022; Summer 2020 to Fall 2021</h2>
-								<li class='ml-8 text-mcdonalds-black font-semibold'>Collaborated with a team of 10+ crew members during breakfast, lunch, and weekend shifts to complete orders in a timely manner</li>
-								<li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with restocking and stock rotation ensuring minimum of unsaleables</li>
-								<li class='ml-8 text-mcdonalds-black font-semibold'>Assisted with maintaining cleanliness in line with company standards</li>
-								<li class='ml-8 text-mcdonalds-black font-semibold'>Awarded Rookie of the Month</li>
+						<div class="md:flex text-mcdonalds-yellow">
+							<img src="/work/mcdonalds/mcdonalds_logo.svg" class="object-contain h-48 w-96" />
+							<div class="mt-5 md:ml-10 md:mt-0">
+								<a href="https://careers.mcdonalds.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">McDonalds</h1></a>
+								<h2 class="font-extrabold md:text-l">Kitchen, Front Counter, and Crew Cleaning &#x2022; Summer 2020 to Fall 2021</h2>
+								<li class="ml-8 text-mcdonalds-black font-semibold">Collaborated with a team of 10+ crew members during breakfast, lunch, and weekend shifts to complete orders in a timely manner</li>
+								<li class="ml-8 text-mcdonalds-black font-semibold">Assisted with restocking and stock rotation ensuring minimum of unsaleables</li>
+								<li class="ml-8 text-mcdonalds-black font-semibold">Assisted with maintaining cleanliness in line with company standards</li>
+								<li class="ml-8 text-mcdonalds-black font-semibold">Awarded Rookie of the Month</li>
 							</div>
 						</div>
 					</div>
 					<div class="bg-white p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<div class='md:flex text-staples-red md:justify-between' >
-							<img src="/work/staples/staples_logo.png" class='object-contain h-48 w-96 lg:hidden'>
-							<div class='md:ml-10 '>
-								<a href="https://www.staples.ca/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Staples</h1></a>
-								<h2 class='font-extrabold md:text-l'>Sales; Technology &#x2022; Fall 2019</h2>
-								<li class='ml-8 text-black'>Demonstrated expert knowledge of various technology products and software, including computers, printers, and networking equipment</li>
-								<li class='ml-8 text-black'>Provided exceptional customer service, assisting customers in identifying their technology needs and recommending appropriate solutions</li>
-								<li class='ml-8 text-black'>Collaborated with team members to share product knowledge and improve overall customer experience, resulting in increased customer loyalty and repeat business</li>
+						<div class="md:flex text-staples-red md:justify-between">
+							<img src="/work/staples/staples_logo.png" class="object-contain h-48 w-96 lg:hidden" />
+							<div class="md:ml-10">
+								<a href="https://www.staples.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Staples</h1></a>
+								<h2 class="font-extrabold md:text-l">Sales; Technology &#x2022; Fall 2019</h2>
+								<li class="ml-8 text-black">Demonstrated expert knowledge of various technology products and software, including computers, printers, and networking equipment</li>
+								<li class="ml-8 text-black">Provided exceptional customer service, assisting customers in identifying their technology needs and recommending appropriate solutions</li>
+								<li class="ml-8 text-black">Collaborated with team members to share product knowledge and improve overall customer experience, resulting in increased customer loyalty and repeat business</li>
 							</div>
-							<img src="/work/staples/staples_logo.png" class='object-contain h-48 w-96 hidden lg:block'>
+							<img src="/work/staples/staples_logo.png" class="object-contain h-48 w-96 hidden lg:block" />
 						</div>
 					</div>
 					<div class="bg-mpmba-blue p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<div class='md:flex text-mpmba-orange' >
-							<div class='rounded'><img src="/work/mpmba/mpmba_logo.jpeg" class='object-contain h-48 w-96 rounded'></div>
+						<div class="md:flex text-mpmba-orange">
+							<div class="rounded"><img src="/work/mpmba/mpmba_logo.jpeg" class="object-contain h-48 w-96 rounded" /></div>
 							<!-- <img src="/work/mpmba/mpmba_logo.jpeg" class='object-contain h-48 w-96 rounded'> -->
-							<div class='mt-5 md:ml-10 md:mt-0'>
-								<a href="http://mountpearlbasketball.com/" target="_blank"><h1 class='font-extrabold text-lg md:text-2xl underline hover:animate-pulse'>Mount Pearl Minor Basketball Assciation</h1></a>
-								<h2 class='font-extrabold md:text-l'>Coach &#x2022; Fall 2017 to Winter 2020</h2>
-								<li class='ml-8 text-mcdonalds-black font-semibold'>Developed and implemented age-appropriate training sessions, drills, and game strategies that improved individual and team performance</li>
-								<li class='ml-8 text-mcdonalds-black font-semibold'>Communicated effectively with players, parents, and staff to ensure a positive and supportive team culture, resulting in increased motivation and engagement</li>
-								<li class='ml-8 text-mcdonalds-black font-semibold'>Encouraged and supported player development, helping athletes to reach their full potential and achieve personal and team goals</li>
+							<div class="mt-5 md:ml-10 md:mt-0">
+								<a href="http://mountpearlbasketball.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Mount Pearl Minor Basketball Assciation</h1></a>
+								<h2 class="font-extrabold md:text-l">Coach &#x2022; Fall 2017 to Winter 2020</h2>
+								<li class="ml-8 text-mcdonalds-black font-semibold">Developed and implemented age-appropriate training sessions, drills, and game strategies that improved individual and team performance</li>
+								<li class="ml-8 text-mcdonalds-black font-semibold">Communicated effectively with players, parents, and staff to ensure a positive and supportive team culture, resulting in increased motivation and engagement</li>
+								<li class="ml-8 text-mcdonalds-black font-semibold">Encouraged and supported player development, helping athletes to reach their full potential and achieve personal and team goals</li>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- Engineering Teams -->
-			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
-				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Engineering Teams</h1>
-				<div class='grid grid-cols-1 2xl:grid-cols-2 gap-y-10'>
+			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Engineering Teams</h1>
+				<div class="grid grid-cols-1 2xl:grid-cols-2 gap-y-10">
+					<Team name="Eastern Edge Robotics" title="Chief Operating Officer" logo="../teams/eastern_edge/eastern_edge_logo.png" background="../teams/eastern_edge/edge-ocean.jpg" text="Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition." link="https://easternedgerobotics.com" />
 
-					<Team
-						name='Eastern Edge Robotics'
-						title='Chief Technology Officer - Software'
-						logo='../teams/eastern_edge/eastern_edge_logo.png'
-						background='../teams/eastern_edge/edge-ocean.jpg'
-						text='Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition.'
-						link='https://easternedgerobotics.com'
-					/>
+					<Team name="Paradigm Engineering" title="Path Planning Lead" logo="../teams/paradigm/paradigm.png" background="../teams/paradigm/white.jpg" text="Paradigm Engineering is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the international eV Grand Prix Competition." link="https://munparadigm.com" />
 
-					<Team
-						name='MUN E-Motorsports'
-						title='Software Team Member'
-						logo='../teams/munemotorsports/munemotorsports.png'
-						background='../teams/munemotorsports/gokart-track.jpg'
-						text='MUN E-Motorsports is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the international eV Grand Prix Competition.'
-						link="https://munemotorsports.com"
-					/>
+					<Team name="Engineering Student Society" title="Director of Communications" logo="../teams/engineeringsociety/engineering_logo.png" background="../teams/engineeringsociety/engineering_building.jpg" text="The Engineering Student Society is a student-run organization that represents the interests of engineering students at Memorial University. The society organizes events and initiatives to enhance the student experience." link="https://munengineeringsociety.ca/" />
 
-					<Team
-						name='Engineering Student Society'
-						title='Director of Communications'
-						logo='../teams/engineeringsociety/engineering_logo.png'
-						background='../teams/engineeringsociety/engineering_building.jpg'
-						text='The Engineering Student Society is a student-run organization that represents the interests of engineering students at Memorial University. The society organizes events and initiatives to enhance the student experience.'
-						link='https://munengineeringsociety.ca/'
-					/>
+					<Team name="MUN E-Motorsports" title="Software Team Member" logo="../teams/munemotorsports/munemotorsports.png" background="../teams/munemotorsports/gokart-track.jpg" text="MUN E-Motorsports was an undergraduate-based team that focused on developing an autonomous self-driving vehicle to compete in the international eV Grand Prix Competition. In September 2023, this team merged with Paradigm Engineering." link="https://munemotorsports.com" />
 
-					<Team
-						name='FMUNTENTH'
-						title='Software Team Member'
-						logo='../teams/fmuntenth/transparent.png'
-						background='../teams/fmuntenth/fmuntenth-road.jpg'
-						text='FMUNTENTH was an undergraduate-based team that focused on developing an autonomous self-driving vehicle to compete in the 2023 North America F1Tenth Competition in San Antonio, Texas.'
-						link='https://fmuntenth.com/'
-					/>
-
+					<Team name="FMUNTENTH" title="Software Team Member" logo="../teams/fmuntenth/transparent.png" background="../teams/fmuntenth/fmuntenth-road.jpg" text="FMUNTENTH was an undergraduate-based team that focused on developing an autonomous self-driving vehicle to compete in the 2023 North America F1Tenth Competition in San Antonio, Texas. FMUNTENTH became MUN E-Motorsports in May 2023." link="https://fmuntenth.com/" />
 				</div>
 			</div>
 
 			<!-- Projects -->
-			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
-				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Projects</h1>
-				<div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5'>
-					<Project 
-						title='Homelab' 
-						body='Designed and created a "Smart Home" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control.' 
-						href='' 
-						image='../projects/home_assistant_logo.png'
-						more=''
-						>
-					</Project>
-					<Project 
-						title='Russell Corbett Website' 
-						body='Built using AstroJS and Tailwind, my personal portfolio website. I am currently working on adding more projects and applications to the site.' 
-						href='' 
-						image='../projects/website.png'
-						more=''
-						>
-					</Project>
-					<Project 
-						title='Poker Scoretracker' 
-						body='Created to assist neighbors in tracking the local games of poker. Runs on any computer. The application is currently in development.' 
-						href='' 
-						image='../projects/Southlands.png'
-						more=''
-						>
-					</Project>
-					<Project 
-						title='Makerspace' 
-						body='For 3D printing and a test bench for new electronics, the makerspace was created to allow for a more hands-on approach to learning. The makerspace is currently in development.' 
-						href='' 
-						image='../projects/makerspace.jpg'
-						more=''
-						>
-					</Project>
-					<Project 
-						title='Engineering One Survival Game' 
-						body='Created as a ENGI 1020 final project, EOS challenges players to survive the difficulties of Engineering One at Memorial. Avoid fails, collect tokens, and try to make it to the end.' 
-						href='' 
-						image='../projects/eosurvival.jpg'
-						more=''
-						>
-					</Project>
-					<Project 
-						title='Engineering Society Website' 
-						body='Built using NextJS, Tailwind, FeathersJS, and Supabase, the Engineering Society website is a hub for all things engineering at Memorial University. The website is currently in development.' 
-						more='Check it out!'
-						href='https://munengineeringsociety.ca/' 
-						image='../projects/engineering_society.png'
-						>
-					</Project>
-					<Project 
-						title='Eastern Edge Website' 
-						body='Currently Under Development' 
-						more='Check it out!'
-						href='https://www.easternedgerobotics.com/index.html' 
-						image='../teams/eastern_edge/eastern_edge_logo.png'
-						>
-					</Project>
-					<Project 
-						title='FMUNTENTH Website' 
-						body='Built using AstroJS and Tailwind, the FMUNTENTH website shows what the team is all about.' 
-						more='Check it out!'
-						href='https://fmuntenth.com/' 
-						image='../teams/fmuntenth/transparent.png'
-						>
-					</Project>
-					<Project 
-						title='MUN E-Motorsports Website' 
-						body='' 
-						more='Check it out!'
-						href='https://munemotorsports.com/' 
-						image='../teams/munemotorsports/munemotorsports.png'
-						>
-					</Project>
+			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Projects</h1>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5">
+					<Project title="Homelab" body='Designed and created a "Smart Home" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control.' href="" image="../projects/home_assistant_logo.png" more="" />
+					<Project title="Russell Corbett Website" body="Built using AstroJS and Tailwind, my personal portfolio website. I am currently working on adding more projects and applications to the site." href="" image="../projects/website.png" more="" />
+					<Project title="Poker Scoretracker" body="Created to assist neighbors in tracking the local games of poker. Runs on any computer. The application is currently in development." href="" image="../projects/Southlands.png" more="" />
+					<Project title="Makerspace" body="For 3D printing and a test bench for new electronics, the makerspace was created to allow for a more hands-on approach to learning. The makerspace is currently in development." href="" image="../projects/makerspace.jpg" more="" />
+					<Project title="Engineering One Survival Game" body="Created as a ENGI 1020 final project, EOS challenges players to survive the difficulties of Engineering One at Memorial. Avoid fails, collect tokens, and try to make it to the end." href="" image="../projects/eosurvival.jpg" more="" />
+					<Project title="Engineering Society Website" body="Built using NextJS, Tailwind, FeathersJS, and Supabase, the Engineering Society website is a hub for all things engineering at Memorial University. The website is currently in development." more="Check it out!" href="https://munengineeringsociety.ca/" image="../projects/engineering_society.png" />
+					<Project title="Eastern Edge Website" body="Currently Under Development" more="Check it out!" href="https://www.easternedgerobotics.com/index.html" image="../teams/eastern_edge/eastern_edge_logo.png" />
+					<Project title="FMUNTENTH Website" body="Built using AstroJS and Tailwind, the FMUNTENTH website shows what the team is all about." more="Check it out!" href="https://fmuntenth.com/" image="../teams/fmuntenth/transparent.png" />
+					<Project title="MUN E-Motorsports Website" body="" more="Check it out!" href="https://munemotorsports.com/" image="../teams/munemotorsports/munemotorsports.png" />
 				</div>
 			</div>
 
 			<!-- Known Applications -->
-			<div class='flex justify-center relative w-auto h-64'>
-				<div class='flex rounded-xl xl:rounded-full border p-10 bg-zinc-300 relative w-full overflow-hidden icon-container' id='applications'>
-					<div class='icons gap-x-10'>
-						<div class='icon'><img src="../applications/365.png" alt="365 Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/word.png" alt="Microsoft Word Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/excel.png" alt="Microsoft Excel Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/drive.png" alt="Google Drive Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/docs.png" alt="Google Docs Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/sheets.png" alt="Google Sheets Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/slides.png" alt="Google Slides Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/git.png" alt="Git Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/github.png" alt="GitHub Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/proxmox.png" alt="Proxmox Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/docker.png" alt="Docker Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/unifi.png" alt="Ubiquiti Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/nextcloud.png" alt="Nextcloud Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/onshape.png" alt="Onshape Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/octoprint.png" alt="Octoprint Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/home_assistant.png" alt="Home Assistant Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/qnap.png" alt="QNAP Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/jyra.png" alt="Jyra Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/salesforce.png" alt="Salesforce Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/webex.png" alt="Webex Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+			<div class="flex justify-center relative w-auto h-64">
+				<div class="flex rounded-xl xl:rounded-full border p-10 bg-zinc-300 relative w-full overflow-hidden icon-container" id="applications">
+					<div class="icons gap-x-10">
+						<div class="icon"><img src="../applications/365.png" alt="365 Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/word.png" alt="Microsoft Word Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/excel.png" alt="Microsoft Excel Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/drive.png" alt="Google Drive Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/docs.png" alt="Google Docs Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/sheets.png" alt="Google Sheets Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/slides.png" alt="Google Slides Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/git.png" alt="Git Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/github.png" alt="GitHub Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/proxmox.png" alt="Proxmox Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/docker.png" alt="Docker Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/unifi.png" alt="Ubiquiti Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/nextcloud.png" alt="Nextcloud Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/onshape.png" alt="Onshape Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/octoprint.png" alt="Octoprint Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/home_assistant.png" alt="Home Assistant Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/qnap.png" alt="QNAP Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/jyra.png" alt="Jyra Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/salesforce.png" alt="Salesforce Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/webex.png" alt="Webex Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
 
-						<div class='icon'><img src="../applications/365.png" alt="365 Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/word.png" alt="Microsoft Word Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/excel.png" alt="Microsoft Excel Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/drive.png" alt="Google Drive Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/docs.png" alt="Google Docs Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/sheets.png" alt="Google Sheets Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/slides.png" alt="Google Slides Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/git.png" alt="Git Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/github.png" alt="GitHub Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/proxmox.png" alt="Proxmox Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/docker.png" alt="Docker Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/unifi.png" alt="Ubiquiti Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/nextcloud.png" alt="Nextcloud Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/onshape.png" alt="Onshape Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/octoprint.png" alt="Octoprint Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/home_assistant.png" alt="Home Assistant Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/qnap.png" alt="QNAP Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/jyra.png" alt="Jyra Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/salesforce.png" alt="Salesforce Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
-						<div class='icon'><img src="../applications/webex.png" alt="Webex Logo" class='w-40 h-40 object-contain hover:scale-125 transition'></div>
+						<div class="icon"><img src="../applications/365.png" alt="365 Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/word.png" alt="Microsoft Word Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/excel.png" alt="Microsoft Excel Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/drive.png" alt="Google Drive Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/docs.png" alt="Google Docs Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/sheets.png" alt="Google Sheets Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/slides.png" alt="Google Slides Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/git.png" alt="Git Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/github.png" alt="GitHub Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/proxmox.png" alt="Proxmox Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/docker.png" alt="Docker Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/unifi.png" alt="Ubiquiti Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/nextcloud.png" alt="Nextcloud Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/onshape.png" alt="Onshape Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/octoprint.png" alt="Octoprint Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/home_assistant.png" alt="Home Assistant Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/qnap.png" alt="QNAP Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/jyra.png" alt="Jyra Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/salesforce.png" alt="Salesforce Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						<div class="icon"><img src="../applications/webex.png" alt="Webex Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
 					</div>
 				</div>
 			</div>
 
 			<!-- Volunteering -->
-			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
-				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>My Volunteering</h1>
-				<div class='grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5 gap-x-5 ml-5 mr-5'>
-
-					<div class='xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl'>
-						<img src='../volunteering/relay/relay_logo.png' alt='Relay for Life Logo' class='h-60 w-60 m-10' />
-						<div class='flex flex-col m-5 bg-relay-blue border rounded-xl p-3'>
-							<h1 class='text-4xl font-bold text-center text-relay-yellow'>Memorial University</h1>
-							<h1 class='text-5xl font-bold text-center text-relay-yellow'>Relay for Life</h1>
-							<p class='text-center text-white mt-3'>At Relay For Life events, participants of all ages gather at a community space and take turns walking around a track or path to symbolize the perseverance and action needed to change the future of cancer.</p>
-							<div class='flex justify-center pt-3 pb-3'>
-								<img src='../volunteering/relay/relay_group.jpeg' alt='Relay for Life Group' class='h-60 rounded-xl object-contain' />
+			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Volunteering</h1>
+				<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5 gap-x-5 ml-5 mr-5">
+					<div class="xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl shadow-xl w-full h-full">
+						<img src="../volunteering/relay/relay_logo.png" alt="Relay for Life Logo" class="h-60 w-60 m-10" />
+						<div class="flex flex-col m-5 bg-relay-blue border rounded-xl p-3">
+							<h1 class="text-4xl font-bold text-center text-relay-yellow">Memorial University</h1>
+							<h1 class="text-5xl font-bold text-center text-relay-yellow">Relay for Life</h1>
+							<p class="text-center text-white mt-3">At Relay For Life events, participants of all ages gather at a community space and take turns walking around a track or path to symbolize the perseverance and action needed to change the future of cancer.</p>
+							<div class="flex justify-center pt-3 pb-3">
+								<img src="../volunteering/relay/relay_group.jpeg" alt="Relay for Life Group" class="h-60 rounded-xl object-contain" />
 							</div>
-							<p class='text-center text-white'>I relay for my Pop. Gerry Robert Russell was a fighter all his life. He lost both his parents by the time he was 5 then was constantly moving houses until he was 10. Later in life, he was in and out of hospital every couple months. From four hip replacements to winning many fights against cancer, he was always optimistic and kept a smile on his face. In August 2022, Gerry passed away but he will always be in our memories. </p>
-							<p class='text-center text-white'>Many other members of my family have had run-ins with cancer, some were able to fight it off, some were not. I hope that someday, we can put an end to this disease.</p>
-							<p class='text-center text-white font-bold'>Relay for Life is our opportunity to give back to the doctors and researches who put in their time to fight cancer. </p>
+							<p class="text-center text-white">I relay for my Pop. Gerry Robert Russell was a fighter all his life. He lost both his parents by the time he was 5 then was constantly moving houses until he was 10. Later in life, he was in and out of hospital every couple months. From four hip replacements to winning many fights against cancer, he was always optimistic and kept a smile on his face. In August 2022, Gerry passed away but he will always be in our memories.</p>
+							<p class="text-center text-white">Many other members of my family have had run-ins with cancer, some were able to fight it off, some were not. I hope that someday, we can put an end to this disease.</p>
+							<p class="text-center text-white font-bold">Relay for Life is our opportunity to give back to the doctors and researches who put in their time to fight cancer.</p>
 						</div>
 					</div>
 
-					<div class='flex flex-col bg-white border rounded-xl place-items-center'>
-						<img src='../teams/eastern_edge/mate_nl.png' alt='MATE ROV Logo' class='h-60 w-60 object-contain' />
-						<div class='flex flex-col m-5 bg-mate-blue border rounded-xl p-3'>
-							<h1 class='text-4xl font-bold text-center text-mate-orange'>MATE ROV Regional</h1>
-							<h1 class='text-4xl md:text-5xl font-bold text-center text-mate-orange'>Newfoundland</h1>
-							<p class='text-center text-white mt-3'>Hosted by: The Fisheries and Marine Institute of the Memorial University of Newfoundland</p>
-							<div class='flex justify-center pt-3 pb-3'>
-								<img src='../teams/eastern_edge/camera.JPG' alt='Operating Camera Over Pool' class='h-60 rounded-xl object-contain' />
+					<div class="flex flex-col bg-white border rounded-xl place-items-center shadow-xl w-full h-full">
+						<img src="../teams/eastern_edge/mate_nl.png" alt="MATE ROV Logo" class="h-60 w-60 object-contain" />
+						<div class="flex flex-col m-5 bg-mate-blue border rounded-xl p-3">
+							<h1 class="text-4xl font-bold text-center text-mate-orange">MATE ROV Regional</h1>
+							<h1 class="text-4xl md:text-5xl font-bold text-center text-mate-orange">Newfoundland</h1>
+							<p class="text-center text-white mt-3">Hosted by: The Fisheries and Marine Institute of the Memorial University of Newfoundland</p>
+							<div class="flex justify-center pt-3 pb-3">
+								<img src="../teams/eastern_edge/camera.JPG" alt="Operating Camera Over Pool" class="h-60 rounded-xl object-contain" />
 							</div>
 						</div>
 					</div>
 
-					<div class='flex flex-col bg-white border rounded-xl place-items-center'>
-						<img src='../volunteering/first/fll-logo-horizontal.png' alt='First Lego League Logo' class='w-60 object-contain' />
-						<div class='flex flex-col m-5 bg-first-blue border rounded-xl p-3'>
-							<h1 class='text-4xl font-bold text-center text-white'>FIRST Lego League</h1>
+					<div class="flex flex-col bg-white border rounded-xl place-items-center shadow-xl w-full h-full">
+						<img src="../volunteering/first/fll-logo-horizontal.png" alt="First Lego League Logo" class="w-60 object-contain" />
+						<div class="flex flex-col m-5 bg-first-blue border rounded-xl p-3">
+							<h1 class="text-4xl font-bold text-center text-white">FIRST Lego League</h1>
 							<p>FIRST LEGO League introduces science, technology, engineering, and math (STEM) to children ages 4-16 through fun, exciting hands-on learning. Participants gain real-world problem-solving experiences through a guided, global robotics program, helping today’s students and teachers build a better future together.</p>
-							<div class='flex justify-center pt-3 pb-3'>
-								<img src='../volunteering/first/edge.jpg' alt='' class='h-48 rounded-xl object-contain' />
+							<div class="flex justify-center pt-3 pb-3">
+								<img src="../volunteering/first/edge.jpg" alt="" class="h-48 rounded-xl object-contain" />
 							</div>
 						</div>
 					</div>
 
-					<div class='xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl'>
-						<img src='../volunteering/OD4D/od4d_logo.png' alt='OD-4D Logo' class='h-60 w-60 object-contain mt-5'>
-						<div class='flex flex-col m-5 bg-black border rounded-xl p-3'>
-							<h1 class='text-4xl font-bold text-center text-white'>O'Donel Senior High School</h1>
-							<h1 class='text-5xl font-bold text-center text-white'>OD-4D Robotics</h1>
-							<p class='text-center text-white mt-3'>OD-4D is a wholly owned subsidiary of O’Donel High School, in Mount Pearl, Newfoundland, Canada. OD-4D undertakes technological development and fabrication in underwater, sea exploration.</p>
-							<div class='flex justify-center pt-3 pb-3'>
-								<img src='../volunteering/OD4D/ice_2_2019.jpg' alt='' class='h-60 rounded-xl object-contain' />
+					<div class="xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl shadow-xl w-full h-full">
+						<img src="../volunteering/OD4D/od4d_logo.png" alt="OD-4D Logo" class="h-60 w-60 object-contain mt-5" />
+						<div class="flex flex-col m-5 bg-black border rounded-xl p-3">
+							<h1 class="text-4xl font-bold text-center text-white">O'Donel Senior High School</h1>
+							<h1 class="text-5xl font-bold text-center text-white">OD-4D Robotics</h1>
+							<p class="text-center text-white mt-3">OD-4D is a wholly owned subsidiary of O’Donel High School, in Mount Pearl, Newfoundland, Canada. OD-4D undertakes technological development and fabrication in underwater, sea exploration.</p>
+							<div class="flex justify-center pt-3 pb-3">
+								<img src="../volunteering/OD4D/ice_2_2019.jpg" alt="" class="h-60 rounded-xl object-contain" />
 							</div>
-							<p class='text-center text-white'></p>
-							<p class='text-center text-white'></p>
-							<p class='text-center text-white'></p>
+							<p class="text-center text-white"></p>
+							<p class="text-center text-white"></p>
+							<p class="text-center text-white"></p>
 						</div>
 					</div>
 				</div>
 			</div>
-			
 
 			<!-- Upcoming Events -->
-			<div class='lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10'>
-				<h1 class='text-3xl font-bold underline pl-10 pb-5 font-techmono'>Upcoming Events</h1>
-				<div class='grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 md:content-evenly place-items-center gap-y-10'>
-					<UpcomingEvents 
-						title='MATE International 2024'
-						img='../teams/eastern_edge/mate_logo_color.png' 
-						countdown='June 20, 2024 9:00:00' 
-						location='Kingsport, Tennessee USA'
-						call='Dive In!'
-						link='https://materovcompetition.org/'
-						/>
+			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">Upcoming Events</h1>
+				<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 md:content-evenly place-items-center gap-y-10">
+					{upcoming_events.map((event) => <UpcomingEvents title={event.title} img={event.img} countdown={event.countdown} location={event.location} call={event.call} link={event.link} />)}
 				</div>
-			</div> 
-			<div class='h-3'></div> 		
+			</div>
+			<div class="h-3"></div>
 		</div>
 	</main>
 </Layout>
 
 <script>
 	var i = 0;
-	var txt = 'Hello, World! My name is Russell Corbett'; /* The text */
+	var txt = "Hello, World! My name is Russell Corbett"; /* The text */
 	var speed = 50; /* The speed/duration of the effect in milliseconds */
 
 	function typeWriter() {
@@ -446,89 +348,88 @@ import Team from "../components/Engineering-Team.astro";
 			setTimeout(typeWriter, speed);
 		}
 	}
-	
+
 	var intro = false;
-	window.addEventListener('scroll', function (event) {
-		if (isInViewport(document.getElementById('introduction')) && intro === false) {
-			intro = true;
-			typeWriter();
-		}
-	}, false);
+	window.addEventListener(
+		"scroll",
+		function (event) {
+			if (isInViewport(document.getElementById("introduction")) && intro === false) {
+				intro = true;
+				typeWriter();
+			}
+		},
+		false
+	);
 
 	function isInViewport(element: HTMLElement | null) {
 		const bounding = element!.getBoundingClientRect();
-		if (
-			bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-		) {
+		if (bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
 			return true;
 		} else {
 			return false;
 		}
-	};
+	}
 
 	// Icon Slideshow
-	var iconContainer = document.querySelector('.icon-container');
+	var iconContainer = document.querySelector(".icon-container");
 	var containerWidth = iconContainer.offsetWidth;
-	var icon = document.querySelector('.icons');
+	var icon = document.querySelector(".icons");
 	icon.style.transform = `translateX(-${containerWidth}px)`;
-	icon.addEventListener('animationiteration', function() {
-		var currentPosition = parseInt(icon.style.transform.replace('translateX(', '').replace(')', ''));
+	icon.addEventListener("animationiteration", function () {
+		var currentPosition = parseInt(icon.style.transform.replace("translateX(", "").replace(")", ""));
 		var newPosition = currentPosition - containerWidth / 2;
 		icon.style.transform = `translateX(${newPosition}px)`;
 	});
 
 	// Find all buttons with the `non-engineering` class on the page.
-	const non_eng_button = document.querySelectorAll('button.non-engineering');
-    const other_work = document.getElementById("non-engineering");
-    var totalHeight = document.body.scrollHeight;
-    if (other_work != null){    
-        other_work.style.display = "none";
-        other_work.style.opacity = 0;
-        var height = other_work.offsetHeight;
-        var new_height = height + totalHeight;
-    };
-   
-    // Handle clicks on each button.
-    non_eng_button.forEach((button) => {
-        button.addEventListener(
-            'click', () => {
-                if (other_work != null) { 
-                    if (other_work.style.display === "none") {
-                        other_work.style.opacity = 0;
-                        other_work.style.display = "block";
-                        var opacity = 0;
-                        var intervalID = setInterval(function() {
-                            if (opacity < 1) {
-                                opacity = opacity + 0.01;
-                                other_work.style.opacity = opacity;
-                            } else {
-                                clearInterval(intervalID);
-                            }}, 10);
-                        button.innerHTML = "Hide Non-Engineering Positions";
-                        } 
-                    else {
-                        other_work.style.display = "none";
-                        button.innerHTML = "Show Non-Engineering Positions";
-                    }
-                }
-            }
-        )
-    }
-	);
+	const non_eng_button = document.querySelectorAll("button.non-engineering");
+	const other_work = document.getElementById("non-engineering");
+	var totalHeight = document.body.scrollHeight;
+	if (other_work != null) {
+		other_work.style.display = "none";
+		other_work.style.opacity = 0;
+		var height = other_work.offsetHeight;
+		var new_height = height + totalHeight;
+	}
+
+	// Handle clicks on each button.
+	non_eng_button.forEach((button) => {
+		button.addEventListener("click", () => {
+			if (other_work != null) {
+				if (other_work.style.display === "none") {
+					other_work.style.opacity = 0;
+					other_work.style.display = "block";
+					var opacity = 0;
+					var intervalID = setInterval(function () {
+						if (opacity < 1) {
+							opacity = opacity + 0.01;
+							other_work.style.opacity = opacity;
+						} else {
+							clearInterval(intervalID);
+						}
+					}, 10);
+					button.innerHTML = "Hide Non-Engineering Positions";
+				} else {
+					other_work.style.display = "none";
+					button.innerHTML = "Show Non-Engineering Positions";
+				}
+			}
+		});
+	});
 </script>
 
 <style>
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
+	@keyframes gradient {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
 	@keyframes scroll {
 		0% {
 			transform: translateX(0);
@@ -538,19 +439,18 @@ import Team from "../components/Engineering-Team.astro";
 		}
 	}
 	@keyframes slide {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(-50%);
-	}
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-50%);
+		}
 	}
 
 	.icons {
-	display: flex;
-	position: absolute;
-	width: 8800px;
-	animation: slide 40s linear infinite;
+		display: flex;
+		position: absolute;
+		width: 8800px;
+		animation: slide 40s linear infinite;
 	}
 </style>
-
