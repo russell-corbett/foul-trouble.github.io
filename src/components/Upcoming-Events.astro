@@ -3,93 +3,87 @@ export interface Props {
 	title: string;
 	img: string;
 	countdown: string;
-    location: string;
-    call: string;
-    link: string;
+	location: string;
+	call: string;
+	link: string;
 }
 
 const { title, img, countdown, location, call, link } = Astro.props;
-import LearnMore from './Learn-More.astro';
+import LearnMore from "./Learn-More.astro";
 ---
 
-<div class='flex flex-col w-96'>
-    <img src={img} class='h-48 object-contain'>
-    <h1 class='text-center font-bold text-xl'>{title}</h1>
-    <h2 class='text-center font-bold text-md'>{location}</h2>
-    <div class='flex justify-evenly'>
-        <p id=`${countdown}-days` class='text-black font-bold'></p>
-        <p id=`${countdown}-hours` class='text-black font-bold'></p>
-        <p id=`${countdown}-minutes` class='text-black font-bold'></p>
-        <p id=`${countdown}-seconds` class='text-black font-bold'></p>
-        <h2 id=`${countdown}-end` class='text-black font-bold'></h2>
-    </div>
-    <astro-greet data-message={countdown} class='m-3'>
-    </astro-greet>
-    <div class='flex justify-center'>
-        <LearnMore title={call} href={link}></LearnMore>  
-    </div>
+<div class="flex flex-col w-96">
+	<img src={img} class="h-48 object-contain" />
+	<h1 class="text-center font-bold text-xl">{title}</h1>
+	<h2 class="text-center font-bold text-md">{location}</h2>
+	<div class="flex justify-evenly">
+		<p id=`${countdown}-days` class="text-black font-bold"></p>
+		<p id=`${countdown}-hours` class="text-black font-bold"></p>
+		<p id=`${countdown}-minutes` class="text-black font-bold"></p>
+		<p id=`${countdown}-seconds` class="text-black font-bold"></p>
+		<h2 id=`${countdown}-end` class="text-black font-bold"></h2>
+	</div>
+	<astro-greet data-message={countdown} class="m-3"></astro-greet>
+	<div class="flex justify-center">
+		<LearnMore title={call} href={link} />
+	</div>
 </div>
 
 <script>
-    class AstroGreet extends HTMLElement {
-        constructor() {
-            super();
+	class AstroGreet extends HTMLElement {
+		constructor() {
+			super();
 
-            // Read the message from the data attribute.
-            const countdown = this.dataset.message;
-            // The data/time we want to countdown to
-    var countDownDate = new Date(countdown!).getTime();
+			// Read the message from the data attribute.
+			const countdown = this.dataset.message;
+			// The data/time we want to countdown to
+			var countDownDate = new Date(countdown!).getTime();
 
-// Run myfunc every second
-var myfunc = setInterval(function() {
+			// Run myfunc every second
+			var myfunc = setInterval(function () {
+				var now = new Date().getTime();
+				var timeleft = countDownDate - now;
 
-var now = new Date().getTime();
-var timeleft = countDownDate - now;
-    
-// Calculating the days, hours, minutes and seconds left
-var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
-    
-// Result is output to the specific element
-if (days === 1) {
-    document.getElementById(`${countdown}-days`)!.innerHTML = days + " Day, "
-}
-else {
-    document.getElementById(`${countdown}-days`)!.innerHTML = days + " Days, "
-};
-if (hours === 1) {
-    document.getElementById(`${countdown}-hours`)!.innerHTML = hours + " Hour, " 
-}
-else {
-    document.getElementById(`${countdown}-hours`)!.innerHTML = hours + " Hours, " 
-};
-if (minutes === 1) {
-    document.getElementById(`${countdown}-minutes`)!.innerHTML = minutes + " Minute, and " 
-}
-else {
-    document.getElementById(`${countdown}-minutes`)!.innerHTML = minutes + " Minutes, and " 
-};
-if (seconds === 1) {
-    document.getElementById(`${countdown}-seconds`)!.innerHTML = seconds + " Second " 
-}
-else {
-    document.getElementById(`${countdown}-seconds`)!.innerHTML = seconds + " Seconds " 
-};
-    
-// Display the message when countdown is over
-if (timeleft < 0) {
-    clearInterval(myfunc);
-    document.getElementById(`${countdown}-days`)!.innerHTML = ""
-    document.getElementById(`${countdown}-hours`)!.innerHTML = "" 
-    document.getElementById(`${countdown}-minutes`)!.innerHTML = ""
-    document.getElementById(`${countdown}-seconds`)!.innerHTML = ""
-    document.getElementById(`${countdown}-end`)!.innerHTML = "TIME UP!!";
-}
-}, 1000);
-        }
-    }
+				// Calculating the days, hours, minutes and seconds left
+				var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+				var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
 
-    customElements.define('astro-greet', AstroGreet);
+				// Result is output to the specific element
+				if (days === 1) {
+					document.getElementById(`${countdown}-days`)!.innerHTML = days + " Day, ";
+				} else {
+					document.getElementById(`${countdown}-days`)!.innerHTML = days + " Days, ";
+				}
+				if (hours === 1) {
+					document.getElementById(`${countdown}-hours`)!.innerHTML = hours + " Hour, ";
+				} else {
+					document.getElementById(`${countdown}-hours`)!.innerHTML = hours + " Hours, ";
+				}
+				if (minutes === 1) {
+					document.getElementById(`${countdown}-minutes`)!.innerHTML = minutes + " Minute, and ";
+				} else {
+					document.getElementById(`${countdown}-minutes`)!.innerHTML = minutes + " Minutes, and ";
+				}
+				if (seconds === 1) {
+					document.getElementById(`${countdown}-seconds`)!.innerHTML = seconds + " Second ";
+				} else {
+					document.getElementById(`${countdown}-seconds`)!.innerHTML = seconds + " Seconds ";
+				}
+
+				// Display the message when countdown is over
+				if (timeleft < 0) {
+					clearInterval(myfunc);
+					document.getElementById(`${countdown}-days`)!.innerHTML = "";
+					document.getElementById(`${countdown}-hours`)!.innerHTML = "";
+					document.getElementById(`${countdown}-minutes`)!.innerHTML = "";
+					document.getElementById(`${countdown}-seconds`)!.innerHTML = "";
+					document.getElementById(`${countdown}-end`)!.innerHTML = "TIME UP!!";
+				}
+			}, 1000);
+		}
+	}
+
+	customElements.define("astro-greet", AstroGreet);
 </script>
