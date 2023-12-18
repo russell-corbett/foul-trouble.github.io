@@ -6,6 +6,8 @@ import Project from "../components/Project-Card.astro";
 import Team from "../components/Engineering-Team.astro";
 
 import upcoming_events from "../json/events.json";
+import projects from "../json/projects.json";
+import applications from "../json/applications.json";
 ---
 
 <Layout title="Russell Corbett">
@@ -64,8 +66,8 @@ import upcoming_events from "../json/events.json";
 						<div class="md:ml-10">
 							<a href="https://www.anglersolutions.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Angler Solutions Inc.</h1></a>
 							<h2 class="font-extrabold md:text-l">Project Engineering Student &#x2022; Fall 2023</h2>
-							<li class='ml-8'>Managed the econext Community Workforce Development (CWD) program, coordinating the deployment and demonstration of 10 companies' green and ocean technologies at Marine Institute's The Launch facility in Holyrood, NL. Streamlined collaboration, aligning company-specific needs in scope, budget, and scheduling with facility capabilities.</li>
-							<li class='ml-8'>Led stakeholder engagement and consultation for the CWD initiative, informing technology providers about The Launch's resources and fostering inter-company collaboration. Ensured alignment of each company's goals with the overall objectives of the CWD program.</li>
+							<li class="ml-8">Managed the econext Community Workforce Development (CWD) program, coordinating the deployment and demonstration of 10 companies' green and ocean technologies at Marine Institute's The Launch facility in Holyrood, NL. Streamlined collaboration, aligning company-specific needs in scope, budget, and scheduling with facility capabilities.</li>
+							<li class="ml-8">Led stakeholder engagement and consultation for the CWD initiative, informing technology providers about The Launch's resources and fostering inter-company collaboration. Ensured alignment of each company's goals with the overall objectives of the CWD program.</li>
 							<!-- <li class="ml-8">Demonstrated expertise in Renewable Energy Project Engineering, contributing to sustainable and eco-friendly initiatives.</li>
 							<li class="ml-8">Engaged in Research and Development activities, driving innovation and enhancing project efficiency.</li>
 							<li class="ml-8">Skillfully prepared and managed Funding Applications, securing vital resources for project advancement.</li> -->
@@ -180,6 +182,19 @@ import upcoming_events from "../json/events.json";
 				</div>
 			</div>
 
+			<!-- Awards -->
+			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Awards and Recognitions</h1>
+				<div class="flex flex-col">
+					<div>
+						<img src="https://verafin.com/wp-content/uploads/2023/08/logo.webp" />
+						<h1>Verafin Inc. Computer Engineering Scholarship</h1>
+						<h2>November 2022</h2>
+						<p>These scholarships were established by a generous donation from Brendan Brothers, Jamie King and Raymond Pretty, the founders of Verafin Inc. and graduates of Memorial University of Newfoundland’s Faculty of Engineering and Applied Science. The intention of the donors is to foster increased interest and enrollment in the Computer Engineering program within the Engineering Faculty. The scholarships will be awarded to students in Term 3 of the undergraduate Computer Engineering program who have achieved the highest academic standing in the Engineering One program. The scholarships will be awarded by the Senate Committee on Undergraduate Scholarships, Bursaries and Awards on the recommendation of the Dean, Faculty of Engineering and Applied Science.</p>
+					</div>
+				</div>
+			</div>
+
 			<!-- Engineering Teams -->
 			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Engineering Teams</h1>
@@ -193,18 +208,18 @@ import upcoming_events from "../json/events.json";
 			</div>
 
 			<!-- Projects (To Be Automated) (Needs to be Redesigned) (Make Similar to Troake) -->
-			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Projects</h1>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5">
-					<Project title="Homelab" body='Designed and created a "Smart Home" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control.' href="" image="../projects/home_assistant_logo.png" more="" />
-					<Project title="Russell Corbett Website" body="Built using AstroJS and Tailwind, my personal portfolio website." href="" image="../projects/website.png" more="" />
-					<Project title="Poker Scoretracker" body="Created to assist neighbors in tracking the local games of poker. Runs on any computer. The application is currently in development." href="" image="../projects/Southlands.png" more="" />
-					<Project title="Makerspace" body="For 3D printing and a test bench for new electronics, the makerspace was created to allow for a more hands-on approach to learning. The makerspace is currently in development." href="" image="../projects/makerspace.jpg" more="" />
-					<Project title="Engineering One Survival Game" body="Created as a ENGI 1020 final project, EOS challenges players to survive the difficulties of Engineering One at Memorial. Avoid fails, collect tokens, and try to make it to the end." href="" image="../projects/eosurvival.jpg" more="" />
-					<Project title="Engineering Society Website" body="Built using NextJS, Tailwind, FeathersJS, and Supabase, the Engineering Society website is a hub for all things engineering at Memorial University. The website is currently in development." more="Check it out!" href="https://munengineeringsociety.ca/" image="../projects/engineering_society.png" />
-					<Project title="Eastern Edge Website" body="Currently Under Development" more="Check it out!" href="https://www.easternedgerobotics.com/index.html" image="../teams/eastern_edge/eastern_edge_logo.png" />
-					<Project title="FMUNTENTH Website" body="Built using AstroJS and Tailwind, the FMUNTENTH website shows what the team is all about." more="Check it out!" href="https://fmuntenth.com/" image="../teams/fmuntenth/transparent.png" />
-					<Project title="MUN E-Motorsports Website" body="" more="Check it out!" href="https://munemotorsports.com/" image="../teams/munemotorsports/munemotorsports.png" />
+			<div class="lg:mr-20 lg:ml-20 p-10 rounded-xl border bg-zinc-300 pt-10 pb-10">
+				<h1 class="text-3xl font-bold underline pb-3 font-techmono">My Projects</h1>
+				<div id="select" class="flex gap-5 font-techmono underline pb-5">
+					<h1>Websites</h1>
+					<h1>Applications</h1>
+					<h1>Automation</h1>
+					<h1>Robotics</h1>
+					<h1>Python</h1>
+					<h1>C++</h1>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center gap-y-5">
+					{projects.map((project) => <Project title={project.title} body={project.body} more={project.more} href={project.href} image={project.image} />)}
 				</div>
 			</div>
 
@@ -212,51 +227,8 @@ import upcoming_events from "../json/events.json";
 			<div class="flex justify-center relative w-auto h-64">
 				<div class="flex rounded-xl xl:rounded-full border p-10 bg-zinc-300 relative w-full overflow-hidden icon-container" id="applications">
 					<div class="icons gap-x-10">
-						<div class="icon"><img src="../applications/365.png" alt="365 Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/word.png" alt="Microsoft Word Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/excel.png" alt="Microsoft Excel Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/drive.png" alt="Google Drive Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/docs.png" alt="Google Docs Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/sheets.png" alt="Google Sheets Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/slides.png" alt="Google Slides Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/git.png" alt="Git Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/github.png" alt="GitHub Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/proxmox.png" alt="Proxmox Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/docker.png" alt="Docker Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/unifi.png" alt="Ubiquiti Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/nextcloud.png" alt="Nextcloud Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/onshape.png" alt="Onshape Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/octoprint.png" alt="Octoprint Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/home_assistant.png" alt="Home Assistant Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/qnap.png" alt="QNAP Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/jyra.png" alt="Jyra Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/salesforce.png" alt="Salesforce Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/webex.png" alt="Webex Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-
-						<div class="icon"><img src="../applications/365.png" alt="365 Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/word.png" alt="Microsoft Word Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/excel.png" alt="Microsoft Excel Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/power_bi.png" alt="Microsoft Power BI Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/drive.png" alt="Google Drive Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/docs.png" alt="Google Docs Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/sheets.png" alt="Google Sheets Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/slides.png" alt="Google Slides Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/git.png" alt="Git Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/github.png" alt="GitHub Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/vs_code.png" alt="Visual Studio Code Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/proxmox.png" alt="Proxmox Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/docker.png" alt="Docker Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/unifi.png" alt="Ubiquiti Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/nextcloud.png" alt="Nextcloud Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/onshape.png" alt="Onshape Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/octoprint.png" alt="Octoprint Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/home_assistant.png" alt="Home Assistant Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/qnap.png" alt="QNAP Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/jyra.png" alt="Jyra Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/salesforce.png" alt="Salesforce Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
-						<div class="icon"><img src="../applications/webex.png" alt="Webex Logo" class="w-40 h-40 object-contain hover:scale-125 transition" /></div>
+						{applications.map((app) => <div class="icon"><img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" /></div>)}
+						{applications.map((app) => <div class="icon"><img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" /></div>)} 
 					</div>
 				</div>
 			</div>

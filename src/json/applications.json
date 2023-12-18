@@ -1,0 +1,156 @@
+[
+    {
+        "icon": {
+            "src": "../applications/365.png",
+            "alt": "365 Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/word.png",
+            "alt": "Microsoft Word Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/excel.png",
+            "alt": "Microsoft Excel Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/power_bi.png",
+            "alt": "Microsoft Power BI Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/drive.png",
+            "alt": "Google Drive Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/docs.png",
+            "alt": "Google Docs Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/sheets.png",
+            "alt": "Google Sheets Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/slides.png",
+            "alt": "Google Slides Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/git.png",
+            "alt": "Git Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/github.png",
+            "alt": "GitHub Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/vs_code.png",
+            "alt": "Visual Studio Code Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/proxmox.png",
+            "alt": "Proxmox Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/docker.png",
+            "alt": "Docker Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/unifi.png",
+            "alt": "Ubiquiti Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/nextcloud.png",
+            "alt": "Nextcloud Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/onshape.png",
+            "alt": "Onshape Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/octoprint.png",
+            "alt": "Octoprint Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/home_assistant.png",
+            "alt": "Home Assistant Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/qnap.png",
+            "alt": "QNAP Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/jyra.png",
+            "alt": "Jyra Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/salesforce.png",
+            "alt": "Salesforce Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    },
+    {
+        "icon": {
+            "src": "../applications/webex.png",
+            "alt": "Webex Logo",
+            "class": "w-40 h-40 object-contain hover:scale-125 transition"
+        }
+    }
+]

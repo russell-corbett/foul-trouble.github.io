@@ -1,0 +1,58 @@
+[
+    {
+        "title": "Homelab",
+        "body": "Designed and created a \"Smart Home\" system including but not limited to Connectivity, Data Management, Climate Control, Lighting, Voice Assistance, and Motion Control. Integrated all systems into an app for ease of use and to maintain local control.",
+        "href": "",
+        "image": "../projects/home_assistant_logo.png",
+        "more": ""
+    },
+    {
+        "title": "Russell Corbett Website",
+        "body": "Built using AstroJS and Tailwind, my personal portfolio website.",
+        "href": "",
+        "image": "../projects/website.png",
+        "more": ""
+    },
+    {
+        "title": "Poker Scoretracker",
+        "body": "Created to assist neighbors in tracking the local games of poker. Runs on any computer. The application is currently in development.",
+        "href": "",
+        "image": "../projects/Southlands.png",
+        "more": ""
+    },
+    {
+        "title": "Engineering One Survival Game",
+        "body": "Created as a ENGI 1020 final project, EOS challenges players to survive the difficulties of Engineering One at Memorial. Avoid fails, collect tokens, and try to make it to the end.",
+        "href": "",
+        "image": "../projects/eosurvival.jpg",
+        "more": ""
+    },
+    {
+        "title": "Engineering Society Website",
+        "body": "Built using NextJS, Tailwind, FeathersJS, and Supabase, the Engineering Society website is a hub for all things engineering at Memorial University. The website is currently in development.",
+        "more": "Check it out!",
+        "href": "https://munengineeringsociety.ca/",
+        "image": "../projects/engineering_society.png"
+    },
+    {
+        "title": "Eastern Edge Website",
+        "body": "Currently Under Development",
+        "more": "Check it out!",
+        "href": "https://www.easternedgerobotics.com/index.html",
+        "image": "../teams/eastern_edge/eastern_edge_logo.png"
+    },
+    {
+        "title": "FMUNTENTH Website",
+        "body": "Built using AstroJS and Tailwind, the FMUNTENTH website shows what the team is all about.",
+        "more": "Check it out!",
+        "href": "https://fmuntenth.com/",
+        "image": "../teams/fmuntenth/transparent.png"
+    },
+    {
+        "title": "MUN E-Motorsports Website",
+        "body": "Built using AstroJS and Tailwind, the MUN E-Motorsports website shows what the team is all about. A continuation of FMUNTENTH.",
+        "more": "Check it out!",
+        "href": "https://munemotorsports.com/",
+        "image": "../teams/munemotorsports/munemotorsports.png"
+    }
+]
