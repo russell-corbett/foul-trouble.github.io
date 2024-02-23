@@ -16,6 +16,8 @@ module.exports = {
 				'mate-blue': '#164072',
 				'first-red': '#ed1c24',
 				'first-blue': '#0066b3',
+				'verafin-red': '#ec1c24',
+				'verafin-grey': '#354854',
 				'angler-blue': '#0E2257',
 				'angler-green': '#175315',
 				'bell-blue': '#00549a',

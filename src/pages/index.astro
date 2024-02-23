@@ -60,6 +60,19 @@ import applications from "../json/applications.json";
 			<!-- Engineering Experience -->
 			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Technical Experience</h1>
+
+				<!-- <div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
+					<div class="md:flex text-verafin-grey md:justify-between">
+						<img src='/work/verafin/verafin_logo.png' class='object-contain h-48 w-96' />
+						<div class="md:ml-10">
+							<a href="https://verafin.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Verafin Solutions</h1></a>
+							<h2 class="font-extrabold md:text-l">Software Development Student &#x2022; Summer 2024</h2>
+							<li class="ml-8"></li>
+							<li class="ml-8"></li>
+						</div>
+					</div>
+				</div> -->
+
 				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
 					<div class="md:flex text-angler-blue md:justify-between">
 						<img src="/work/angler/angler_logo.jpeg" class="object-contain h-48 w-96 lg:hidden" />
@@ -183,17 +196,36 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Awards -->
-			<!-- <div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Awards and Recognitions</h1>
-				<div class="flex flex-col">
-					<div>
-						<img src="https://verafin.com/wp-content/uploads/2023/08/logo.webp" />
-						<h1>Verafin Inc. Computer Engineering Scholarship</h1>
-						<h2>November 2022</h2>
-						<p>These scholarships were established by a generous donation from Brendan Brothers, Jamie King and Raymond Pretty, the founders of Verafin Inc. and graduates of Memorial University of Newfoundland’s Faculty of Engineering and Applied Science. The intention of the donors is to foster increased interest and enrollment in the Computer Engineering program within the Engineering Faculty. The scholarships will be awarded to students in Term 3 of the undergraduate Computer Engineering program who have achieved the highest academic standing in the Engineering One program. The scholarships will be awarded by the Senate Committee on Undergraduate Scholarships, Bursaries and Awards on the recommendation of the Dean, Faculty of Engineering and Applied Science.</p>
+				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
+					<div class="md:flex text-black">
+						<img src="/work/verafin/verafin_logo.png" class="object-contain h-20 w-96" />
+						<div class="md:ml-10">
+							<h1 class="font-extrabold text-lg md:text-2xl underline">Verafin Computer Engineering Scholarship</h1>
+							<h2 class="font-extrabold md:text-l">$3000 &#x2022; Fall 2022</h2>
+						</div>
 					</div>
 				</div>
-			</div> -->
+				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
+					<div class="md:flex text-black">
+						<img src="MUN_Logo.png" class="object-contain h-20 w-96" />
+						<div class="md:ml-10">
+							<h1 class="font-extrabold text-lg md:text-2xl underline">MUN Alumni Entrance Scholarship</h1>
+							<h2 class="font-extrabold md:text-l">$5000 Yearly (Renewable) &#x2022; 2021-2023</h2>
+						</div>
+					</div>
+				</div>
+				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
+					<div class="md:flex text-black">
+						<img src="Loran_logo.png" class="object-contain h-20 w-96" />
+						<div class="md:ml-10">
+							<h1 class="font-extrabold text-lg md:text-2xl underline">Loran Semi-Finalist and Provincial Award</h1>
+							<h2 class="font-extrabold md:text-l">$2500 &#x2022; June 2021</h2>
+						</div>
+					</div>
+				</div>
+			</div>
 
 			<!-- Engineering Teams -->
 			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
@@ -227,8 +259,20 @@ import applications from "../json/applications.json";
 			<div class="flex justify-center relative w-auto h-64">
 				<div class="flex rounded-xl xl:rounded-full border p-10 bg-zinc-300 relative w-full overflow-hidden icon-container" id="applications">
 					<div class="icons gap-x-10">
-						{applications.map((app) => <div class="icon"><img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" /></div>)}
-						{applications.map((app) => <div class="icon"><img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" /></div>)} 
+						{
+							applications.map((app) => (
+								<div class="icon">
+									<img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" />
+								</div>
+							))
+						}
+						{
+							applications.map((app) => (
+								<div class="icon">
+									<img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" />
+								</div>
+							))
+						}
 					</div>
 				</div>
 			</div>
