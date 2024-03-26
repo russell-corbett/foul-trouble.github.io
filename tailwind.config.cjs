@@ -39,6 +39,9 @@ module.exports = {
 				tech: ['ShareTech', 'sans-serif'],
 				russo: ['RussoOne', 'sans-serif'],
 				bebas: ['BebasNeue', 'cursive'],
+			},
+			boxShadow: {
+				neumorphism: '20px 20px 60px #bebebe, -20px -20px 60px #ffffff',
 			}
 		},
 	},
