@@ -33,8 +33,8 @@ import applications from "../json/applications.json";
 					<h1 class="text-xl pt-5 pr-3 pl-3 text-center">I am a fourth year Computer Engineering Student at Memorial University of Newfoundland.</h1>
 					<h1 class="text-xl pt-5 pr-3 pl-3 text-center">I am a problem solver with an inquisitive mind. I value time management and organization as important virtues to manage a full academic and extra-curricular schedule. Furthermore, I thrive on new challenges and finding innovative ways to solve them. I am a team player who values the ideas and experience of others.</h1>
 					<div class="grid grid-cols-1 lg:grid-cols-2 place-items-center p-3">
-						<img src="../MUN_ENG_Logo.jpg" alt="MUN Logo." class="h-32" />
-						<img src="../MUN_Logo.png" alt="MUN Logo." class="h-32" />
+						<img src="../MUN_ENG_Logo.jpg" alt="MUN Logo." class="h-24" />
+						<img src="../MUN_Logo.png" alt="MUN Logo." class="h-24" />
 					</div>
 				</div>
 			</div>
@@ -64,10 +64,10 @@ import applications from "../json/applications.json";
 
 				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
 					<div class="md:flex text-verafin-grey md:justify-between">
-						<img src='/work/verafin/verafin_logo.png' class='object-contain h-48 w-96' />
+						<img src='/work/verafin/nasdaq_verafin_logo.webp' class='object-contain h-48 w-96' />
 						<div class="md:ml-10">
-							<a href="https://verafin.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Verafin Solutions</h1></a>
-							<h2 class="font-extrabold md:text-l">Software Development Student &#x2022; Summer 2024</h2>
+							<a href="https://verafin.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Nasdaq Verafin</h1></a>
+							<h2 class="font-extrabold md:text-l">Software Development Student &#x2022; Summer 2024 & Winter 2025</h2>
 							<li class="ml-8">Debugged and troubleshot software issues directly with users, improving customer experience.</li>
 							<li class="ml-8">Modified database import parameters to optimize data transmission into the Verafin application.</li>
 						</div>
@@ -411,7 +411,7 @@ import applications from "../json/applications.json";
 
 	// Icon Slideshow
 	var iconContainer = document.querySelector(".icon-container");
-	var containerWidth = iconContainer.offsetWidth;
+	var containerWidth = (iconContainer as HTMLElement).offsetWidth;
 	var icon = document.querySelector(".icons");
 	icon.style.transform = `translateX(-${containerWidth}px)`;
 	icon.addEventListener("animationiteration", function () {
@@ -426,7 +426,7 @@ import applications from "../json/applications.json";
 	var totalHeight = document.body.scrollHeight;
 	if (other_work != null) {
 		other_work.style.display = "none";
-		other_work.style.opacity = 0;
+		other_work.style.opacity = "0";
 		var height = other_work.offsetHeight;
 		var new_height = height + totalHeight;
 	}
@@ -436,13 +436,13 @@ import applications from "../json/applications.json";
 		button.addEventListener("click", () => {
 			if (other_work != null) {
 				if (other_work.style.display === "none") {
-					other_work.style.opacity = 0;
+					other_work.style.opacity = "0";
 					other_work.style.display = "block";
 					var opacity = 0;
 					var intervalID = setInterval(function () {
 						if (opacity < 1) {
 							opacity = opacity + 0.01;
-							other_work.style.opacity = opacity;
+							other_work.style.opacity = opacity.toString();
 						} else {
 							clearInterval(intervalID);
 						}
