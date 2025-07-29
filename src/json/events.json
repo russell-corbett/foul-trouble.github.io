@@ -1,18 +1,18 @@
 [
 	{
-		"title": "MUN Relay for Life 2025",
-"img": "../volunteering/relay/relay_logo.png",
-"countdown": "March 22, 2025 19:00:00",
-"location": "MUN Fieldhouse",
-"call": "Donate Now! (2024 Relay)",
-"link": "https://support.cancer.ca/site/TR/RelayForLife/RFLY_NW_odd_?px=14295830&pg=personal&fr_id=29395&s_locale=en_CA"
-},
-	{
 		"title": "MATE International 2025",
 		"img": "../teams/eastern_edge/mate_logo_color.png",
 		"countdown": "June 19, 2025 9:00:00",
 		"location": "Alpena, Michigan, USA",
 		"call": "Dive In!",
 		"link": "https://materovcompetition.org/"
-	}
+	},
+	{
+		"title": "MUN Relay for Life 2026",
+"img": "../volunteering/relay/relay_logo.png",
+"countdown": "March 21, 2026 19:00:00",
+"location": "MUN Fieldhouse",
+"call": "Donate Now! (2025 Relay)",
+"link": "https://support.cancer.ca/site/TR/RelayForLife/RFLY_NW_odd_?px=14295830&pg=personal&fr_id=29395&s_locale=en_CA"
+}
 ]

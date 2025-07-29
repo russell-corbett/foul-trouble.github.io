@@ -12,21 +12,29 @@ import applications from "../json/applications.json";
 
 <Layout title="Russell Corbett">
 	<main class="">
-		<nav class="fixed hidden h-screen items-center">
+		<!-- <nav class="fixed hidden h-screen items-center">
 			<div class="rounded-tr-3xl rounded-br-3xl bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite] w-20 h-3/4">
 				<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class="h-10 w-10" id="main_logo" />
 			</div>
-		</nav>
-		<div class="m-auto p-6 max-w-2xl h-screen flex flex-col place-items-center place-content-center items-center content-center">
+		</nav> -->
+		<!-- <nav id="side-nav" class="fixed left-0 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-6 bg-white/80 rounded-tr-2xl rounded-br-2xl shadow-lg p-4 transition-opacity opacity-0 pointer-events-none">
+			<a href="#bio" title="Bio"><img src="" alt="Bio" class="w-8 h-8" /></a>
+			<a href="#experience" title="Experience"><img src="" alt="Experience" class="w-8 h-8" /></a>
+			<a href="#awards" title="Awards"><img src="" alt="Awards" class="w-8 h-8" /></a>
+			<a href="#teams" title="Teams"><img src="" alt="Teams" class="w-8 h-8" /></a>
+			<a href="#projects" title="Projects"><img src="" alt="Projects" class="w-8 h-8" /></a>
+			<a href="#volunteering" title="Volunteering"><img src="" alt="Volunteering" class="w-8 h-8" /></a>
+			<a href="#contact" title="Contact"><img src="" alt="Contact" class="w-8 h-8" /></a>
+		</nav> -->
+		<div id="landing" class="m-auto p-6 max-w-2xl h-screen flex flex-col place-items-center place-content-center items-center content-center">
 			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class="" id="main_logo" />
 			<h1 class="text-7xl font-extrabold m-0 text-center"><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Russell Corbett</span></h1>
 			<h1 class="text-4xl font-extrabold m-0 text-center mb-5"><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Software &#8226; Robotics &#8226; Automation</span></h1>
 		</div>
 
 		<div class="xl:pl-40 xl:pr-40 space-y-10">
-			
 			<!-- Intro and Bio-->
-			<div class="grid grid-cols-1 2xl:grid-cols-3 place-items-center lg:content-evenly lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 p-10">
+			<div id="bio" class="grid grid-cols-1 2xl:grid-cols-3 place-items-center lg:content-evenly lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 p-10">
 				<img src="../personal/russell_angler.jpg" alt="RC Logo." class="rounded-xl border h-96 bg-white shadow-xl" />
 				<div class="col-span-2 border rounded-xl sm:h-auto xl:h-96 bg-white 2xl:mt-0 mt-10 shadow-xl">
 					<h1 class="text-3xl font-extrabold font-techmono text-center pt-3 xl:pt-3" id="introduction"></h1>
@@ -43,7 +51,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Known Languages -->
-			<div class="flex justify-center w-auto">
+			<div id="languages" class="flex justify-center w-auto">
 				<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-8 place-items-center xl:place-items-evenly rounded-xl xl:rounded-full border gap-y-10 p-10 bg-zinc-300 relative w-full">
 					<img src="../lang-soft/python.png" alt="Python Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
 					<img src="../lang-soft/c++.png" alt="C++ Logo" class="w-40 h-40 object-contain hover:scale-125 transition" />
@@ -59,12 +67,12 @@ import applications from "../json/applications.json";
 			<div class="h-10 hidden bg-white sm:bg-pink-500 md:bg-orange-700 lg:bg-purple-700 xl:bg-green-700 2xl:bg-red-700"></div>
 
 			<!-- Engineering Experience -->
-			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div id="experience" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Technical Experience</h1>
 
 				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
 					<div class="md:flex text-verafin-grey md:justify-between">
-						<img src='/work/verafin/nasdaq_verafin_logo.webp' class='object-contain h-48 w-96' />
+						<img src="/work/verafin/nasdaq_verafin_logo.webp" class="object-contain h-48 w-96" />
 						<div class="md:ml-10">
 							<a href="https://verafin.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Nasdaq Verafin</h1></a>
 							<h2 class="font-extrabold md:text-l">Software Development Student &#x2022; Summer 2024 & Winter 2025</h2>
@@ -93,7 +101,7 @@ import applications from "../json/applications.json";
 						<div class="md:ml-10">
 							<a href="https://aliant.bell.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Bell Canada Enterprises</h1></a>
 							<h2 class="font-extrabold md:text-l">System Analyst &#x2022; Winter 2023</h2>
-							<li class="ml-8">Created automations to analize large data reports, decreasing required effort time by approximately 99.7%</li>
+							<li class="ml-8">Created automations to analyze large data reports, decreasing required effort time by approximately 99.7%</li>
 							<li class="ml-8">Identified and solved migration issues</li>
 							<li class="ml-8">Created comprehensive system documentation and support procedures for all project deliverables, ensuring seamless and efficient project delivery and ongoing maintenance</li>
 							<li class="ml-8">Interfaced directly with SharePoint end users as needed</li>
@@ -194,7 +202,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Awards -->
-			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div id="awards" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Awards and Recognitions</h1>
 				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
 					<div class="md:flex text-black">
@@ -226,7 +234,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Engineering Teams -->
-			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div id="teams" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Engineering Teams</h1>
 				<div class="grid grid-cols-1 2xl:grid-cols-2 gap-y-10">
 					<Team name="Eastern Edge Robotics" title="Chief Operating Officer" logo="../teams/eastern_edge/eastern_edge_logo.png" background="../teams/eastern_edge/edge-ocean.jpg" text="Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition." link="https://easternedgerobotics.com" />
@@ -238,7 +246,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Projects (To Be Automated) (Needs to be Redesigned) (Make Similar to Troake) -->
-			<div class="lg:mr-20 lg:ml-20 p-10 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div id="projects" class="lg:mr-20 lg:ml-20 p-10 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pb-3 font-techmono">My Projects</h1>
 				<div id="select" class="lg:flex gap-5 font-techmono underline pb-5">
 					<h1>Websites</h1>
@@ -254,7 +262,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Known Applications (To Be Automated)-->
-			<div class="flex justify-center relative w-auto h-64">
+			<div id="applications" class="flex justify-center relative w-auto h-64">
 				<div class="flex rounded-xl xl:rounded-full border p-10 bg-zinc-300 relative w-full overflow-hidden icon-container" id="applications">
 					<div class="icons gap-x-10">
 						{
@@ -276,7 +284,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Volunteering -->
-			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div id="volunteering" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Volunteering</h1>
 				<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5 gap-x-5 ml-5 mr-5">
 					<div class="xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl shadow-xl w-full h-full">
@@ -335,7 +343,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Upcoming Events -->
-			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div id="events" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">Upcoming Events</h1>
 				<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 md:content-evenly place-items-center gap-y-10">
 					{upcoming_events.map((event) => <UpcomingEvents title={event.title} img={event.img} countdown={event.countdown} location={event.location} call={event.call} link={event.link} />)}
@@ -343,7 +351,7 @@ import applications from "../json/applications.json";
 			</div>
 
 			<!-- Contact Me -->
-			<div class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
+			<div id="contact" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
 				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">Contact Me</h1>
 				<div class="lg:flex lg:justify-evenly lg:space-x-10 space-y-5 lg:space-y-0">
 					<div class="block p-6 max-w-4xl md:w-[30rem] w-full bg-white rounded-lg border-2 border-gray-300 shadow-xl">
@@ -493,3 +501,30 @@ import applications from "../json/applications.json";
 		animation: slide 40s linear infinite;
 	}
 </style>
+
+<script>
+	function isPast(element: HTMLElement) {
+		if (!element) return false;
+		const bounding = element.getBoundingClientRect();
+		// Show when the bottom of bio is above the top of the viewport
+		return bounding.bottom <= 0;
+	}
+
+	const sideNav = document.getElementById("side-nav");
+	const landingSection = document.getElementById("landing");
+
+	function toggleSideNav() {
+		if (!sideNav || !landingSection) return;
+		if (isPast(landingSection)) {
+			sideNav.style.opacity = "1";
+			sideNav.style.pointerEvents = "auto";
+		} else {
+			sideNav.style.opacity = "0";
+			sideNav.style.pointerEvents = "none";
+		}
+	}
+
+	window.addEventListener("scroll", toggleSideNav);
+	window.addEventListener("resize", toggleSideNav);
+	document.addEventListener("DOMContentLoaded", toggleSideNav);
+</script>
