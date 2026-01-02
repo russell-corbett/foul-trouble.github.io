@@ -11,27 +11,25 @@ permissions:
   id-token: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout your repository
-        uses: actions/checkout@v4
-
-      # 🔑 REQUIRED for Pages v3+
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      # Astro builds AND uploads the Pages artifact
-      - name: Install, build, and upload your site
-        uses: withastro/action@v2
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # REQUIRED
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      # Astro build + upload-pages-artifact
+      - name: Build and upload Astro site
+        uses: withastro/action@v2
+
+      # MUST be in same job
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
