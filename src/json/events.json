@@ -1,18 +1,3 @@
 [
-	{
-		"title": "MATE International 2026",
-		"img": "../teams/eastern_edge/mate_logo_color.png",
-		"countdown": "June 25, 2026 9:00:00",
-		"location": "Newfoundland, Canada",
-		"call": "Dive In!",
-		"link": "https://materovcompetition.org/"
-	},
-	{
-		"title": "MUN Relay for Life 2026",
-"img": "../volunteering/relay/relay_logo.png",
-"countdown": "March 21, 2026 19:00:00",
-"location": "MUN Fieldhouse",
-"call": "Donate Now! (2025 Relay)",
-"link": "https://support.cancer.ca/site/TR/RelayForLife/RFLY_NW_odd_?px=14295830&pg=personal&fr_id=29395&s_locale=en_CA"
-}
+
 ]
