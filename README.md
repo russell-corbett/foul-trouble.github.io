@@ -25,6 +25,7 @@ Almost everything on the page lives in `src/json/`:
 | `projects.json`     | Project cards and their popups. The first six show by default |
 | `skills.json`, `languages.json`, `applications.json` | Skills and logo rows |
 | `awards.json`, `volunteering.json` | Awards and volunteering             |
+| `homeassistant.json` | Device, integration, and automation counts for the Smart Home project. Update by hand; leave as `null` to hide them |
 | `resumes.json`      | Resume buttons. An entry only appears if its PDF exists in `public/` |
 
 Add images to `public/` as WebP, sized to no more than about twice their display size.

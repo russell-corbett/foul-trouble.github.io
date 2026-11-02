@@ -6,6 +6,11 @@ import Project from "../components/Project-Card.astro";
 import Team from "../components/Engineering-Team.astro";
 import Experience from "../components/Experience-Card.astro";
 import Volunteer from "../components/Volunteer-Card.astro";
+import Terminal from "../components/Terminal.astro";
+import RovSwim from "../components/Rov-Swim.astro";
+import Achievements from "../components/Achievements.astro";
+import Dice from "../components/Dice.astro";
+import Konami from "../components/Konami.astro";
 
 import highlights from "../json/highlights.json";
 import experience from "../json/experience.json";
@@ -17,35 +22,88 @@ import applications from "../json/applications.json";
 import awards from "../json/awards.json";
 import volunteering from "../json/volunteering.json";
 import resumeList from "../json/resumes.json";
+import minecraft from "../json/minecraft.json";
+import homeAssistant from "../json/homeassistant.json";
 
 // A resume only shows once its PDF is in public/.
 const resumes = resumeList.filter((resume) => existsSync(`public/${resume.file}`));
 const projectId = (index: number) => `project-${index}`;
 const visibleProjects = 6;
+const engineeringResume = resumes.find((resume) => resume.label === "Computer Engineering") ?? resumes[0];
+const pmResume = resumes.find((resume) => resume.label === "Project Management") ?? resumes[0];
+
+// Read when the site builds, so these counts refresh with each deploy.
+const year = new Date().getFullYear();
+let boardGames: { year: number; plays: number; games: number } | null = null;
+try {
+	const response = await fetch("https://boardgames.russellcorbett.ca/api/state");
+	if (!response.ok) throw new Error(`HTTP ${response.status}`);
+	const { model } = await response.json();
+	const plays = model.plays.filter((play: { date: string }) => play.date.startsWith(String(year)));
+	boardGames = { year, plays: plays.length, games: new Set(plays.map((play: { game: string }) => play.game)).size };
+} catch (error) {
+	console.warn("Could not load board game stats:", error);
+}
+
+let infinityCross: { games: number; cards: number } | null = null;
+try {
+	const response = await fetch("https://infinity.russellcorbett.ca/api/games");
+	if (!response.ok) throw new Error(`HTTP ${response.status}`);
+	const { stats } = await response.json();
+	infinityCross = { games: stats.total_games_played, cards: stats.total_cards_placed };
+} catch (error) {
+	console.warn("Could not load InfinityCross stats:", error);
+}
+const projectStats: Record<string, string> = {};
+if (infinityCross) {
+	projectStats["InfinityCross"] = `${infinityCross.cards.toLocaleString("en-CA")} cards placed across ${infinityCross.games} ${infinityCross.games === 1 ? "game" : "games"}`;
+}
+
+if (homeAssistant.devices !== null && homeAssistant.integrations !== null && homeAssistant.automations !== null) {
+	projectStats["Smart Home & Homelab"] = `${homeAssistant.devices} devices, ${homeAssistant.integrations} integrations, ${homeAssistant.automations} automations`;
+}
 ---
 
 <Layout title="Russell Corbett | Project Management & Computer Engineering">
 	<main id="main">
-		<section id="landing" class="m-auto p-6 max-w-2xl min-h-[calc(100svh-4rem)] flex flex-col justify-center items-center text-center gap-2">
-			<img src="/RC_logo_png_transparent_no_name.webp" alt="" class="max-h-[30svh] md:max-h-[38svh] object-contain" />
+		<section id="landing" class="m-auto p-3 sm:p-6 max-w-4xl min-h-[calc(100svh-4rem)] flex flex-col justify-center items-center text-center gap-2">
+			<img src="/RC_logo_png_transparent_no_name.webp" alt="" class="max-h-[22svh] md:max-h-[34svh] object-contain" />
 			<h1 class="text-6xl md:text-7xl font-extrabold"><span class="hero-text">Russell Corbett</span></h1>
-			<p class="text-2xl md:text-4xl font-extrabold mb-3"><span class="hero-text">Project Management &#8226; Engineering &#8226; Software</span></p>
-			<p class="text-zinc-200 text-lg mb-5">Computer Engineering graduate and MBA candidate (expected 2028), open to project management and engineering roles.</p>
+			<div class="view-swap w-full mb-3">
+				<p class="text-[min(4vw,2.25rem)] whitespace-nowrap font-extrabold only-pm"><span class="hero-text">Project Management &#8226; Engineering &#8226; Software</span></p>
+				<p class="text-[min(4vw,2.25rem)] whitespace-nowrap font-extrabold only-eng"><span class="hero-text">Automation &#8226; Robotics &#8226; Software</span></p>
+			</div>
+			<div class="view-swap w-full max-w-2xl">
+				<p class="text-zinc-200 text-lg only-pm">Computer Engineering graduate and MBA candidate (expected 2028), open to project management roles where I can lead the team and understand the build.</p>
+				<p class="text-zinc-200 text-lg only-eng">Computer Engineering graduate building software, robotics, and automation systems, open to engineering roles.</p>
+			</div>
+			<div role="group" aria-label="Choose what this site focuses on" id="view_switch" class="relative inline-flex rounded-full border border-zinc-500 p-1 my-4">
+				<span id="view_pill" aria-hidden="true" class="view-pill"></span>
+				<button type="button" data-view-button="pm" class="view-button relative rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base whitespace-nowrap font-bold text-white">Project Management</button>
+				<button type="button" data-view-button="engineering" class="view-button relative rounded-full px-3 sm:px-4 py-2 text-sm sm:text-base whitespace-nowrap font-bold text-white">Engineering</button>
+			</div>
 			<div class="flex flex-wrap justify-center gap-3">
-				<a href={resumes.length === 1 ? `/${resumes[0].file}` : "#resumes"} class="grad-button rounded-full px-6 py-3 text-lg">View Resume</a>
+				<div class="view-swap">
+					<a href={`/${pmResume.file}`} class="grad-button rounded-full px-6 py-3 text-lg only-pm">View Resume</a>
+					<a href={`/${engineeringResume.file}`} class="grad-button rounded-full px-6 py-3 text-lg only-eng">View Resume</a>
+				</div>
 				<a href="#contact" class="grad-button rounded-full px-6 py-3 text-lg">Contact Me</a>
 				<a href="https://www.linkedin.com/in/russell-corbett/" target="_blank" rel="noopener" class="rounded-full px-6 py-3 text-lg font-bold text-white border border-zinc-500 hover:bg-zinc-800 transition">LinkedIn</a>
 				<a href="https://github.com/russell-corbett" target="_blank" rel="noopener" class="rounded-full px-6 py-3 text-lg font-bold text-white border border-zinc-500 hover:bg-zinc-800 transition">GitHub</a>
 			</div>
 		</section>
 
-		<div class="max-w-6xl mx-auto px-3 space-y-10 pb-10">
-			<section aria-label="Highlights" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-				{highlights.map((item) => (
-					<div class="tile reveal p-5" style={`--brand:${item.brand}`}>
-						<p class="text-3xl font-extrabold font-techmono">{item.stat}</p>
-						<p class="font-bold mt-1">{item.label}</p>
-						<p class="text-sm text-muted mt-1">{item.note}</p>
+		<div id="sections" class="max-w-6xl mx-auto px-3 space-y-10 pb-10">
+			<section aria-label="Highlights" class="view-swap" style="justify-items:stretch;align-items:stretch">
+				{[["pm", "only-pm"], ["engineering", "only-eng"]].map(([view, className]) => (
+					<div class={`${className} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4`}>
+						{highlights[view as keyof typeof highlights].map((item) => (
+							<div class="tile reveal p-5" style={`--brand:${item.brand}`}>
+								<p class="text-3xl font-extrabold font-techmono">{item.stat}</p>
+								<p class="font-bold mt-1">{item.label}</p>
+								<p class="text-sm text-muted mt-1">{item.note}</p>
+							</div>
+						))}
 					</div>
 				))}
 			</section>
@@ -57,9 +115,18 @@ const visibleProjects = 6;
 					<p class="text-xl pt-5">I'm a Computer Engineering graduate from Memorial University of Newfoundland, now completing my MBA (expected 2028). I like working where technical and business decisions meet: deciding what to build, getting people aligned, and staying close enough to the work to know what's feasible.</p>
 					<p class="text-xl pt-5">As COO of Eastern Edge Robotics, I helped lead a 35-member team of software, electrical, and mechanical students to a 1st-place finish at the 2026 MATE EXPLORER World Championship. I've also built software at Nasdaq Verafin and automation at Bell, and at home I run a self-hosted smart home with 500+ devices.</p>
 					<p class="text-xl pt-5">I'm looking for project management or engineering roles where I can do both: lead the team and understand the build.</p>
-					<div class="flex flex-wrap justify-center gap-6 pt-5">
-						<div class="logo-chip h-24 w-40"><img src="/MUN_ENG_Logo.webp" alt="Memorial University Faculty of Engineering" loading="lazy" decoding="async" /></div>
-						<div class="logo-chip h-24 w-40"><img src="/MUN_Logo.webp" alt="Memorial University of Newfoundland" loading="lazy" decoding="async" /></div>
+					<div class="edu-logos flex flex-wrap justify-center items-start gap-6 pt-5" tabindex="0" aria-label="Education at Memorial University">
+						<div class="logo-chip w-40">
+							<div class="h-20"><img src="/mun_engineering_logo.webp" alt="Memorial University Faculty of Engineering and Applied Science" loading="lazy" decoding="async" /></div>
+							<p class="edu-years"><span><span>2021 – 2026</span></span></p>
+						</div>
+						<div class="logo-chip w-40 self-stretch flex flex-col justify-center">
+							<div class="h-20"><img src="/MUN_Logo.webp" alt="Memorial University of Newfoundland" loading="lazy" decoding="async" /></div>
+						</div>
+						<div class="logo-chip w-40">
+							<div class="h-20"><img src="/mun_business_logo.webp" alt="Memorial University Faculty of Business Administration" loading="lazy" decoding="async" /></div>
+							<p class="edu-years"><span><span>2026 – 2028</span></span></p>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -87,22 +154,38 @@ const visibleProjects = 6;
 			<section id="projects" class="panel">
 				<h2 class="panel-title">My Projects</h2>
 				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-					{projects.slice(0, visibleProjects).map((project, index) => <Project id={projectId(index)} {...project} />)}
+					{projects.slice(0, visibleProjects).map((project, index) => <Project id={projectId(index)} stat={projectStats[project.title]} {...project} />)}
 				</div>
 				<div id="more_projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 [&[hidden]]:hidden" hidden>
-					{projects.slice(visibleProjects).map((project, index) => <Project id={projectId(index + visibleProjects)} {...project} />)}
+					{projects.slice(visibleProjects).map((project, index) => <Project id={projectId(index + visibleProjects)} stat={projectStats[project.title]} {...project} />)}
 				</div>
 				<div class="flex justify-center mt-5">
 					<button type="button" data-toggle="more_projects" data-show="Show More Projects" data-hide="Show Fewer Projects" aria-expanded="false" aria-controls="more_projects" class="bg-stone-800 shadow-xl rounded-xl p-5 text-white font-extrabold hover:bg-stone-700 transition">Show More Projects</button>
 				</div>
-				<p class="text-center mt-5"><strong>Off the clock:</strong> I also run a Minecraft server for my friends.</p>
+				<h3 class="text-xl font-extrabold mt-8 mb-3">Off the Clock</h3>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+					<a href="https://boardgames.russellcorbett.ca" target="_blank" rel="noopener" data-dice class="tile tile-hover reveal p-5 block" style="--brand:#3c746b">
+						{boardGames
+							? <p class="text-3xl font-extrabold font-techmono">{boardGames.plays} plays</p>
+							: <p class="text-3xl font-extrabold font-techmono">Game Night</p>}
+						<p class="font-bold mt-1">{boardGames ? `of ${boardGames.games} board games so far in ${boardGames.year}` : "Our weighted board game leaderboard"}</p>
+						<p class="text-sm text-muted mt-1 underline">See the standings<span class="sr-only"> (opens in a new tab)</span></p>
+					</a>
+					<div id="minecraft" data-address={minecraft.address} class="tile reveal p-5" style="--brand:#5b8731">
+						{minecraft.address
+							? <p class="text-3xl font-extrabold font-techmono flex items-center gap-3"><span id="minecraft_light" aria-hidden="true" class="status-light"></span><span id="minecraft_state" role="status">Checking...</span></p>
+							: <p class="text-3xl font-extrabold font-techmono">Minecraft</p>}
+						<p class="font-bold mt-1">The Minecraft server I run for my friends</p>
+						{minecraft.address && <p id="minecraft_players" class="text-sm text-muted mt-1"></p>}
+					</div>
+				</div>
 			</section>
 
 			<section id="skills" class="panel">
 				<h2 class="panel-title">My Skills</h2>
 				<dl class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
 					{skills.map((skill) => (
-						<div class="bg-card border border-line rounded-xl p-4 reveal">
+						<div class="bg-card border border-line rounded-xl p-4 reveal" style={`--eng-order:${skill.engOrder}`} data-eng-order>
 							<dt class="font-extrabold">{skill.group}</dt>
 							<dd class="text-sm mt-1">{skill.items.join(" • ")}</dd>
 						</div>
@@ -121,16 +204,31 @@ const visibleProjects = 6;
 
 			<section id="awards" class="panel">
 				<h2 class="panel-title">My Awards and Recognitions</h2>
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-					{awards.map((award) => (
-						<div class="tile reveal p-5 flex items-center gap-5" style={`--brand:${award.brand}`}>
-							<div class="logo-chip w-24 h-16 shrink-0"><img src={award.logo} alt="" loading="lazy" decoding="async" /></div>
-							<div>
-								<h3 class="font-extrabold text-lg">{award.title}</h3>
-								<p class="text-sm font-bold text-muted">{award.detail}</p>
-							</div>
+				<h3 class="text-xl font-extrabold mb-3">Individual Awards</h3>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+					{awards.individual.map((award) => (
+						<div class="tile reveal p-5 flex flex-col gap-3" style={`--brand:${award.brand}`}>
+							<div class="logo-chip w-32 h-20"><img src={award.logo} alt="" loading="lazy" decoding="async" /></div>
+							<h4 class="font-extrabold text-lg">{award.title}</h4>
+							<p class="text-sm font-bold text-muted mt-auto">{award.detail}</p>
 						</div>
 					))}
+				</div>
+				<h3 class="text-xl font-extrabold mt-8 mb-3">Team Awards</h3>
+				<div class="tile reveal p-5 flex flex-col md:flex-row md:items-center gap-5" style={`--brand:${awards.team.brand}`}>
+					<div class="shrink-0">
+						<div class="logo-chip w-32 h-20"><img src={awards.team.logo} alt="" loading="lazy" decoding="async" /></div>
+						<p class="font-extrabold mt-2">{awards.team.name}</p>
+						<p class="text-sm text-muted font-bold max-w-48">{awards.team.competition}</p>
+					</div>
+					<dl class="grow grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+						{awards.team.years.map((entry) => (
+							<div>
+								<dt class="font-extrabold font-techmono">{entry.year}</dt>
+								<dd><ul class="text-sm space-y-1">{entry.awards.map((award) => <li class={awards.team.medals[award as keyof typeof awards.team.medals] ? `award-highlight award-${awards.team.medals[award as keyof typeof awards.team.medals]}` : undefined}>{award}</li>)}</ul></dd>
+							</div>
+						))}
+					</dl>
 				</div>
 			</section>
 
@@ -151,10 +249,11 @@ const visibleProjects = 6;
 								<p>Russell Corbett</p>
 								<a href="mailto:rjcorbett@mun.ca" class="text-xs underline normal-case">rjcorbett@mun.ca</a>
 								<p class="text-xs text-muted">St. John's, Newfoundland</p>
+								<p id="weather" class="text-xs text-muted normal-case font-normal" hidden></p>
 							</div>
 						</div>
 						<img src="/newfoundland.webp" alt="Map of Newfoundland" class="rounded-xl border border-line hidden lg:block mt-5" loading="lazy" decoding="auto" />
-						<div id="resumes" class="rounded-xl mt-5 border border-line bg-panel p-5 scroll-mt-24">
+						<div id="resumes" data-count={resumes.length} class="rounded-xl mt-5 border border-line bg-panel p-5 scroll-mt-24">
 							<h3 class="text-center text-3xl font-extrabold font-techmono pb-3">My Resume</h3>
 							<div class="space-y-4">
 								{resumes.map((resume) => (
@@ -174,9 +273,16 @@ const visibleProjects = 6;
 			</section>
 		</div>
 	</main>
+	<RovSwim />
+	<Dice />
+	<Konami />
+	<Achievements />
+	<Terminal boardGames={boardGames} infinityCross={infinityCross} resumes={[pmResume, engineeringResume]} />
 </Layout>
 
 <script>
+	import { track, unlock } from "../scripts/achievements";
+
 	// Typewriter: the full text is always in the page, so layout and screen readers don't depend on it.
 	const typed = document.querySelector<HTMLElement>("[data-typewriter]");
 	const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -228,10 +334,134 @@ const visibleProjects = 6;
 		});
 	});
 
+	// Due Diligence: opening both resumes.
+	const resumeCount = Number(document.getElementById("resumes")!.dataset.count);
+	document.querySelectorAll<HTMLAnchorElement>('a[href$=".pdf"]').forEach((link) => {
+		link.addEventListener("click", () => track("resumes", link.pathname.slice(1), resumeCount, "diligence"));
+	});
+
+	// PM / Engineering switch. Reading order changes too, so sections move in the DOM.
+	const sectionOrder: Record<string, string[]> = {
+		pm: ["about", "teams", "experience", "projects", "skills", "awards", "volunteering", "contact"],
+		engineering: ["about", "projects", "skills", "experience", "teams", "awards", "volunteering", "contact"],
+	};
+	const sections = document.getElementById("sections")!;
+
+	const viewPill = document.getElementById("view_pill")!;
+	const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+	let moves: Animation[] = [];
+
+	function placePill() {
+		const active = document.querySelector<HTMLElement>('[data-view-button][aria-pressed="true"]');
+		if (!active) return;
+		viewPill.style.width = `${active.offsetWidth}px`;
+		viewPill.style.height = `${active.offsetHeight}px`;
+		viewPill.style.transform = `translate(${active.offsetLeft}px, ${active.offsetTop}px)`;
+	}
+
+	function applyView(view: string) {
+		document.documentElement.dataset.view = view;
+		for (const id of sectionOrder[view]) sections.append(document.getElementById(id)!);
+		document.querySelectorAll<HTMLButtonElement>("[data-view-button]").forEach((button) => {
+			button.setAttribute("aria-pressed", String(button.dataset.viewButton === view));
+		});
+		placePill();
+		try {
+			localStorage.setItem("view", view);
+		} catch {
+			// The view still applies for this visit if storage is blocked.
+		}
+	}
+
+	// Cards are measured against their section, so they don't inherit the section's own move twice.
+	function position(element: Element) {
+		const rect = element.getBoundingClientRect();
+		const parent = element.parentElement!.closest("section");
+		const origin = parent?.getBoundingClientRect();
+		return { x: rect.left - (origin?.left ?? 0), y: rect.top - (origin?.top ?? 0) };
+	}
+
+	// Moves each section and card from where it was to its new spot. Starting from the
+	// measured position also keeps it smooth if the switch is clicked mid-animation.
+	function setView(view: string) {
+		if (view === document.documentElement.dataset.view) return;
+		if (view === "engineering") document.dispatchEvent(new CustomEvent("achievement", { detail: "view" }));
+		if (reduceMotion.matches) return applyView(view);
+		const items = [...sections.children, ...document.querySelectorAll("[data-eng-order]")];
+		const before = items.map(position);
+		moves.forEach((move) => move.cancel());
+		applyView(view);
+		moves = items.flatMap((item, index) => {
+			const after = position(item);
+			const x = before[index].x - after.x;
+			const y = before[index].y - after.y;
+			if (Math.abs(x) < 1 && Math.abs(y) < 1) return [];
+			return [item.animate([{ transform: `translate(${x}px, ${y}px)` }, { transform: "none" }], { duration: 650, easing: "cubic-bezier(0.22, 1, 0.36, 1)" })];
+		});
+	}
+
+	applyView(document.documentElement.dataset.view ?? "pm");
+	requestAnimationFrame(() => viewPill.classList.add("ready"));
+	window.addEventListener("resize", placePill);
+	document.querySelectorAll<HTMLButtonElement>("[data-view-button]").forEach((button) => {
+		button.addEventListener("click", () => setView(button.dataset.viewButton!));
+	});
+	document.addEventListener("set-view", (event) => setView((event as CustomEvent<string>).detail));
+
+	// Minecraft status light.
+	const minecraftTile = document.getElementById("minecraft")!;
+	async function updateMinecraft() {
+		const address = minecraftTile.dataset.address!;
+		const light = document.getElementById("minecraft_light")!;
+		const state = document.getElementById("minecraft_state")!;
+		const players = document.getElementById("minecraft_players")!;
+		try {
+			const response = await fetch(`https://api.mcsrvstat.us/3/${encodeURIComponent(address)}`);
+			const status = await response.json();
+			light.classList.toggle("online", status.online);
+			state.textContent = status.online ? "Online" : "Offline";
+			if (status.players?.online > 0) unlock("crew");
+			players.textContent = status.online ? `${status.players?.online ?? 0} of ${status.players?.max ?? "?"} players online` : "Back soon, hopefully";
+		} catch {
+			state.textContent = "Status unavailable";
+			players.textContent = "";
+		}
+	}
+	if (minecraftTile.dataset.address) {
+		updateMinecraft();
+		setInterval(updateMinecraft, 5 * 60 * 1000);
+	}
+
+	// Live St. John's weather, from Open-Meteo (free, no key needed).
+	const WEATHER: [number[], string][] = [
+		[[0], "clear"],
+		[[1, 2], "partly cloudy"],
+		[[3], "overcast"],
+		[[45, 48], "foggy"],
+		[[51, 53, 55, 56, 57], "drizzly"],
+		[[61, 63, 65, 66, 67, 80, 81, 82], "rainy"],
+		[[71, 73, 75, 77, 85, 86], "snowy"],
+		[[95, 96, 99], "stormy"],
+	];
+	fetch("https://api.open-meteo.com/v1/forecast?latitude=47.56&longitude=-52.71&current=temperature_2m,weather_code")
+		.then((response) => response.json())
+		.then(({ current }) => {
+			const sky = WEATHER.find(([codes]) => codes.includes(current.weather_code))?.[1];
+			const weather = document.getElementById("weather")!;
+			weather.textContent = `Currently ${Math.round(current.temperature_2m)}°C${sky ? ` and ${sky}` : ""} in St. John's${sky === "foggy" ? ". Classic." : ""}`;
+			weather.hidden = false;
+			if (sky === "foggy") unlock("fog");
+		})
+		.catch(() => {});
+
 	// Project popups.
+	const projectCount = document.querySelectorAll("dialog.project-dialog").length;
 	document.querySelectorAll<HTMLButtonElement>("[data-dialog]").forEach((button) => {
 		const dialog = document.getElementById(button.dataset.dialog!) as HTMLDialogElement;
-		button.addEventListener("click", () => dialog.showModal());
+		button.addEventListener("click", () => {
+			dialog.showModal();
+			track("projects-opened", dialog.id, projectCount, "projects");
+		});
 		dialog.addEventListener("click", (event) => {
 			if (event.target === dialog) dialog.close();
 		});

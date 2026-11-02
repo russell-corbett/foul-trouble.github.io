@@ -55,7 +55,7 @@
 	{
 		"title": "mysa2ha",
 		"summary": "A native Home Assistant integration for Mysa smart thermostats, with no local broker or extra hardware.",
-		"image": "/projects/home_assistant_logo.webp",
+		"image": "/projects/mysa2ha_logo.webp",
 		"brand": "#4b9cd3",
 		"stack": [
 			"Python",
@@ -122,7 +122,7 @@
 	{
 		"title": "Game Night Leaderboard",
 		"summary": "A weighted leaderboard for our board game nights, where wins count for more in heavier games.",
-		"initials": "GN",
+		"image": "/projects/game_night_logo.webp",
 		"brand": "#3c746b",
 		"stack": [
 			"Web",
@@ -135,7 +135,8 @@
 		"links": [
 			{
 				"label": "See the standings",
-				"href": "https://boardgames.russellcorbett.ca"
+				"href": "https://boardgames.russellcorbett.ca",
+				"dice": true
 			}
 		]
 	},

@@ -1,0 +1,19 @@
+[
+	{ "id": "terminal", "name": "I'm In", "description": "Found the terminal" },
+	{ "id": "hire", "name": "Root Access", "description": "Ran sudo hire russell" },
+	{ "id": "view", "name": "Switching Gears", "description": "Switched to the engineering view" },
+	{ "id": "lights", "name": "Lights Out", "description": "Turned out the lights" },
+	{ "id": "electrician", "name": "Electrician", "description": "Flipped the light switch 10 times" },
+	{ "id": "delivery", "name": "Special Delivery", "description": "Caught a ROV mid-delivery" },
+	{ "id": "mission", "name": "Mission Control", "description": "Went on a mission" },
+	{ "id": "fleet", "name": "Fleet Inspector", "description": "Hovered over all five ROVs" },
+	{ "id": "projects", "name": "Project Manager", "description": "Opened every project" },
+	{ "id": "robber", "name": "Robber Baron", "description": "Rolled a 7 and moved the robber" },
+	{ "id": "konami", "name": "Up Up Down Down", "description": "Entered the Konami code" },
+	{ "id": "chaos", "name": "Chaos Engineer", "description": "Tried rm -rf" },
+	{ "id": "diligence", "name": "Due Diligence", "description": "Opened both resumes" },
+	{ "id": "bottle", "name": "Message in a Bottle", "description": "Sent a message" },
+	{ "id": "fog", "name": "Foggy Day", "description": "Visited while St. John's was foggy", "bonus": true },
+	{ "id": "crew", "name": "Full Crew", "description": "Visited while someone was on the Minecraft server", "bonus": true },
+	{ "id": "completionist", "name": "Completionist", "description": "Found everything else", "final": true }
+]

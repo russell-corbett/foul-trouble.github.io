@@ -1,0 +1,227 @@
+---
+import rovs from "../json/rovs.json";
+---
+
+<!--
+	Decoration only: Eastern Edge ROVs take turns diving down the right side of the page to the footer.
+	One lifts the LinkedIn button to the surface, and the next one brings it back down.
+-->
+<div id="rov_swim" data-rovs={JSON.stringify(rovs)} aria-hidden="true" class="absolute inset-0 z-10 overflow-hidden pointer-events-none"></div>
+
+<script>
+	import { track, unlock } from "../scripts/achievements";
+
+	const layer = document.getElementById("rov_swim")!;
+	const rovs: { year: number; name: string; src: string; claw: { x: number; y: number } }[] = JSON.parse(layer.dataset.rovs!);
+	const button = document.getElementById("footer_linkedin")!;
+	const PAGE_WIDTH = 1128;
+	const MIN_GUTTER = 72;
+	const SPEED = 200; // Pixels per second.
+	const WOBBLE_EVERY = 220; // Pixels between wobbles.
+	const WOBBLE = 7;
+	const random = (min: number, max: number) => min + Math.random() * (max - min);
+	const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+	const pageTop = (element: Element) => element.getBoundingClientRect().top + window.scrollY;
+	let lastIndex = -1;
+	let buttonAtSurface = false;
+
+	function spawnBubble(x: number, y: number) {
+		const bubble = document.createElement("span");
+		bubble.className = "rov-bubble";
+		const size = random(5, 16);
+		bubble.style.cssText = `width:${size}px;height:${size}px;left:${x + random(-22, 22)}px;top:${y}px`;
+		layer.append(bubble);
+		const rise = random(110, 280);
+		const drift = random(-20, 20);
+		bubble
+			.animate(
+				[
+					{ transform: "translate(0, 0) scale(0.5)", opacity: 0 },
+					{ transform: `translate(${drift / 2}px, ${-rise * 0.2}px) scale(1)`, opacity: 0.8, offset: 0.15 },
+					{ transform: `translate(${-drift / 2}px, ${-rise * 0.6}px) scale(1.1)`, opacity: 0.6, offset: 0.6 },
+					{ transform: `translate(${drift}px, ${-rise}px) scale(1.25)`, opacity: 0 },
+				],
+				{ duration: random(1800, 3600), easing: "ease-out" },
+			)
+			.finished.finally(() => bubble.remove());
+	}
+
+	// The carried button is a working copy; the real one stays in the footer as a faint, clickable outline.
+	function makeCarriedButton() {
+		const carried = button.cloneNode(true) as HTMLAnchorElement;
+		carried.removeAttribute("id");
+		carried.classList.remove("rov-taken");
+		carried.classList.add("rov-carried");
+		carried.target = "_blank";
+		carried.rel = "noopener";
+		carried.tabIndex = -1;
+		return carried;
+	}
+
+	// Moves the carried button between the footer and the ROV's claw. When the ROV lines up
+	// well these are nearly the same spot, so it reads as the claw grabbing or letting go.
+	function moveCarried(carried: HTMLElement, direction: "pickup" | "drop") {
+		const target = button.getBoundingClientRect();
+		const claw = carried.getBoundingClientRect();
+		const x = target.left + target.width / 2 - (claw.left + claw.width / 2);
+		const y = target.top + target.height / 2 - (claw.top + claw.height / 2);
+		const atFooter = { transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))` };
+		const inClaw = { transform: "translate(-50%, -50%)" };
+		const frames = direction === "pickup" ? [atFooter, inClaw] : [inClaw, atFooter];
+		return carried.animate(frames, { duration: 450, easing: "ease-in-out", fill: "forwards" }).finished;
+	}
+
+	async function swim() {
+		const gutter = (window.innerWidth - PAGE_WIDTH) / 2;
+		if (gutter < MIN_GUTTER) {
+			// No room for ROVs at this size, so the button goes home.
+			buttonAtSurface = false;
+			button.classList.remove("rov-taken");
+			return;
+		}
+		if (document.hidden) return;
+
+		let index = Math.floor(Math.random() * rovs.length);
+		if (index === lastIndex) index = (index + 1) % rovs.length;
+		lastIndex = index;
+		const rov = rovs[index];
+
+		const size = Math.min(gutter - 16, 140);
+		const body = document.createElement("div");
+		body.className = "rov-body";
+		body.style.width = `${size}px`;
+		const link = document.createElement("a");
+		link.className = "rov-link";
+		link.href = `https://www.easternedgerobotics.com/missions/${rov.year}`;
+		link.target = "_blank";
+		link.rel = "noopener";
+		link.tabIndex = -1;
+		link.addEventListener("click", () => unlock("mission"));
+		const image = new Image();
+		image.src = rov.src;
+		image.alt = "";
+		const label = document.createElement("span");
+		label.textContent = `${rov.name} ${rov.year}`;
+		link.append(image, label);
+		body.append(link);
+		await image.decode();
+
+		// The claw position is a fraction of the image, mirrored when the ROV turns around.
+		let flipped = false;
+		const placeInClaw = (element: HTMLElement) => {
+			element.style.left = `${(flipped ? 1 - rov.claw.x : rov.claw.x) * 100}%`;
+			element.style.top = `${rov.claw.y * 100}%`;
+		};
+
+		let carried: HTMLElement | null = null;
+		if (buttonAtSurface) {
+			carried = makeCarriedButton();
+			placeInClaw(carried);
+			body.append(carried);
+		}
+		layer.append(body);
+
+		const height = body.offsetHeight;
+		const surfaceY = -height - 60;
+		const laneX = window.innerWidth - gutter + (gutter - size) / 2;
+		let motion: Animation | null = null;
+		let hovered = false;
+		let goingUp = false;
+		let position = { x: laneX, y: surfaceY };
+
+		body.addEventListener("mouseenter", () => {
+			hovered = true;
+			motion?.pause();
+			if (body.querySelector(".rov-carried")) unlock("delivery");
+			track("rovs-seen", rov.name, rovs.length, "fleet");
+		});
+		body.addEventListener("mouseleave", () => {
+			hovered = false;
+			motion?.play();
+		});
+
+		async function travel(x: number, y: number, swayFrom: "start" | "end" | "none") {
+			const from = position;
+			const distance = Math.abs(y - from.y);
+			const steps = Math.max(4, Math.round(distance / WOBBLE_EVERY));
+			const tilt = y < from.y ? -4 : 4;
+			const keyframes = Array.from({ length: steps + 1 }, (_, step) => {
+				const t = step / steps;
+				// Crosses between the lane and the button during the part of the trip nearest the footer.
+				const progress = swayFrom === "end" ? Math.max(0, (t - 0.8) / 0.2) : swayFrom === "start" ? Math.min(1, t / 0.2) : t;
+				const eased = progress * progress * (3 - 2 * progress);
+				const edge = step === 0 || step === steps;
+				const side = step % 2 ? 1 : -1;
+				const currentX = from.x + (x - from.x) * eased + (edge ? 0 : side * WOBBLE);
+				return { transform: `translate(${currentX}px, ${from.y + (y - from.y) * t}px) rotate(${edge ? 0 : side * tilt}deg)` };
+			});
+			goingUp = y < from.y;
+			motion = body.animate(keyframes, { duration: Math.max(300, (distance / SPEED) * 1000), easing: "linear", fill: "forwards" });
+			if (hovered) motion.pause();
+			await motion.finished;
+			position = { x, y };
+		}
+
+		const bubbles = setInterval(() => {
+			const box = body.getBoundingClientRect();
+			if (motion?.playState !== "running" || box.bottom < -300 || box.top > window.innerHeight + 300) return;
+			spawnBubble(box.left + box.width / 2, window.scrollY + (goingUp ? box.bottom - 10 : box.top + 10));
+		}, 280);
+
+		// Line the claw up with the button. The claws sit on one side, so if that side can't reach
+		// without leaving the screen, the ROV parks for its mirrored claw and turns around.
+		const stop = () => {
+			const target = button.getBoundingClientRect();
+			const centerX = target.left + target.width / 2;
+			const options = [false, true].map((mirror) => {
+				const left = centerX - (mirror ? 1 - rov.claw.x : rov.claw.x) * size;
+				const overflow = Math.max(0, 4 - left) + Math.max(0, left + size - (window.innerWidth - 4));
+				return { mirror, left, overflow };
+			});
+			const best = options[0].overflow <= options[1].overflow ? options[0] : options[1];
+			const left = Math.min(Math.max(best.left, 4), window.innerWidth - size - 4);
+			return { x: left, y: pageTop(button) + target.height / 2 - rov.claw.y * height, mirror: best.mirror };
+		};
+		await travel(stop().x, stop().y, "end");
+		if (Math.abs(stop().y - position.y) > 2) await travel(stop().x, stop().y, "none");
+		await wait(300);
+
+		if (stop().mirror !== flipped) {
+			flipped = !flipped;
+			const turn = image.animate([{ transform: `scaleX(${flipped ? 1 : -1})` }, { transform: `scaleX(${flipped ? -1 : 1})` }], {
+				duration: 500,
+				easing: "ease-in-out",
+				fill: "forwards",
+			});
+			if (carried) placeInClaw(carried);
+			await turn.finished;
+			await wait(200);
+		}
+
+		if (carried) {
+			await moveCarried(carried, "drop");
+			carried.remove();
+			button.classList.remove("rov-taken");
+			buttonAtSurface = false;
+		} else {
+			carried = makeCarriedButton();
+			placeInClaw(carried);
+			body.append(carried);
+			button.classList.add("rov-taken");
+			await moveCarried(carried, "pickup");
+			buttonAtSurface = true;
+		}
+		await wait(400);
+
+		await travel(laneX, surfaceY, "start");
+		clearInterval(bubbles);
+		body.remove();
+	}
+
+	async function loop() {
+		await swim().catch(() => {});
+		setTimeout(loop, random(3000, 8000));
+	}
+
+	if (!matchMedia("(prefers-reduced-motion: reduce)").matches) setTimeout(loop, 2500);
+</script>

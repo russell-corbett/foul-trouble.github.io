@@ -1,0 +1,190 @@
+---
+import projects from "../json/projects.json";
+import skills from "../json/skills.json";
+import minecraft from "../json/minecraft.json";
+import achievements from "../json/achievements.json";
+
+const { boardGames, infinityCross, resumes } = Astro.props;
+const data = {
+	projects: projects.map((project) => project.title),
+	skills: skills.map((skill) => `${skill.group}: ${skill.items.join(", ")}`),
+	resumes,
+	boardGames,
+	infinityCross,
+	minecraftAddress: minecraft.address,
+	achievements,
+};
+---
+
+<button id="terminal_open" type="button" aria-label="Open terminal" title="Open terminal (~)" class="fixed bottom-4 right-4 z-30 w-11 h-11 rounded-full bg-stone-800 border border-gray-600 text-zinc-200 font-techmono hover:bg-stone-700 transition">&gt;_</button>
+
+<dialog id="terminal" class="terminal-dialog" aria-label="Terminal" data-terminal={JSON.stringify(data)}>
+	<div class="flex justify-between items-center px-4 py-2 bg-stone-800">
+		<span class="text-sm">russell@russellcorbett.ca</span>
+		<form method="dialog"><button aria-label="Close terminal" class="w-8 h-8 rounded-full hover:bg-stone-700 transition">&times;</button></form>
+	</div>
+	<div id="terminal_log" class="h-80 overflow-y-auto p-4 whitespace-pre-wrap break-words" role="log" aria-live="polite"></div>
+	<form id="terminal_form" class="flex gap-2 px-4 pb-4 items-center">
+		<label for="terminal_input" class="text-[#7c7cf0] shrink-0">$</label>
+		<input id="terminal_input" class="grow min-w-0 bg-transparent text-zinc-100 outline-none" autocomplete="off" autocapitalize="off" spellcheck="false" />
+	</form>
+</dialog>
+
+<script>
+	import { resetAchievements, track, unlock, unlockedAchievements } from "../scripts/achievements";
+
+	const dialog = document.getElementById("terminal") as HTMLDialogElement;
+	const log = document.getElementById("terminal_log")!;
+	const input = document.getElementById("terminal_input") as HTMLInputElement;
+	const form = document.getElementById("terminal_form") as HTMLFormElement;
+	const data = JSON.parse(dialog.dataset.terminal!);
+	const history: string[] = [];
+	let historyIndex = 0;
+
+	function print(text: string, className = "") {
+		const line = document.createElement("div");
+		line.textContent = text;
+		line.className = className;
+		log.append(line);
+		log.scrollTop = log.scrollHeight;
+	}
+
+	function go(hash: string) {
+		dialog.close();
+		location.hash = hash;
+	}
+
+	async function minecraftStatus() {
+		if (!data.minecraftAddress) return "The server is real, but its status light isn't wired up yet.";
+		print("Pinging the server...");
+		try {
+			const response = await fetch(`https://api.mcsrvstat.us/3/${encodeURIComponent(data.minecraftAddress)}`);
+			const status = await response.json();
+			if (status.players?.online > 0) unlock("crew");
+			return status.online ? `Online with ${status.players?.online ?? 0} of ${status.players?.max ?? "?"} players.` : "Offline. Someone probably blew it up.";
+		} catch {
+			return "Couldn't reach the status service. Try again in a bit.";
+		}
+	}
+
+	const commands: Record<string, (args: string[]) => string | Promise<string> | void> = {
+		help: () =>
+			[
+				"whoami          who is this guy?",
+				"projects        list my projects",
+				"skills          list my skills",
+				"resume          open my resume",
+				"contact         jump to the contact form",
+				"view pm|eng     switch the site's focus",
+				"theme           flip light and dark",
+				"games           board games this year",
+				"infinity        InfinityCross totals",
+				"minecraft       is the server up?",
+				"achievements    what you've found so far",
+				"achievements clear   start the hunt over",
+				"clear           clear the screen",
+				"exit            close the terminal",
+			].join("\n"),
+		whoami: () => "Russell Corbett. Computer Engineering graduate, MBA candidate (expected 2028), and owner of too many smart lights.",
+		projects: () => data.projects.join("\n"),
+		ls: () => data.projects.join("\n"),
+		skills: () => data.skills.join("\n"),
+		resume: () => {
+			const view = document.documentElement.dataset.view === "engineering" ? 1 : 0;
+			const resume = data.resumes[view] ?? data.resumes[0];
+			track("resumes", resume.file, data.resumes.length, "diligence");
+			window.open(`/${resume.file}`, "_blank", "noopener");
+			return `Opening ${resume.label} resume...`;
+		},
+		contact: () => go("#contact"),
+		view: ([mode]) => {
+			const views: Record<string, string> = { pm: "pm", eng: "engineering", engineering: "engineering" };
+			if (!views[mode]) return "Usage: view pm | view eng";
+			document.dispatchEvent(new CustomEvent("set-view", { detail: views[mode] }));
+			return `Showing the ${views[mode] === "pm" ? "project management" : "engineering"} view.`;
+		},
+		theme: () => {
+			document.getElementById("theme_toggle")!.click();
+			return `Theme: ${document.documentElement.dataset.theme}`;
+		},
+		games: () => (data.boardGames ? `${data.boardGames.plays} plays of ${data.boardGames.games} games in ${data.boardGames.year}.` : "The scorekeeper is away from the table."),
+		infinity: () => (data.infinityCross ? `${data.infinityCross.cards} cards placed across ${data.infinityCross.games} games.` : "The dealer is on a break."),
+		minecraft: minecraftStatus,
+		clear: () => {
+			log.replaceChildren();
+		},
+		exit: () => dialog.close(),
+		achievements: ([option]) => {
+			if (option === "clear") {
+				resetAchievements();
+				return "Achievements cleared. Time to find them all again.";
+			}
+			const found = new Set(unlockedAchievements());
+			const list: { id: string; name: string; description: string; bonus?: boolean }[] = data.achievements;
+			const line = (item: (typeof list)[number]) => `  ${item.name}: ${found.has(item.id) ? item.description : "???"}${item.bonus ? " (bonus)" : ""}`;
+			const done = list.filter((item) => found.has(item.id));
+			const todo = list.filter((item) => !found.has(item.id));
+			return [
+				`${done.length} of ${list.length} found`,
+				"",
+				"Completed:",
+				...(done.length ? done.map(line) : ["  Nothing yet"]),
+				"",
+				"Still to do:",
+				...(todo.length ? todo.map(line) : ["  Nothing. You found them all!"]),
+			].join("\n");
+		},
+		sudo: (args) => {
+			if (args.join(" ") !== "hire russell") return "Nice try. Try: sudo hire russell";
+			unlock("hire");
+			return "Permission granted. Excellent decision. Type 'contact' to finish the deployment.";
+		},
+		rm: (args) => {
+			if (args.some((arg) => /^-[a-z]*r[a-z]*f|^-[a-z]*f[a-z]*r/i.test(arg))) unlock("chaos");
+			return "Absolutely not. This site is sentimental.";
+		},
+		hello: () => "Hello, World!",
+	};
+
+	async function run(raw: string) {
+		print(`$ ${raw}`, "text-zinc-400");
+		const [name, ...args] = raw.trim().split(/\s+/);
+		if (!name) return;
+		const command = Object.hasOwn(commands, name.toLowerCase()) ? commands[name.toLowerCase()] : null;
+		const output = command ? await command(args) : `Command not found: ${name}. Type 'help' for options.`;
+		if (output) print(output);
+	}
+
+	function open() {
+		if (dialog.open) return;
+		if (!log.hasChildNodes()) print("Hello, World! Type 'help' to get started.");
+		dialog.showModal();
+		input.focus();
+		unlock("terminal");
+	}
+
+	document.getElementById("terminal_open")!.addEventListener("click", open);
+	document.addEventListener("keydown", (event) => {
+		const target = event.target as HTMLElement;
+		if ((event.key === "~" || event.key === "`") && !target.closest("input, textarea, select, [contenteditable], dialog")) {
+			event.preventDefault();
+			open();
+		}
+	});
+
+	form.addEventListener("submit", (event) => {
+		event.preventDefault();
+		const value = input.value;
+		input.value = "";
+		if (value.trim()) history.push(value);
+		historyIndex = history.length;
+		run(value);
+	});
+
+	input.addEventListener("keydown", (event) => {
+		if (event.key !== "ArrowUp" && event.key !== "ArrowDown") return;
+		event.preventDefault();
+		historyIndex = Math.min(history.length, Math.max(0, historyIndex + (event.key === "ArrowUp" ? -1 : 1)));
+		input.value = history[historyIndex] ?? "";
+	});
+</script>

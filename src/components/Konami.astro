@@ -1,0 +1,87 @@
+<!-- ↑ ↑ ↓ ↓ ← → ← → B A drops a creeper onto the page. -->
+<script>
+	import { unlock } from "../scripts/achievements";
+
+	const CODE = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+	// 8 x 8 creeper face: 1 is dark green, 0 is light green.
+	const FACE = [
+		"00000000",
+		"00000000",
+		"01100110",
+		"01100110",
+		"00011000",
+		"00111100",
+		"00111100",
+		"00100100",
+	];
+	let position = 0;
+	let active = false;
+
+	async function creeper() {
+		active = true;
+		unlock("konami");
+		const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+		const body = document.createElement("div");
+		body.className = "creeper";
+		body.setAttribute("aria-hidden", "true");
+		for (const row of FACE) {
+			for (const cell of row) {
+				const pixel = document.createElement("span");
+				pixel.style.background = cell === "1" ? "#0c3b12" : ["#5bbf4a", "#4caa3c", "#6fd35d"][Math.floor(Math.random() * 3)];
+				body.append(pixel);
+			}
+		}
+		const hiss = document.createElement("p");
+		hiss.className = "creeper-hiss";
+		hiss.textContent = "Ssssss...";
+		body.append(hiss);
+		document.body.append(body);
+
+		if (!reduceMotion) {
+			await body.animate(
+				[
+					{ transform: "translate(-50%, -120vh)" },
+					{ transform: "translate(-50%, 0)", offset: 0.7 },
+					{ transform: "translate(-50%, -6vh)", offset: 0.85 },
+					{ transform: "translate(-50%, 0)" },
+				],
+				{ duration: 1100, easing: "ease-in" },
+			).finished;
+			hiss.style.opacity = "1";
+			await body.animate([{ filter: "brightness(1)" }, { filter: "brightness(3)" }, { filter: "brightness(1)" }], { duration: 450, iterations: 3 }).finished;
+
+			// Poof: the pixels scatter and fade.
+			const box = body.getBoundingClientRect();
+			for (let i = 0; i < 24; i++) {
+				const bit = document.createElement("span");
+				bit.className = "creeper-bit";
+				bit.style.left = `${box.left + box.width / 2}px`;
+				bit.style.top = `${box.top + box.height / 2}px`;
+				document.body.append(bit);
+				const angle = Math.random() * Math.PI * 2;
+				const distance = 80 + Math.random() * 160;
+				bit
+					.animate([{ transform: "translate(0, 0)", opacity: 1 }, { transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px)`, opacity: 0 }], {
+						duration: 700,
+						easing: "ease-out",
+					})
+					.finished.finally(() => bit.remove());
+			}
+		} else {
+			hiss.style.opacity = "1";
+			await new Promise((resolve) => setTimeout(resolve, 1500));
+		}
+		body.remove();
+		active = false;
+	}
+
+	document.addEventListener("keydown", (event) => {
+		if ((event.target as HTMLElement).closest?.("input, textarea, select, [contenteditable]")) return;
+		const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
+		position = key === CODE[position] ? position + 1 : key === CODE[0] ? 1 : 0;
+		if (position === CODE.length) {
+			position = 0;
+			if (!active) creeper();
+		}
+	});
+</script>

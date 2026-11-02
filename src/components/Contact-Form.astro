@@ -32,6 +32,8 @@ const labelClass = "block uppercase tracking-wide text-muted text-xs font-bold m
 </div>
 
 <script>
+	import { unlock } from "../scripts/achievements";
+
 	const form = document.getElementById('contact_form') as HTMLFormElement;
 	const status = document.getElementById('contact_status')!;
 	const submit = document.getElementById('contact_submit') as HTMLButtonElement;
@@ -48,6 +50,7 @@ const labelClass = "block uppercase tracking-wide text-muted text-xs font-bold m
 			});
 			if (!response.ok) throw new Error(String(response.status));
 			form.reset();
+			unlock("bottle");
 			status.textContent = "Thanks! Your message was sent, and I'll reply soon.";
 		} catch {
 			status.textContent = "That didn't send. Please try again, or e-mail me at rjcorbett@mun.ca.";

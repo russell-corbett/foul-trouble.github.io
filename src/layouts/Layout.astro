@@ -58,10 +58,16 @@ const person = {
 				var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
 				document.documentElement.dataset.theme = dark ? 'dark' : 'light';
 				document.documentElement.classList.add('js');
+				// ?view=engineering lets an application link straight to that version of the site.
+				var view = new URLSearchParams(location.search).get('view');
+				if (view !== 'pm' && view !== 'engineering') {
+					try { view = localStorage.getItem('view'); } catch (e) {}
+				}
+				document.documentElement.dataset.view = view === 'engineering' ? 'engineering' : 'pm';
 			})();
 		</script>
 	</head>
-	<body class='bg-black'>
+	<body class='bg-black relative'>
 		<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:text-black focus:p-3 focus:rounded">Skip to content</a>
 		<Nav />
 		<slot />

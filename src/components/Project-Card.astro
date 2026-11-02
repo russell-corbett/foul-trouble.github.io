@@ -9,10 +9,11 @@ export interface Props {
 	stack: string[];
 	details: string[];
 	bullets: string[];
-	links: { label: string; href: string }[];
+	links: { label: string; href: string; dice?: boolean }[];
+	stat?: string;
 }
 
-const { id, title, summary, image, initials, brand, stack, details, bullets, links } = Astro.props;
+const { id, title, summary, image, initials, brand, stack, details, bullets, links, stat } = Astro.props;
 ---
 
 <button type="button" data-dialog={id} aria-haspopup="dialog" class="tile tile-hover reveal w-full p-5 flex flex-col gap-3 text-left cursor-pointer" style={`--brand:${brand}`}>
@@ -21,6 +22,7 @@ const { id, title, summary, image, initials, brand, stack, details, bullets, lin
 		: <span aria-hidden="true" class="w-20 h-20 rounded-xl grid place-items-center text-white text-2xl font-extrabold font-techmono" style={`background:${brand}`}>{initials}</span>}
 	<h3 class="text-xl font-extrabold">{title}</h3>
 	<p>{summary}</p>
+	{stat && <p class="font-techmono font-bold">{stat}</p>}
 	<span class="mt-auto pt-2 font-bold underline">Read more</span>
 </button>
 
@@ -31,13 +33,14 @@ const { id, title, summary, image, initials, brand, stack, details, bullets, lin
 			<form method="dialog"><button aria-label={`Close ${title}`} class="text-2xl leading-none w-11 h-11 rounded-full hover:bg-panel transition">&times;</button></form>
 		</div>
 		{details.map((paragraph) => <p>{paragraph}</p>)}
+		{stat && <p class="font-techmono font-bold">{stat}</p>}
 		{bullets.length > 0 && <ul class="bullets">{bullets.map((bullet) => <li>{bullet}</li>)}</ul>}
 		<ul class="flex flex-wrap gap-2" aria-label="Built with">
 			{stack.map((item) => <li class="text-sm font-techmono border border-line rounded-full px-3 py-1">{item}</li>)}
 		</ul>
 		{links.length > 0 && (
 			<div class="flex flex-wrap gap-3">
-				{links.map((link) => <a href={link.href} target="_blank" rel="noopener" class="grad-button rounded-full px-5 py-2">{link.label}<span class="sr-only"> (opens in a new tab)</span></a>)}
+				{links.map((link) => <a href={link.href} target="_blank" rel="noopener" data-dice={link.dice} class="grad-button rounded-full px-5 py-2">{link.label}<span class="sr-only"> (opens in a new tab)</span></a>)}
 			</div>
 		)}
 	</div>

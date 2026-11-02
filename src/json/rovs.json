@@ -1,0 +1,7 @@
+[
+	{ "year": 2022, "name": "Happy Adventure", "src": "/teams/eastern_edge/rovs/2022-happy-adventure.webp", "claw": { "x": 0.33, "y": 0.85 } },
+	{ "year": 2023, "name": "Caribou", "src": "/teams/eastern_edge/rovs/2023-caribou.webp", "claw": { "x": 0.24, "y": 0.72 } },
+	{ "year": 2024, "name": "Beaumont", "src": "/teams/eastern_edge/rovs/2024-beaumont.webp", "claw": { "x": 0.37, "y": 0.82 } },
+	{ "year": 2025, "name": "Waterwitch", "src": "/teams/eastern_edge/rovs/2025-waterwitch.webp", "claw": { "x": 0.28, "y": 0.83 } },
+	{ "year": 2026, "name": "BlueStar", "src": "/teams/eastern_edge/rovs/2026-bluestar.webp", "claw": { "x": 0.43, "y": 0.91 } }
+]

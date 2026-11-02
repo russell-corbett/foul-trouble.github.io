@@ -1,0 +1,80 @@
+<!-- Rolls two dice before opening the board game tracker. A 7 means moving the robber, as in Catan. -->
+<div id="dice_roll" class="dice-overlay" hidden>
+	<div class="dice-panel" role="status" aria-live="polite">
+		<div class="flex gap-4 justify-center" aria-hidden="true">
+			<div class="die" data-die></div>
+			<div class="die" data-die></div>
+		</div>
+		<p id="dice_result" class="font-techmono text-lg mt-4 text-center"></p>
+		<a id="dice_fallback" target="_blank" rel="noopener" class="hidden underline font-bold block text-center mt-2">Open the standings</a>
+	</div>
+</div>
+
+<script>
+	import { unlock } from "../scripts/achievements";
+
+	const overlay = document.getElementById("dice_roll")!;
+	const dice = [...overlay.querySelectorAll<HTMLElement>("[data-die]")];
+	const result = document.getElementById("dice_result")!;
+	const fallback = document.getElementById("dice_fallback") as HTMLAnchorElement;
+	const PIPS: Record<number, number[]> = { 1: [4], 2: [0, 8], 3: [0, 4, 8], 4: [0, 2, 6, 8], 5: [0, 2, 4, 6, 8], 6: [0, 2, 3, 5, 6, 8] };
+	const roll = () => 1 + Math.floor(Math.random() * 6);
+	const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+	let rolling = false;
+
+	function show(die: HTMLElement, face: number) {
+		die.replaceChildren(
+			...Array.from({ length: 9 }, (_, cell) => {
+				const pip = document.createElement("span");
+				if (PIPS[face].includes(cell)) pip.className = "pip";
+				return pip;
+			}),
+		);
+	}
+
+	async function rollThenOpen(href: string) {
+		rolling = true;
+		const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+		result.textContent = "Rolling...";
+		fallback.classList.add("hidden");
+		overlay.hidden = false;
+		dice.forEach((die) => die.classList.toggle("tumbling", !reduceMotion));
+
+		// Popup blockers allow a new tab only shortly after the click, so the roll stays quick.
+		const shuffle = setInterval(() => dice.forEach((die) => show(die, roll())), 80);
+		await wait(reduceMotion ? 100 : 800);
+		clearInterval(shuffle);
+		const faces = dice.map(() => roll());
+		dice.forEach((die, index) => {
+			die.classList.remove("tumbling");
+			show(die, faces[index]);
+		});
+		const total = faces[0] + faces[1];
+		result.textContent = total === 7 ? "Rolled a 7! Move the robber." : `Rolled a ${total}.`;
+		if (total === 7) unlock("robber");
+		await wait(total === 7 ? 900 : 500);
+
+		// "noopener" would make window.open return null, so the link to this page is cut by hand instead.
+		const opened = window.open(href, "_blank");
+		if (opened) {
+			opened.opener = null;
+		} else {
+			// Blocked: offer the link instead.
+			fallback.href = href;
+			fallback.classList.remove("hidden");
+			await wait(4000);
+		}
+		overlay.hidden = true;
+		rolling = false;
+	}
+
+	document.addEventListener("click", (event) => {
+		const link = (event.target as HTMLElement).closest<HTMLAnchorElement>("a[data-dice]");
+		if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+		event.preventDefault();
+		if (!rolling) rollThenOpen(link.href);
+	});
+	overlay.addEventListener("click", (event) => {
+		if (event.target === overlay) overlay.hidden = true;
+	});
+</script>

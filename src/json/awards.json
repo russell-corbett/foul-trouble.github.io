@@ -1,50 +1,35 @@
-[
-	{
-		"title": "1st Place, Engineering Presentation",
-		"detail": "MATE ROV World Championship (team award, Eastern Edge Robotics) • 2022 & 2023",
+{
+	"individual": [
+		{
+			"title": "Verafin Computer Engineering Scholarship",
+			"detail": "$3000 • Fall 2022",
+			"logo": "/work/verafin/verafin_logo.webp",
+			"brand": "#ec1c24"
+		},
+		{
+			"title": "MUN Alumni Entrance Scholarship",
+			"detail": "$5000 Yearly (Renewable) • 2021-2023",
+			"logo": "/MUN_Logo.webp",
+			"brand": "#923343"
+		},
+		{
+			"title": "Loran Semi-Finalist and Provincial Award",
+			"detail": "$2500 • June 2021",
+			"logo": "/Loran_logo.webp",
+			"brand": "#2e2e74"
+		}
+	],
+	"team": {
+		"name": "Eastern Edge Robotics",
+		"competition": "MATE EXPLORER World Championship",
+		"medals": { "1st Place Overall": "gold", "3rd Place Overall": "bronze" },
 		"logo": "/teams/eastern_edge/eastern_edge_logo.webp",
-		"brand": "#164072"
-	},
-	{
-		"title": "1st Place Overall",
-		"detail": "MATE EXPLORER World Championship (team award, Eastern Edge Robotics) • 2026",
-		"logo": "/teams/eastern_edge/eastern_edge_logo.webp",
-		"brand": "#ef8920"
-	},
-	{
-		"title": "1st Place Marketing Display",
-		"detail": "Eastern Edge team win • 2023",
-		"logo": "/teams/eastern_edge/eastern_edge_logo.webp",
-		"brand": "#164072"
-	},
-	{
-		"title": "3rd Place Overall",
-		"detail": "Eastern Edge team win • 2022 & 2025",
-		"logo": "/teams/eastern_edge/eastern_edge_logo.webp",
-		"brand": "#164072"
-	},
-	{
-		"title": "Oceaneering Health and Safety Award",
-		"detail": "Eastern Edge team win • 2026",
-		"logo": "/teams/eastern_edge/eastern_edge_logo.webp",
-		"brand": "#164072"
-	},
-	{
-		"title": "Verafin Computer Engineering Scholarship",
-		"detail": "$3000 • Fall 2022",
-		"logo": "/work/verafin/verafin_logo.webp",
-		"brand": "#ec1c24"
-	},
-	{
-		"title": "MUN Alumni Entrance Scholarship",
-		"detail": "$5000 Yearly (Renewable) • 2021-2023",
-		"logo": "/MUN_Logo.webp",
-		"brand": "#923343"
-	},
-	{
-		"title": "Loran Semi-Finalist and Provincial Award",
-		"detail": "$2500 • June 2021",
-		"logo": "/Loran_logo.webp",
-		"brand": "#2e2e74"
+		"brand": "#164072",
+		"years": [
+			{ "year": "2026", "awards": ["1st Place Overall", "Oceaneering Health and Safety Award"] },
+			{ "year": "2025", "awards": ["3rd Place Overall"] },
+			{ "year": "2023", "awards": ["1st Place Engineering Presentation", "1st Place Marketing Display"] },
+			{ "year": "2022", "awards": ["3rd Place Overall", "1st Place Engineering Presentation"] }
+		]
 	}
-]
+}

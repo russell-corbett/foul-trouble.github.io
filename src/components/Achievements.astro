@@ -1,0 +1,65 @@
+---
+import achievements from "../json/achievements.json";
+---
+
+<div id="achievement_toasts" data-achievements={JSON.stringify(achievements)} role="status" aria-live="polite" class="fixed bottom-4 left-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+<script>
+	import { unlockedAchievements, saveAchievements, unlock } from "../scripts/achievements";
+
+	const container = document.getElementById("achievement_toasts")!;
+	const achievements: { id: string; name: string; description: string; bonus?: boolean; final?: boolean }[] = JSON.parse(container.dataset.achievements!);
+	// Completionist needs every achievement except the luck-based bonus ones.
+	const required = achievements.filter((item) => !item.bonus && !item.final).map((item) => item.id);
+
+	function confetti() {
+		if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+		for (let i = 0; i < 60; i++) {
+			const piece = document.createElement("span");
+			piece.className = "confetti";
+			piece.style.left = `${Math.random() * 100}vw`;
+			piece.style.background = ["#7f1424", "#2e2e74", "#d4af37", "#e5485f", "#7c7cf0"][i % 5];
+			document.body.append(piece);
+			piece
+				.animate(
+					[
+						{ transform: `translate(0, -10vh) rotate(0deg)` },
+						{ transform: `translate(${(Math.random() - 0.5) * 30}vw, 110vh) rotate(${Math.random() * 1080}deg)` },
+					],
+					{ duration: 2500 + Math.random() * 2000, delay: Math.random() * 600, easing: "cubic-bezier(0.25, 0.4, 0.5, 1)" },
+				)
+				.finished.finally(() => piece.remove());
+		}
+	}
+	const seen = new Set(unlockedAchievements());
+	document.addEventListener("achievements-reset", () => seen.clear());
+
+	document.addEventListener("achievement", (event) => {
+		const id = (event as CustomEvent<string>).detail;
+		const achievement = achievements.find((item) => item.id === id);
+		if (!achievement || seen.has(id)) return;
+		seen.add(id);
+		saveAchievements([...seen]);
+
+		const toast = document.createElement("div");
+		toast.className = "achievement-toast";
+		const heading = document.createElement("p");
+		heading.className = "text-xs uppercase tracking-wide text-zinc-400";
+		heading.textContent = `Achievement unlocked · ${seen.size} of ${achievements.length}`;
+		const title = document.createElement("p");
+		title.className = "font-bold";
+		title.textContent = `🏆 ${achievement.name}`;
+		const description = document.createElement("p");
+		description.className = "text-sm text-zinc-300";
+		description.textContent = achievement.description;
+		toast.append(heading, title, description);
+		container.append(toast);
+		setTimeout(() => {
+			toast.classList.add("leaving");
+			setTimeout(() => toast.remove(), 400);
+		}, 4000);
+
+		if (id === "completionist") confetti();
+		else if (required.every((item) => seen.has(item))) setTimeout(() => unlock("completionist"), 1200);
+	});
+</script>

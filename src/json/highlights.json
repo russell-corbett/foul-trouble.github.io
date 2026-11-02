@@ -1,26 +1,54 @@
-[
-	{
-		"stat": "1st Place",
-		"label": "Engineering Presentation, MATE ROV World Championship 2022 & 2023",
-		"note": "Team result with Eastern Edge Robotics",
-		"brand": "#164072"
-	},
-	{
-		"stat": "1st Overall",
-		"label": "2026 MATE EXPLORER World Championship",
-		"note": "Team result, as COO of a 35-member team",
-		"brand": "#ef8920"
-	},
-	{
-		"stat": "99.7%",
-		"label": "Less manual processing effort from a Python automation",
-		"note": "Bell Canada Enterprises",
-		"brand": "#00549a"
-	},
-	{
-		"stat": "30%",
-		"label": "Lower home electricity use from automated lighting and heating",
-		"note": "Corbett Homelab, 500+ devices",
-		"brand": "#41bdf5"
-	}
-]
+{
+	"pm": [
+		{
+			"stat": "1st Place",
+			"label": "Engineering Presentation, MATE EXPLORER World Championship 2022 & 2023",
+			"note": "Team result with Eastern Edge Robotics",
+			"brand": "#164072"
+		},
+		{
+			"stat": "1st Overall",
+			"label": "2026 MATE EXPLORER World Championship",
+			"note": "Team result, as COO of a 35-member team",
+			"brand": "#ef8920"
+		},
+		{
+			"stat": "10 Companies",
+			"label": "Coordinated green and ocean technology deployments and demonstrations",
+			"note": "Angler Solutions, econext program",
+			"brand": "#175315"
+		},
+		{
+			"stat": "$435K",
+			"label": "Raised for the Canadian Cancer Society by our events over four years",
+			"note": "Team result, as Relay for Life Tech Lead",
+			"brand": "#3d62ab"
+		}
+	],
+	"engineering": [
+		{
+			"stat": "99.7%",
+			"label": "Less manual processing effort from a Python automation",
+			"note": "Bell Canada Enterprises",
+			"brand": "#00549a"
+		},
+		{
+			"stat": "100x",
+			"label": "Throughput increase from a new communications and networking system",
+			"note": "Avalon Controls",
+			"brand": "#faa541"
+		},
+		{
+			"stat": "ROS2",
+			"label": "Architected an underwater ROV control system in Python",
+			"note": "Eastern Edge Robotics, as Software Lead (2022-2023)",
+			"brand": "#164072"
+		},
+		{
+			"stat": "500+",
+			"label": "Smart home devices integrated across Zigbee, Z-Wave, and Bluetooth",
+			"note": "Corbett Homelab, self-hosted on Proxmox and Docker",
+			"brand": "#41bdf5"
+		}
+	]
+}

@@ -9,10 +9,10 @@
 		"text": "An undergraduate team that designs and operates a Remotely Operated Vehicle (ROV) for the international MATE ROV Competition.",
 		"bullets": [
 			"Led a 35-member cross-functional team (software, electrical, mechanical) to a team 1st-place finish at the 2026 MATE EXPLORER World Championship, owning prioritization and trade-off decisions under a fixed budget and deadline",
-			"Part of the team that placed 1st in Engineering Presentation at the 2022 and 2023 MATE ROV World Championship",
+			"Part of the team that placed 1st in Engineering Presentation at the 2022 and 2023 MATE EXPLORER World Championship",
 			"Decided each season which capabilities to build, defer, or cut by weighing technical effort, risk, and competition value",
 			"Served as the link between technical builders and non-technical stakeholders, including sponsors, judges, and university administration",
-			"Architected the ROV control system in Python and ROS2, including a diagnostics GUI and integrated thrusters, servos, lighting, and network communications"
+			"As Software Lead, architected an ROV control system in Python and ROS2, including a diagnostics GUI and integrated thrusters, servos, lighting, and network communications"
 		],
 		"link": "https://easternedgerobotics.com",
 		"featured": true

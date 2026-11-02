@@ -16,8 +16,13 @@ const links = [
 			{links.map((link) => <li><a href={link.href} class="text-zinc-200 hover:text-white hover:underline underline-offset-4 transition">{link.label}</a></li>)}
 		</ul>
 		<div class="flex items-center gap-2">
-			<button id="theme_toggle" type="button" aria-label="Switch colour theme" class="bg-zinc-300 text-black rounded-full w-11 h-11 grid place-items-center hover:bg-white transition">
-				<svg aria-hidden="true" class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3a9 9 0 1 0 0 18V3z" /><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16z" /></svg>
+			<span id="completion_star" class="completion-star" role="img" aria-label="All achievements completed" data-tip="All achievements completed" tabindex="0" hidden>★</span>
+			<button id="theme_toggle" type="button" aria-label="Turn the lights off" title="Light switch" class="light-switch">
+				<svg aria-hidden="true" viewBox="0 0 24 36" class="w-6 h-9">
+					<rect x="1" y="1" width="22" height="34" rx="4" class="switch-plate" />
+					<rect x="8" y="7" width="8" height="22" rx="2" class="switch-slot" />
+					<rect x="8.5" y="7.5" width="7" height="10.5" rx="1.5" class="switch-toggle" />
+				</svg>
 			</button>
 			<button id="hamburger_button" type="button" aria-label="Menu" aria-expanded="false" aria-controls="hamburger_menu" class="lg:hidden bg-zinc-300 text-black rounded-full w-11 h-11 grid place-items-center hover:bg-white transition">
 				<svg aria-hidden="true" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
@@ -43,13 +48,60 @@ const links = [
 		if ((event.target as HTMLElement).closest('a')) setMenu(false);
 	});
 
-	document.getElementById('theme_toggle')!.addEventListener('click', () => {
+	const themeToggle = document.getElementById('theme_toggle')!;
+	const setSwitchLabel = () => {
+		themeToggle.setAttribute('aria-label', document.documentElement.dataset.theme === 'dark' ? 'Turn the lights on' : 'Turn the lights off');
+	};
+	setSwitchLabel();
+
+	// Lights off: a flashlight follows the cursor for a moment before the dark theme settles in.
+	function flashlight() {
+		if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const beam = document.createElement('div');
+		beam.className = 'flashlight';
+		const start = themeToggle.getBoundingClientRect();
+		const aim = (x: number, y: number) => beam.style.setProperty('--beam', `${x}px ${y}px`);
+		aim(start.left + start.width / 2, start.top + start.height / 2);
+		const follow = (event: PointerEvent) => aim(event.clientX, event.clientY);
+		window.addEventListener('pointermove', follow);
+		document.body.append(beam);
+		beam.animate([{ opacity: 1 }, { opacity: 1, offset: 0.75 }, { opacity: 0 }], { duration: 2600, easing: 'ease-in' }).finished.finally(() => {
+			window.removeEventListener('pointermove', follow);
+			beam.remove();
+		});
+	}
+
+	let flips = 0;
+	themeToggle.addEventListener('click', () => {
+		flips++;
+		if (flips === 10) {
+			document.dispatchEvent(new CustomEvent('achievement', { detail: 'electrician' }));
+			if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				document.body.animate([{ opacity: 1 }, { opacity: 0.2 }, { opacity: 1 }, { opacity: 0.4 }, { opacity: 1 }, { opacity: 0.1 }, { opacity: 1 }], { duration: 900 });
+			}
+		}
 		const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
 		document.documentElement.dataset.theme = next;
+		setSwitchLabel();
+		if (next === 'dark') {
+			flashlight();
+			document.dispatchEvent(new CustomEvent('achievement', { detail: 'lights' }));
+		}
 		try {
 			localStorage.setItem('theme', next);
 		} catch {
 			// The theme still applies for this visit if storage is blocked.
 		}
+	});
+
+	// The gold star appears once every achievement is found.
+	import { unlockedAchievements } from '../scripts/achievements';
+	const star = document.getElementById('completion_star')!;
+	if (unlockedAchievements().includes('completionist')) star.hidden = false;
+	document.addEventListener('achievements-reset', () => (star.hidden = true));
+	document.addEventListener('achievement', (event) => {
+		if ((event as CustomEvent<string>).detail !== 'completionist' || !star.hidden) return;
+		star.hidden = false;
+		star.animate([{ transform: 'scale(0) rotate(-180deg)' }, { transform: 'scale(1.4) rotate(10deg)', offset: 0.7 }, { transform: 'scale(1)' }], { duration: 900, easing: 'ease-out' });
 	});
 </script>
