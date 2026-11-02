@@ -27,7 +27,7 @@
 	{
 		"title": "RoomRelay",
 		"summary": "A privacy-focused smart home voice assistant and intercom that runs fully offline on a Raspberry Pi 5.",
-		"initials": "RR",
+		"image": "/projects/roomrelay_logo.webp",
 		"brand": "#2e2e74",
 		"stack": [
 			"Python",
@@ -81,7 +81,7 @@
 	{
 		"title": "Russtum Cards",
 		"summary": "Custom Lovelace dashboard cards for Home Assistant, including a card for monitoring NAS drive health.",
-		"image": "/projects/home_assistant_logo.webp",
+		"image": "/projects/russtum_cards_logo.webp",
 		"brand": "#7f1424",
 		"stack": [
 			"JavaScript",
@@ -102,7 +102,7 @@
 	{
 		"title": "InfinityCross",
 		"summary": "An online multiplayer card game: create a room, share the key, and build a grid by making the right guesses.",
-		"initials": "IC",
+		"image": "/projects/infinitycross_logo.webp",
 		"brand": "#ef8920",
 		"stack": [
 			"Web",
