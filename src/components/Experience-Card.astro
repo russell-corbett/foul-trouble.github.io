@@ -1,0 +1,21 @@
+---
+const { company, href, title, dates, brand, logo, logoBg, bullets, sections } = Astro.props;
+---
+
+<article class="tile tile-hover reveal p-5 md:p-6 flex flex-col md:flex-row gap-5" style={`--brand:${brand}`}>
+	<div class="logo-chip w-40 h-24 shrink-0" style={logoBg ? `background:${logoBg}` : undefined}>
+		<img src={logo} alt="" loading="lazy" decoding="async" />
+	</div>
+	<div class="grow">
+		<h3 class="font-extrabold text-xl md:text-2xl"><a href={href} target="_blank" rel="noopener" class="underline">{company}<span class="sr-only"> (opens in a new tab)</span></a></h3>
+		<p class="font-bold">{title}</p>
+		<p class="text-sm text-muted mb-3">{dates}</p>
+		{bullets && <ul class="bullets">{bullets.map((bullet: string) => <li>{bullet}</li>)}</ul>}
+		{sections && sections.map((section: { label: string; bullets: string[] }) => (
+			<>
+				<h4 class="font-bold mt-3 mb-1">{section.label}</h4>
+				<ul class="bullets">{section.bullets.map((bullet) => <li>{bullet}</li>)}</ul>
+			</>
+		))}
+	</div>
+</article>

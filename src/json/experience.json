@@ -1,0 +1,146 @@
+{
+	"main": [
+		{
+			"company": "Maverick Sports and Collectables",
+			"href": "https://maverickcollectables.com/",
+			"title": "IT Specialist",
+			"dates": "Present",
+			"brand": "#3c746b",
+			"logo": "/work/maverick_sports/maverick_logo.webp",
+			"bullets": [
+				"Manage the store's climate, POS, and security systems",
+				"Broadcast live streams",
+				"Organize and upgrade the company's online profiles",
+				"Keep the company up to date with the online e-commerce space"
+			]
+		},
+		{
+			"company": "Nasdaq Verafin",
+			"href": "https://verafin.com/",
+			"title": "Software Developer Intern",
+			"dates": "May 2024 – Aug 2024, Jan 2025 – Apr 2025",
+			"brand": "#0996C7",
+			"logo": "/work/verafin/nasdaq_verafin_logo.webp",
+			"sections": [
+				{
+					"label": "Second placement: full-stack development (Winter 2025)",
+					"bullets": [
+						"Turned a high-level product brief into a database schema, API structure, and integration plan for a live financial crime management platform",
+						"Built the frontend UI and backend API, including Add, Edit, Delete, and Get service methods",
+						"Integrated the new functionality into existing case management workflows without disrupting current processes",
+						"Identified repetitive manual workflows and designed scalable, rule-based automation to reduce operational overhead",
+						"Presented the work and forward-looking recommendations to the engineering team and academic supervisors"
+					]
+				},
+				{
+					"label": "First placement: debugging and user support (Summer 2024)",
+					"bullets": [
+						"Worked directly with users to diagnose reported problems, separating the surface request from the underlying need and routing fixes into engineering",
+						"Optimized database import parameters to improve data-transmission performance within the Verafin platform"
+					]
+				}
+			]
+		},
+		{
+			"company": "Angler Solutions",
+			"href": "https://www.anglersolutions.ca/",
+			"title": "Co-op Engineering Student",
+			"dates": "Sep 2023 – Dec 2023",
+			"brand": "#175315",
+			"logo": "/work/angler/angler_logo.webp",
+			"bullets": [
+				"Led a team of three under Agile practices to deliver a Python wind-farm analytics application that determined optimal turbine placement from sensor readings",
+				"Managed the econext Community Workforce Development program, coordinating the deployment and demonstration of 10 companies' green and ocean technologies at the Marine Institute's The Launch facility in Holyrood, NL",
+				"Aligned each company's scope, budget, and schedule with facility capabilities, and led stakeholder engagement across the program",
+				"Configured network systems across the ten partner companies, including secure video transmission, peer-to-peer device communications, and live streams to an online audience"
+			]
+		},
+		{
+			"company": "Bell Canada Enterprises",
+			"href": "https://aliant.bell.ca/",
+			"title": "System Analyst",
+			"dates": "Jan 2023 – Apr 2023",
+			"brand": "#00549a",
+			"logo": "/work/bell/bell_logo_blue.webp",
+			"logoBg": "#00549a",
+			"bullets": [
+				"Identified a high-effort manual workflow and delivered a Python automation that cut processing effort by 99.7%",
+				"Established a repeatable automation process for future co-op students, standardizing design and format across the team",
+				"Identified and solved migration issues, and worked directly with SharePoint end users as needed",
+				"Created system documentation and support procedures for project deliverables"
+			]
+		},
+		{
+			"company": "Avalon Controls",
+			"href": "https://avaloncontrols.ca/",
+			"title": "Engineering Co-op Intern",
+			"dates": "May 2022 – Aug 2022",
+			"brand": "#faa541",
+			"logo": "/work/avalon_controls/avaloncontrolsbanner.webp",
+			"bullets": [
+				"Architected a communications and networking system that increased throughput 100x, weighing the trade-off against long-term maintainability",
+				"Produced a deployment plan defining how the system would scale beyond the initial build",
+				"Worked with procurement on purchase orders for IT upgrades, and with shop and field service teams on hardware installation",
+				"Assisted the engineering group with the production of design deliverables"
+			]
+		},
+		{
+			"company": "Celtx",
+			"href": "https://www.celtx.com/",
+			"title": "High School Summer Intern",
+			"dates": "Summer 2021",
+			"brand": "#52525b",
+			"logo": "/work/celtx/celtx_logo.webp",
+			"logoBg": "#000000",
+			"bullets": [
+				"Collaborated in the development of a webpage for an upcoming company event",
+				"Supplied education market insights to potential clients for follow-up by the company",
+				"Developed Python programming skills with Keyin College in collaboration with TechNL",
+				"Worked with the sales department on a research initiative within the Salesforce platform"
+			]
+		}
+	],
+	"earlier": [
+		{
+			"company": "McDonald's",
+			"href": "https://careers.mcdonalds.ca/",
+			"title": "Kitchen, Front Counter, and Crew Cleaning",
+			"dates": "Summer 2020 to Fall 2021",
+			"brand": "#DA291C",
+			"logo": "/work/mcdonalds/mcdonalds_logo.svg",
+			"logoBg": "#DA291C",
+			"bullets": [
+				"Collaborated with a team of 10+ crew members during breakfast, lunch, and weekend shifts to complete orders in a timely manner",
+				"Assisted with restocking and stock rotation, keeping unsaleables to a minimum",
+				"Helped maintain cleanliness in line with company standards",
+				"Awarded Rookie of the Month"
+			]
+		},
+		{
+			"company": "Staples",
+			"href": "https://www.staples.ca/",
+			"title": "Sales; Technology",
+			"dates": "Fall 2019",
+			"brand": "#b02b20",
+			"logo": "/work/staples/staples_logo.webp",
+			"bullets": [
+				"Demonstrated knowledge of technology products and software, including computers, printers, and networking equipment",
+				"Helped customers identify their technology needs and recommended appropriate solutions",
+				"Shared product knowledge with team members to improve the overall customer experience"
+			]
+		},
+		{
+			"company": "Mount Pearl Minor Basketball Association",
+			"href": "http://mountpearlbasketball.com/",
+			"title": "Coach",
+			"dates": "Fall 2017 to Winter 2020",
+			"brand": "#304D6D",
+			"logo": "/work/mpmba/mpmba_logo.webp",
+			"bullets": [
+				"Developed and ran age-appropriate training sessions, drills, and game strategies to improve individual and team performance",
+				"Communicated with players, parents, and staff to build a positive and supportive team culture",
+				"Supported player development, helping athletes reach personal and team goals"
+			]
+		}
+	]
+}

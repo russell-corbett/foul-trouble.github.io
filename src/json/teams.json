@@ -1,0 +1,50 @@
+[
+	{
+		"name": "Eastern Edge Robotics",
+		"title": "Chief Operating Officer (2023-2026) • Software Lead (2022-2023)",
+		"dates": "Oct 2021 – Jun 2026",
+		"brand": "#164072",
+		"logo": "/teams/eastern_edge/eastern_edge_logo.webp",
+		"background": "/teams/eastern_edge/edge-ocean.webp",
+		"text": "An undergraduate team that designs and operates a Remotely Operated Vehicle (ROV) for the international MATE ROV Competition.",
+		"bullets": [
+			"Led a 35-member cross-functional team (software, electrical, mechanical) to a team 1st-place finish at the 2026 MATE EXPLORER World Championship, owning prioritization and trade-off decisions under a fixed budget and deadline",
+			"Part of the team that placed 1st in Engineering Presentation at the 2022 and 2023 MATE ROV World Championship",
+			"Decided each season which capabilities to build, defer, or cut by weighing technical effort, risk, and competition value",
+			"Served as the link between technical builders and non-technical stakeholders, including sponsors, judges, and university administration",
+			"Architected the ROV control system in Python and ROS2, including a diagnostics GUI and integrated thrusters, servos, lighting, and network communications"
+		],
+		"link": "https://easternedgerobotics.com",
+		"featured": true
+	},
+	{
+		"name": "Paradigm Engineering",
+		"title": "Path Planning Lead",
+		"dates": "Oct 2022 – Apr 2024",
+		"brand": "#2e2e74",
+		"logo": "/teams/paradigm/paradigm.webp",
+		"background": "/teams/paradigm/white.webp",
+		"text": "An undergraduate team developing an autonomous self-driving vehicle for the International eV Grand Prix Competition.",
+		"bullets": [
+			"Developed a path-planning algorithm for a high-speed vehicle navigating a dynamic environment",
+			"Designed a vehicle and pit crew communication system for real-time updates using Python and UDP",
+			"Tested the algorithm and system in a ROS2 simulation environment"
+		],
+		"link": "https://munparadigm.com"
+	},
+	{
+		"name": "Engineering Student Society",
+		"title": "Director of Communications",
+		"dates": "2023 – 2025",
+		"brand": "#923343",
+		"logo": "/teams/engineeringsociety/engineering_logo.webp",
+		"background": "/teams/engineeringsociety/engineering_building.webp",
+		"text": "A student-run organization that represents engineering students at Memorial University and organizes events and initiatives to enhance the student experience.",
+		"bullets": [
+			"Led communications for the society as a director on its student executive",
+			"Contributed to the society's website, a hub for engineering at Memorial",
+			"Attended two conferences: CELC 2023 and CSE 2024"
+		],
+		"link": "https://munengineeringsociety.ca/"
+	}
+]

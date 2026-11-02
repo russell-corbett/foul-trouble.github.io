@@ -1,27 +1,44 @@
 ---
 export interface Props {
+	id: string;
 	title: string;
-	body: string;
-	href: string;
-	more: string;
-	image: string;
+	summary: string;
+	image?: string;
+	initials?: string;
+	brand: string;
+	stack: string[];
+	details: string[];
+	bullets: string[];
+	links: { label: string; href: string }[];
 }
 
-const { href, title, body, image, more } = Astro.props;
-import LearnMore from "./Learn-More.astro";
+const { id, title, summary, image, initials, brand, stack, details, bullets, links } = Astro.props;
 ---
 
-<div class="flex flex-col md:flex-row place-items-center md:h-60 rounded-xl min-w-full  bg-stone-300 text-center border border-black shadow-xl">
-	<img src={image} alt={title} class="w-60 h-60 xl:w-60 xl:h-60 rounded-full p-3" loading="lazy" decoding="async" />
-	<div>
-	<h1 class="text-center text-2xl font-extrabold bg-gradient-to-r pt-5 from-russell-red to-russell-blue text-transparent bg-clip-text pl-3 pr-3">{title}</h1>
-	<p class="p-5">{body}</p>
-	<!-- {
-		more ? (
-			<div class="pb-5 pl-10 pr-10">
-				<LearnMore title={more} href={href}/>
+<button type="button" data-dialog={id} aria-haspopup="dialog" class="tile tile-hover reveal w-full p-5 flex flex-col gap-3 text-left cursor-pointer" style={`--brand:${brand}`}>
+	{image
+		? <span class="logo-chip w-20 h-20 block"><img src={image} alt="" loading="lazy" decoding="async" /></span>
+		: <span aria-hidden="true" class="w-20 h-20 rounded-xl grid place-items-center text-white text-2xl font-extrabold font-techmono" style={`background:${brand}`}>{initials}</span>}
+	<h3 class="text-xl font-extrabold">{title}</h3>
+	<p>{summary}</p>
+	<span class="mt-auto pt-2 font-bold underline">Read more</span>
+</button>
+
+<dialog id={id} class="project-dialog" aria-labelledby={`${id}-title`} style={`--brand:${brand}`}>
+	<div class="p-6 space-y-4">
+		<div class="flex justify-between items-start gap-4">
+			<h3 id={`${id}-title`} class="text-2xl font-extrabold">{title}</h3>
+			<form method="dialog"><button aria-label={`Close ${title}`} class="text-2xl leading-none w-11 h-11 rounded-full hover:bg-panel transition">&times;</button></form>
+		</div>
+		{details.map((paragraph) => <p>{paragraph}</p>)}
+		{bullets.length > 0 && <ul class="bullets">{bullets.map((bullet) => <li>{bullet}</li>)}</ul>}
+		<ul class="flex flex-wrap gap-2" aria-label="Built with">
+			{stack.map((item) => <li class="text-sm font-techmono border border-line rounded-full px-3 py-1">{item}</li>)}
+		</ul>
+		{links.length > 0 && (
+			<div class="flex flex-wrap gap-3">
+				{links.map((link) => <a href={link.href} target="_blank" rel="noopener" class="grad-button rounded-full px-5 py-2">{link.label}<span class="sr-only"> (opens in a new tab)</span></a>)}
 			</div>
-		) : null
-	} -->
+		)}
 	</div>
-</div>
+</dialog>

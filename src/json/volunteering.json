@@ -1,0 +1,45 @@
+[
+	{
+		"title": "Memorial University Relay for Life",
+		"role": "Tech Committee Lead • 2022-2026",
+		"brand": "#3d62ab",
+		"logo": "/volunteering/relay/relay_logo.webp",
+		"text": "At Relay For Life events, participants of all ages gather and take turns walking a track to symbolize the perseverance and action needed to change the future of cancer. Across my four years as Tech Lead, our events raised $435,014.76 for the Canadian Cancer Society.",
+		"image": "/volunteering/relay/relay_group.webp",
+		"alt": "The Memorial University Relay for Life team holding a cheque to the Canadian Cancer Society",
+		"storyLabel": "Why I relay",
+		"story": [
+			"I relay for my Pop. Gerry Robert Russell was a fighter all his life. He lost both his parents by the time he was 5, then was constantly moving houses until he was 10. Later in life, he was in and out of hospital every couple of months. From four hip replacements to winning many fights against cancer, he was always optimistic and kept a smile on his face. In August 2022, Gerry passed away, but he will always be in our memories.",
+			"Many other members of my family have had run-ins with cancer. Some were able to fight it off, some were not. I hope that someday, we can put an end to this disease.",
+			"Relay for Life is our opportunity to give back to the doctors and researchers who put in their time to fight cancer."
+		]
+	},
+	{
+		"title": "MATE ROV Regional Newfoundland",
+		"role": "Event Volunteer",
+		"brand": "#ef8920",
+		"logo": "/teams/eastern_edge/mate_nl.webp",
+		"text": "A regional underwater robotics competition hosted by the Fisheries and Marine Institute of Memorial University. I help run the event, including operating a camera over the pool so teams and spectators can follow the action.",
+		"image": "/teams/eastern_edge/camera.webp",
+		"alt": "Russell operating a camera on a platform over the competition pool"
+	},
+	{
+		"title": "FIRST LEGO League",
+		"role": "Event Volunteer",
+		"brand": "#0066b3",
+		"logo": "/volunteering/first/fll-logo-horizontal.webp",
+		"text": "FIRST LEGO League introduces science, technology, engineering, and math to children ages 4-16 through hands-on learning. Participants gain real-world problem-solving experience through a guided, global robotics program.",
+		"image": "/volunteering/first/edge.webp",
+		"alt": "Volunteers at a FIRST LEGO League event, with Russell in an Eastern Edge sweater"
+	},
+	{
+		"title": "O'Donel Senior High School OD-4D Robotics",
+		"role": "Volunteer",
+		"brand": "#52525b",
+		"logo": "/volunteering/OD4D/od4d_logo.webp",
+		"logoBg": "#000000",
+		"text": "OD-4D is the robotics team of O'Donel High School in Mount Pearl, Newfoundland, undertaking technological development and fabrication for underwater exploration.",
+		"image": "/volunteering/OD4D/ice_2_2019.webp",
+		"alt": "An OD-4D remotely operated vehicle working underwater in a test tank"
+	}
+]

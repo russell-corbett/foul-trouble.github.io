@@ -1,56 +1,30 @@
-# website
+# russellcorbett.ca
 
-# Astro Starter Kit: Basics
+My personal portfolio site, built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com) and deployed to GitHub Pages. It's the project I taught myself frontend development with.
 
-```
-npm create astro@latest -- --template basics
-```
+## Commands
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+| Command           | Action                                    |
+| :---------------- | :---------------------------------------- |
+| `npm install`     | Install dependencies                      |
+| `npm run dev`     | Start the dev server at `localhost:4321`  |
+| `npm run build`   | Build the production site to `./dist/`    |
+| `npm run preview` | Preview the build locally                 |
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Pushing to `main` deploys the site through GitHub Actions.
 
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+## Updating content
 
+Almost everything on the page lives in `src/json/`:
 
-## 🚀 Project Structure
+| File                | Content                                            |
+| :------------------ | :------------------------------------------------- |
+| `highlights.json`   | Headline results under the hero                    |
+| `experience.json`   | Jobs: `main` is always visible, `earlier` is behind a button |
+| `teams.json`        | Leadership and engineering teams                   |
+| `projects.json`     | Project cards and their popups. The first six show by default |
+| `skills.json`, `languages.json`, `applications.json` | Skills and logo rows |
+| `awards.json`, `volunteering.json` | Awards and volunteering             |
+| `resumes.json`      | Resume buttons. An entry only appears if its PDF exists in `public/` |
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Add images to `public/` as WebP, sized to no more than about twice their display size.

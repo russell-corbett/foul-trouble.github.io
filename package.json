@@ -1,7 +1,7 @@
 {
-  "name": "@example/basics",
+  "name": "russellcorbett-website",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -11,17 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^6.0.4",
     "@tailwindcss/vite": "^4.3.3",
-    "@types/react": "^18.3.31",
-    "@types/react-dom": "^18.3.7",
     "astro": "^7.2.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwindcss": "^4.3.3",
-    "three": "^0.150.1"
-  },
-  "devDependencies": {
-    "@types/three": "^0.149.0"
+    "tailwindcss": "^4.3.3"
   }
 }

@@ -1,0 +1,7 @@
+[
+	{ "group": "Product & Leadership", "items": ["Cross-functional team leadership", "Stakeholder communication", "Roadmap prioritization"] },
+	{ "group": "Process & Analysis", "items": ["Requirements gathering", "Trade-off analysis", "Success-criteria definition", "Agile"] },
+	{ "group": "Technical Depth", "items": ["Python", "JavaScript / TypeScript", "C/C++", "React", "Node.js", "ROS2"] },
+	{ "group": "Platforms & Tools", "items": ["Docker", "AWS", "Git", "GitHub Actions", "Grafana", "Proxmox VE"] },
+	{ "group": "Embedded & Hardware", "items": ["Raspberry Pi", "ESP32", "Arduino", "Integrated hardware/software systems"] }
+]

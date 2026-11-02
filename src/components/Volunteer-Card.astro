@@ -1,0 +1,23 @@
+---
+const { title, role, brand, logo, logoBg, text, image, alt, story, storyLabel } = Astro.props;
+---
+
+<article class="tile reveal p-5 flex flex-col gap-3" style={`--brand:${brand}`}>
+	<div class="flex items-center gap-4">
+		<div class="logo-chip w-24 h-24 shrink-0" style={logoBg ? `background:${logoBg}` : undefined}>
+			<img src={logo} alt="" loading="lazy" decoding="async" />
+		</div>
+		<div>
+			<h3 class="text-xl font-extrabold">{title}</h3>
+			<p class="text-sm text-muted font-bold">{role}</p>
+		</div>
+	</div>
+	<p>{text}</p>
+	{story && (
+		<details>
+			<summary class="font-bold underline cursor-pointer">{storyLabel}</summary>
+			<div class="space-y-2 mt-2">{story.map((paragraph: string) => <p>{paragraph}</p>)}</div>
+		</details>
+	)}
+	<img src={image} alt={alt} class="mt-auto w-full h-64 object-contain rounded-xl bg-black" loading="lazy" decoding="async" />
+</article>

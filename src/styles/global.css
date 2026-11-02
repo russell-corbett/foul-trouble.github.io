@@ -2,21 +2,193 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "RussoOne";
-  src: url("fonts/RussoOne-Regular.ttf");
+  font-family: "ShareTechMono";
+  src: url("fonts/ShareTechMono-Regular.ttf");
+  font-display: swap;
 }
 
-@font-face {
-    font-family: "ShareTech";
-    src: url("fonts/ShareTech-Regular.ttf");
-  }
+/* Light is the site's original palette: grey panels and white cards on black. */
+:root {
+  color-scheme: light;
+  --panel: #d4d4d8;
+  --card: #ffffff;
+  --ink: #18181b;
+  --muted: #52525b;
+  --line: #a8a29e;
+  --brand-grad: linear-gradient(90deg, #7f1424, #2e2e74);
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --panel: #18181b;
+  --card: #27272a;
+  --ink: #f4f4f5;
+  --muted: #a1a1aa;
+  --line: #3f3f46;
+}
 
-@font-face {
-    font-family: "ShareTechMono";
-    src: url("fonts/ShareTechMono-Regular.ttf");
-  }
+html {
+  font-family: system-ui, sans-serif;
+  background-color: #000;
+}
+section[id] {
+  scroll-margin-top: 6rem;
+}
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+:focus-visible {
+  outline: 3px solid #7c7cf0;
+  outline-offset: 2px;
+}
 
-@font-face {
-    font-family: "BebasNeue";
-    src: url("fonts/BebasNeue-Regular.ttf");
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes slide {
+  to { transform: translateX(-50%); }
+}
+@keyframes pop {
+  from { transform: translateY(12px) scale(0.98); }
+}
+
+.nav-menu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out, visibility 0.25s;
+}
+.nav-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* Brightened on the hero so the signature gradient stays readable on black. */
+.hero-text {
+  color: transparent;
+  background: linear-gradient(90deg, #e5485f, #7c7cf0) 0 0 / 400% 400%;
+  background-clip: text;
+  animation: gradient 10s ease infinite;
+}
+.nav-gradient {
+  background: linear-gradient(135deg, #7f1424, #2e2e74) 0 0 / 400% 400%;
+  animation: gradient 20s ease infinite;
+}
+.grad-button {
+  background-image: var(--brand-grad);
+  color: #fff;
+  font-weight: 700;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.grad-button:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgb(46 46 116 / 0.5);
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  padding: 2.5rem 1.25rem;
+  color: var(--ink);
+}
+.panel-title {
+  font-family: ShareTechMono, monospace;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 1.25rem;
+}
+/* Each tile carries its organization's colour as a border and a soft fade. */
+.tile {
+  --brand: #71717a;
+  height: 100%;
+  background: linear-gradient(115deg, color-mix(in srgb, var(--brand) 20%, var(--card)), var(--card) 55%);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--brand);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 20px rgb(0 0 0 / 0.15);
+  color: var(--ink);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tile-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px rgb(0 0 0 / 0.25);
+}
+.logo-chip {
+  background: #fff;
+  border-radius: 0.75rem;
+  border: 1px solid var(--line);
+  padding: 0.5rem;
+  overflow: hidden;
+}
+.logo-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.bullets {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+.bullets li + li {
+  margin-top: 0.35rem;
+}
+
+/* Keeps dark parts of transparent logos readable on the dark theme. */
+[data-theme="dark"] .logo-mark {
+  filter: drop-shadow(0 0 1px rgb(255 255 255 / 0.7));
+}
+[data-theme="dark"] .logo-mark.invert-dark {
+  filter: invert(1);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.5rem;
+  animation: slide 70s linear infinite;
+}
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+dialog.project-dialog {
+  margin: auto;
+  width: min(44rem, calc(100vw - 2rem));
+  max-height: calc(100dvh - 2rem);
+  border-radius: 0.75rem;
+  border: 1px solid var(--line);
+  border-top: 6px solid var(--brand, #2e2e74);
+  background: var(--card);
+  color: var(--ink);
+}
+dialog.project-dialog[open] {
+  animation: pop 0.2s ease-out;
+}
+dialog.project-dialog::backdrop {
+  background: rgb(0 0 0 / 0.7);
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
   }
+  .js .reveal { opacity: 1; transform: none; }
+  .marquee { overflow-x: auto !important; }
+}

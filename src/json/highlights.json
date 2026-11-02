@@ -1,0 +1,26 @@
+[
+	{
+		"stat": "1st Place",
+		"label": "Engineering Presentation, MATE ROV World Championship 2022 & 2023",
+		"note": "Team result with Eastern Edge Robotics",
+		"brand": "#164072"
+	},
+	{
+		"stat": "1st Overall",
+		"label": "2026 MATE EXPLORER World Championship",
+		"note": "Team result, as COO of a 35-member team",
+		"brand": "#ef8920"
+	},
+	{
+		"stat": "99.7%",
+		"label": "Less manual processing effort from a Python automation",
+		"note": "Bell Canada Enterprises",
+		"brand": "#00549a"
+	},
+	{
+		"stat": "30%",
+		"label": "Lower home electricity use from automated lighting and heating",
+		"note": "Corbett Homelab, 500+ devices",
+		"brand": "#41bdf5"
+	}
+]

@@ -1,519 +1,239 @@
 ---
+import { existsSync } from "node:fs";
 import Layout from "../layouts/Layout.astro";
-import UpcomingEvents from "../components/Upcoming-Events.astro";
 import Form from "../components/Contact-Form.astro";
 import Project from "../components/Project-Card.astro";
 import Team from "../components/Engineering-Team.astro";
+import Experience from "../components/Experience-Card.astro";
+import Volunteer from "../components/Volunteer-Card.astro";
 
-import upcoming_events from "../json/events.json";
+import highlights from "../json/highlights.json";
+import experience from "../json/experience.json";
+import teams from "../json/teams.json";
 import projects from "../json/projects.json";
+import skills from "../json/skills.json";
+import languages from "../json/languages.json";
 import applications from "../json/applications.json";
+import awards from "../json/awards.json";
+import volunteering from "../json/volunteering.json";
+import resumeList from "../json/resumes.json";
+
+// A resume only shows once its PDF is in public/.
+const resumes = resumeList.filter((resume) => existsSync(`public/${resume.file}`));
+const projectId = (index: number) => `project-${index}`;
+const visibleProjects = 6;
 ---
 
-<Layout title="Russell Corbett">
-	<main class="">
-		<div id="landing" class="m-auto p-6 max-w-2xl h-screen flex flex-col place-items-center place-content-center items-center content-center">
-			<img src="../RC_logo_png_transparent_no_name.jpg" alt="Russell Corbett Logo" class="" id="main_logo" />
-			<h1 class="text-7xl font-extrabold m-0 text-center"><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Russell Corbett</span></h1>
-			<h1 class="text-4xl font-extrabold m-0 text-center mb-5"><span class="text-transparent bg-clip-text bg-[size:400%_400%] bg-gradient-to-r from-russell-red to-russell-blue animate-[gradient_10s_ease_infinite]">Automation &#8226; Robotics &#8226; Software</span></h1>
-		</div>
-
-		<div class="xl:pl-40 xl:pr-40 space-y-10">
-			<!-- Intro and Bio-->
-			<div id="bio" class="grid grid-cols-1 2xl:grid-cols-3 place-items-center lg:content-evenly lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 p-10">
-				<img src="../personal/russell_grad.jpg" alt="RC Logo." class="rounded-xl border h-96 bg-white shadow-xl" loading="lazy" decoding="async" />
-				<div class="col-span-2 border rounded-xl sm:h-auto xl:h-96 bg-white 2xl:mt-0 mt-10 shadow-xl">
-					<h1 class="text-3xl font-extrabold font-techmono text-center pt-3 xl:pt-3" id="introduction"></h1>
-					<h1 class="text-xl pt-5 pr-3 pl-3 text-center">I am a Computer Engineering Graduate of Memorial University of Newfoundland, currently pursuing a course based MBA with expected graduation in 2028.</h1>
-					<h1 class="text-xl pt-5 pr-3 pl-3 text-center">I am a problem solver with an inquisitive mind. I value time management and organization as important virtues to manage a full academic and extra-curricular schedule. Furthermore, I thrive on new challenges and finding innovative ways to solve them. I am a team player who values the ideas and experience of others.</h1>
-					<div class="grid grid-cols-1 lg:grid-cols-2 place-items-center p-3">
-						<img src="../MUN_ENG_Logo.jpg" alt="MUN Logo." class="h-24" loading="lazy" decoding="async" />
-						<img src="../MUN_Logo.png" alt="MUN Logo." class="h-24" loading="lazy" decoding="async" />
-					</div>
-				</div>
+<Layout title="Russell Corbett | Project Management & Computer Engineering">
+	<main id="main">
+		<section id="landing" class="m-auto p-6 max-w-2xl min-h-[calc(100svh-4rem)] flex flex-col justify-center items-center text-center gap-2">
+			<img src="/RC_logo_png_transparent_no_name.webp" alt="" class="max-h-[30svh] md:max-h-[38svh] object-contain" />
+			<h1 class="text-6xl md:text-7xl font-extrabold"><span class="hero-text">Russell Corbett</span></h1>
+			<p class="text-2xl md:text-4xl font-extrabold mb-3"><span class="hero-text">Project Management &#8226; Engineering &#8226; Software</span></p>
+			<p class="text-zinc-200 text-lg mb-5">Computer Engineering graduate and MBA candidate (expected 2028), open to project management and engineering roles.</p>
+			<div class="flex flex-wrap justify-center gap-3">
+				<a href={resumes.length === 1 ? `/${resumes[0].file}` : "#resumes"} class="grad-button rounded-full px-6 py-3 text-lg">View Resume</a>
+				<a href="#contact" class="grad-button rounded-full px-6 py-3 text-lg">Contact Me</a>
+				<a href="https://www.linkedin.com/in/russell-corbett/" target="_blank" rel="noopener" class="rounded-full px-6 py-3 text-lg font-bold text-white border border-zinc-500 hover:bg-zinc-800 transition">LinkedIn</a>
+				<a href="https://github.com/russell-corbett" target="_blank" rel="noopener" class="rounded-full px-6 py-3 text-lg font-bold text-white border border-zinc-500 hover:bg-zinc-800 transition">GitHub</a>
 			</div>
-			<div class="xl:mr-20 xl:ml-20 rounded-xl border bg-fixed bg-center hidden" style="background-image:url('MUN_Logo.png');">
-				<div class="h-96"></div>
-			</div>
+		</section>
 
-			<!-- Known Languages -->
-			<div id="languages" class="flex justify-center w-auto">
-				<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-8 place-items-center xl:place-items-evenly rounded-xl xl:rounded-full border gap-y-10 p-10 bg-zinc-300 relative w-full">
-					<img src="../lang-soft/python.png" alt="Python Logo" class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-					<img src="../lang-soft/c++.png" alt="C++ Logo" class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-					<img src="../lang-soft/html.png" alt="HTML Logo" class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-					<img src="../lang-soft/css.png" alt="CSS Logo" class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-					<img src="../lang-soft/javascript.png" alt="JavaScript Logo" class="w-40 h-40 hover:scale-125 transition" loading="lazy" decoding="async" />
-					<img src="../lang-soft/astro.png" alt="AstroJS Logo" class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-					<img src="../lang-soft/tailwind.png" alt="Tailwind Logo" class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-					<img src="../lang-soft/react.png" alt="React Logo" class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-				</div>
-			</div>
+		<div class="max-w-6xl mx-auto px-3 space-y-10 pb-10">
+			<section aria-label="Highlights" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+				{highlights.map((item) => (
+					<div class="tile reveal p-5" style={`--brand:${item.brand}`}>
+						<p class="text-3xl font-extrabold font-techmono">{item.stat}</p>
+						<p class="font-bold mt-1">{item.label}</p>
+						<p class="text-sm text-muted mt-1">{item.note}</p>
+					</div>
+				))}
+			</section>
 
-			<div class="h-10 hidden bg-white sm:bg-pink-500 md:bg-orange-700 lg:bg-purple-700 xl:bg-green-700 2xl:bg-red-700"></div>
-
-			<!-- Engineering Experience -->
-			<div id="experience" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Technical Experience</h1>
-
-				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-verafin-grey md:justify-between">
-						<img src="/work/verafin/nasdaq_verafin_logo.webp" alt="Nasdaq Verafin logo" class="object-contain h-48 w-96" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<a href="https://verafin.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Nasdaq Verafin</h1></a>
-							<h2 class="font-extrabold md:text-l">Software Development Student &#x2022; Summer 2024 & Winter 2025</h2>
-							<li class="ml-8">Applied full-stack development skills across frontend UI design and backend API architecture, working within a live financial crime management platform used by financial institutions. - Practiced requirements analysis and technical design by translating a high-level product brief into a database schema, API structure, and integration plan.</li>
-							<li class="ml-8">Strengthened database design and CRUD architecture skills through building and connecting Add, Edit, Delete, and Get service methods.</li>
-							<li class="ml-8">Developed systems integration experience by embedding new functionality into existing case management workflows without disrupting current processes.</li>
-							<li class="ml-8">Built stakeholder communication skills by presenting technical work and forward-looking recommendations to the engineering team and academic supervisors.</li>
-							<li class="ml-8">Applied process automation thinking to identify repetitive manual workflows and design scalable, rule-based solutions to reduce operational overhead.</li>
-						</div>
+			<section id="about" aria-labelledby="introduction" class="panel reveal grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+				<img src="/personal/russell_grad.webp" alt="Russell Corbett in graduation attire" class="rounded-xl border border-line h-96 mx-auto bg-white shadow-xl" loading="lazy" decoding="async" />
+				<div class="lg:col-span-2 border border-line rounded-xl bg-card shadow-xl p-5 text-center">
+					<h2 class="text-3xl font-extrabold font-techmono" id="introduction" data-typewriter>Hello, World! My name is Russell Corbett</h2>
+					<p class="text-xl pt-5">I'm a Computer Engineering graduate from Memorial University of Newfoundland, now completing my MBA (expected 2028). I like working where technical and business decisions meet: deciding what to build, getting people aligned, and staying close enough to the work to know what's feasible.</p>
+					<p class="text-xl pt-5">As COO of Eastern Edge Robotics, I helped lead a 35-member team of software, electrical, and mechanical students to a 1st-place finish at the 2026 MATE EXPLORER World Championship. I've also built software at Nasdaq Verafin and automation at Bell, and at home I run a self-hosted smart home with 500+ devices.</p>
+					<p class="text-xl pt-5">I'm looking for project management or engineering roles where I can do both: lead the team and understand the build.</p>
+					<div class="flex flex-wrap justify-center gap-6 pt-5">
+						<div class="logo-chip h-24 w-40"><img src="/MUN_ENG_Logo.webp" alt="Memorial University Faculty of Engineering" loading="lazy" decoding="async" /></div>
+						<div class="logo-chip h-24 w-40"><img src="/MUN_Logo.webp" alt="Memorial University of Newfoundland" loading="lazy" decoding="async" /></div>
 					</div>
 				</div>
+			</section>
 
-				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-angler-blue md:justify-between">
-						<img src="/work/angler/angler_logo.jpeg" alt="Angler Solutions Inc. logo" class="object-contain h-48 w-96 lg:hidden" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<a href="https://www.anglersolutions.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Angler Solutions Inc.</h1></a>
-							<h2 class="font-extrabold md:text-l">Project Engineering Student &#x2022; Fall 2023</h2>
-							<li class="ml-8">Managed the econext Community Workforce Development (CWD) program, coordinating the deployment and demonstration of 10 companies' green and ocean technologies at Marine Institute's The Launch facility in Holyrood, NL. Streamlined collaboration, aligning company-specific needs in scope, budget, and scheduling with facility capabilities.</li>
-							<li class="ml-8">Led stakeholder engagement and consultation for the CWD initiative, informing technology providers about The Launch's resources and fostering inter-company collaboration. Ensured alignment of each company's goals with the overall objectives of the CWD program.</li>
+			<section id="teams" class="panel">
+				<h2 class="panel-title">My Leadership and Engineering Teams</h2>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+					{teams.map((team) => <Team {...team} />)}
+				</div>
+			</section>
+
+			<section id="experience" class="panel">
+				<h2 class="panel-title">My Experience</h2>
+				<div class="space-y-5">
+					{experience.main.map((job) => <Experience {...job} />)}
+				</div>
+				<div class="flex justify-center mt-5">
+					<button type="button" data-toggle="earlier_positions" data-show="Show Earlier Positions" data-hide="Hide Earlier Positions" aria-expanded="false" aria-controls="earlier_positions" class="bg-stone-800 shadow-xl rounded-xl p-5 text-white font-extrabold hover:bg-stone-700 transition">Show Earlier Positions</button>
+				</div>
+				<div id="earlier_positions" class="space-y-5 mt-5" hidden>
+					{experience.earlier.map((job) => <Experience {...job} />)}
+				</div>
+			</section>
+
+			<section id="projects" class="panel">
+				<h2 class="panel-title">My Projects</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+					{projects.slice(0, visibleProjects).map((project, index) => <Project id={projectId(index)} {...project} />)}
+				</div>
+				<div id="more_projects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5 [&[hidden]]:hidden" hidden>
+					{projects.slice(visibleProjects).map((project, index) => <Project id={projectId(index + visibleProjects)} {...project} />)}
+				</div>
+				<div class="flex justify-center mt-5">
+					<button type="button" data-toggle="more_projects" data-show="Show More Projects" data-hide="Show Fewer Projects" aria-expanded="false" aria-controls="more_projects" class="bg-stone-800 shadow-xl rounded-xl p-5 text-white font-extrabold hover:bg-stone-700 transition">Show More Projects</button>
+				</div>
+				<p class="text-center mt-5"><strong>Off the clock:</strong> I also run a Minecraft server for my friends.</p>
+			</section>
+
+			<section id="skills" class="panel">
+				<h2 class="panel-title">My Skills</h2>
+				<dl class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+					{skills.map((skill) => (
+						<div class="bg-card border border-line rounded-xl p-4 reveal">
+							<dt class="font-extrabold">{skill.group}</dt>
+							<dd class="text-sm mt-1">{skill.items.join(" • ")}</dd>
 						</div>
-						<img src="/work/angler/angler_logo.jpeg" alt="Angler Solutions Inc. logo" class="object-contain h-48 w-96 hidden lg:block" loading="lazy" decoding="async" />
+					))}
+				</dl>
+				<ul aria-label="Languages and frameworks" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4 place-items-center rounded-xl xl:rounded-full border border-line p-6">
+					{languages.map((language) => <li><img src={language.src} alt={language.name} title={language.name} class="logo-mark w-24 h-24 object-contain hover:scale-110 transition" loading="lazy" decoding="async" /></li>)}
+				</ul>
+				<div class="marquee mt-6 rounded-xl xl:rounded-full border border-line py-6 overflow-hidden" tabindex="0" role="group" aria-label="Applications I work with (scrolling)">
+					<div class="marquee-track">
+						{applications.map((app) => <img src={app.src} alt={app.name} title={app.name} class:list={["logo-mark w-20 h-20 object-contain", { "invert-dark": app.invertDark }]} loading="lazy" decoding="async" />)}
+						{applications.map((app) => <img src={app.src} alt="" aria-hidden="true" class:list={["logo-mark w-20 h-20 object-contain", { "invert-dark": app.invertDark }]} loading="lazy" decoding="async" />)}
 					</div>
 				</div>
+			</section>
 
-				<div class="bg-bell-blue p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-white md:justify-between">
-						<img src="/work/bell/bell_logo_blue.png" alt="Bell Canada Enterprises logo" class="object-contain h-48 w-96" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<a href="https://aliant.bell.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Bell Canada Enterprises</h1></a>
-							<h2 class="font-extrabold md:text-l">System Analyst &#x2022; Winter 2023</h2>
-							<li class="ml-8">Created automations to analyze large data reports, decreasing required effort time by approximately 99.7%</li>
-							<li class="ml-8">Identified and solved migration issues</li>
-							<li class="ml-8">Created comprehensive system documentation and support procedures for all project deliverables, ensuring seamless and efficient project delivery and ongoing maintenance</li>
-							<li class="ml-8">Interfaced directly with SharePoint end users as needed</li>
-							<li class="ml-8">Participated in various process improvement initiatives as we continued to streamline processes and improve the quality of project deliverables</li>
-						</div>
-					</div>
-				</div>
-
-				<div class="bg-gradient-to-br from-avalon-orange via-white to-avalon-blue p-10 ml-5 mr-5 mt-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-avalon-blue md:justify-between">
-						<img src="/work/avalon_controls/avaloncontrolsbanner.png" alt="Avalon Controls Ltd. logo" class="object-contain h-48 w-96 lg:hidden" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<a href="https://avaloncontrols.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Avalon Controls Ltd.</h1></a>
-							<h2 class="font-extrabold md:text-l">Co-op Engineering Student &#x2022; Summer 2022</h2>
-							<li class="ml-8">Upgraded networking equipment to increase data transmission speeds by up to 10,000%</li>
-							<li class="ml-8">Improved office communication systems by implementing new online connectivity tools, resulting in enhanced collaboration and productivity among team members</li>
-							<li class="ml-8">Assisted the engineering group with production of a number of design deliverables</li>
-							<li class="ml-8">Worked with the procurement team to manage purchase orders for IT upgrades</li>
-							<li class="ml-8">Worked with the shop and field service team to install IT hardware upgrades</li>
-						</div>
-						<img src="/work/avalon_controls/avaloncontrolsbanner.png" alt="Avalon Controls Ltd. logo" class="object-contain h-48 w-96 hidden lg:block" loading="lazy" decoding="async" />
-					</div>
-				</div>
-
-				<div class="bg-black p-10 ml-5 mr-5 mt-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-white">
-						<img src="/work/celtx/celtx_logo.jpg" alt="Celtx logo" class="object-contain h-48 w-96" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<a href="https://www.celtx.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Celtx</h1></a>
-							<h2 class="font-extrabold md:text-l">High School Summer Intern &#x2022; Summer 2021</h2>
-							<li class="ml-8">Collaborated in the development of a captivating webpage for an upcoming company event</li>
-							<li class="ml-8">Supplied valuable education market insights to potential clients for effective follow-up by the company</li>
-							<li class="ml-8">Developed Python programming skills with Keyin College in collaboration with TechNL</li>
-							<li class="ml-8">Worked closely with the sales department on a research initiative within the SalesForce platform</li>
-						</div>
-					</div>
-				</div>
-
-				<div class="w-full flex place-content-center mt-5">
-					<button class="non-engineering bg-stone-800 shadow-xl rounded-xl p-5 text-white font-extrabold hover:animate-pulse focus:ring focus:ring-russell-red">Show Non-Engineering Positions</button>
-				</div>
-
-				<div class="space-y-5" id="non-engineering">
-					<div class="bg-white p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl mt-5">
-						<div class="md:flex md:justify-between">
-							<img src="/work/maverick_sports/maverick_logo.jpg" alt="Maverick Sports and Collectables logo" class="object-contain h-48 w-96 lg:hidden" loading="lazy" decoding="async" />
-							<div class="md:ml-10">
-								<a href="https://maverickcollectables.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline text-black hover:animate-pulse">Maverick Sports and Collectables</h1></a>
-								<h2 class="font-extrabold md:text-l text-maverick-blue">IT Specialist &#x2022; Ongoing</h2>
-								<li class="ml-8 text-maverick-green">Managed climate, POS systems, and security systems</li>
-								<li class="ml-8 text-maverick-green">Broadcasted live streams</li>
-								<li class="ml-8 text-maverick-green">Organized and upgraded online profiles</li>
-								<li class="ml-8 text-maverick-green">Kept the company up to date with the online e-commerce space</li>
-							</div>
-							<img src="/work/maverick_sports/maverick_logo.jpg" alt="Maverick Sports and Collectables logo" class="object-contain h-48 w-96 hidden lg:block" loading="lazy" decoding="async" />
-						</div>
-					</div>
-					<div class="bg-mcdonalds-red p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<div class="md:flex text-mcdonalds-yellow">
-							<img src="/work/mcdonalds/mcdonalds_logo.svg" alt="McDonald's logo" class="object-contain h-48 w-96" loading="lazy" decoding="async" />
-							<div class="mt-5 md:ml-10 md:mt-0">
-								<a href="https://careers.mcdonalds.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">McDonalds</h1></a>
-								<h2 class="font-extrabold md:text-l">Kitchen, Front Counter, and Crew Cleaning &#x2022; Summer 2020 to Fall 2021</h2>
-								<li class="ml-8 text-mcdonalds-black font-semibold">Collaborated with a team of 10+ crew members during breakfast, lunch, and weekend shifts to complete orders in a timely manner</li>
-								<li class="ml-8 text-mcdonalds-black font-semibold">Assisted with restocking and stock rotation ensuring minimum of unsaleables</li>
-								<li class="ml-8 text-mcdonalds-black font-semibold">Assisted with maintaining cleanliness in line with company standards</li>
-								<li class="ml-8 text-mcdonalds-black font-semibold">Awarded Rookie of the Month</li>
+			<section id="awards" class="panel">
+				<h2 class="panel-title">My Awards and Recognitions</h2>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+					{awards.map((award) => (
+						<div class="tile reveal p-5 flex items-center gap-5" style={`--brand:${award.brand}`}>
+							<div class="logo-chip w-24 h-16 shrink-0"><img src={award.logo} alt="" loading="lazy" decoding="async" /></div>
+							<div>
+								<h3 class="font-extrabold text-lg">{award.title}</h3>
+								<p class="text-sm font-bold text-muted">{award.detail}</p>
 							</div>
 						</div>
-					</div>
-					<div class="bg-white p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<div class="md:flex text-staples-red md:justify-between">
-							<img src="/work/staples/staples_logo.png" alt="Staples logo" class="object-contain h-48 w-96 lg:hidden" loading="lazy" decoding="async" />
-							<div class="md:ml-10">
-								<a href="https://www.staples.ca/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Staples</h1></a>
-								<h2 class="font-extrabold md:text-l">Sales; Technology &#x2022; Fall 2019</h2>
-								<li class="ml-8 text-black">Demonstrated expert knowledge of various technology products and software, including computers, printers, and networking equipment</li>
-								<li class="ml-8 text-black">Provided exceptional customer service, assisting customers in identifying their technology needs and recommending appropriate solutions</li>
-								<li class="ml-8 text-black">Collaborated with team members to share product knowledge and improve overall customer experience, resulting in increased customer loyalty and repeat business</li>
-							</div>
-							<img src="/work/staples/staples_logo.png" alt="Staples logo" class="object-contain h-48 w-96 hidden lg:block" loading="lazy" decoding="async" />
-						</div>
-					</div>
-					<div class="bg-mpmba-blue p-10 mr-5 ml-5 rounded-xl border-stone-400 border shadow-xl">
-						<div class="md:flex text-mpmba-orange">
-							<div class="rounded"><img src="/work/mpmba/mpmba_logo.jpeg" alt="Mount Pearl Minor Basketball Association logo" class="object-contain h-48 w-96 rounded" loading="lazy" decoding="async" /></div>
-							<!-- <img src="/work/mpmba/mpmba_logo.jpeg" class='object-contain h-48 w-96 rounded'> -->
-							<div class="mt-5 md:ml-10 md:mt-0">
-								<a href="http://mountpearlbasketball.com/" target="_blank"><h1 class="font-extrabold text-lg md:text-2xl underline hover:animate-pulse">Mount Pearl Minor Basketball Assciation</h1></a>
-								<h2 class="font-extrabold md:text-l">Coach &#x2022; Fall 2017 to Winter 2020</h2>
-								<li class="ml-8 text-mcdonalds-black font-semibold">Developed and implemented age-appropriate training sessions, drills, and game strategies that improved individual and team performance</li>
-								<li class="ml-8 text-mcdonalds-black font-semibold">Communicated effectively with players, parents, and staff to ensure a positive and supportive team culture, resulting in increased motivation and engagement</li>
-								<li class="ml-8 text-mcdonalds-black font-semibold">Encouraged and supported player development, helping athletes to reach their full potential and achieve personal and team goals</li>
+					))}
+				</div>
+			</section>
+
+			<section id="volunteering" class="panel">
+				<h2 class="panel-title">My Volunteering</h2>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+					{volunteering.map((item) => <Volunteer {...item} />)}
+				</div>
+			</section>
+
+			<section id="contact" class="panel">
+				<h2 class="panel-title">Contact Me</h2>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+					<div class="p-6 bg-card rounded-lg border-2 border-line shadow-xl">
+						<div class="flex flex-wrap justify-evenly items-center gap-4">
+							<img src="/personal/russell_grad.webp" alt="Russell Corbett" class="rounded-full w-32 h-32 object-cover object-top" loading="lazy" decoding="async" />
+							<div class="flex flex-col items-center gap-2 uppercase tracking-wide font-bold">
+								<p>Russell Corbett</p>
+								<a href="mailto:rjcorbett@mun.ca" class="text-xs underline normal-case">rjcorbett@mun.ca</a>
+								<p class="text-xs text-muted">St. John's, Newfoundland</p>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Awards -->
-			<div id="awards" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Awards and Recognitions</h1>
-				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-black">
-						<img src="/work/verafin/verafin_logo.png" alt="Nasdaq Verafin logo" class="object-contain h-20 w-96" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<h1 class="font-extrabold text-lg md:text-2xl underline">Verafin Computer Engineering Scholarship</h1>
-							<h2 class="font-extrabold md:text-l">$3000 &#x2022; Fall 2022</h2>
-						</div>
-					</div>
-				</div>
-				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-black">
-						<img src="../MUN_Logo.png" alt="Memorial University logo" class="object-contain h-20 w-96" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<h1 class="font-extrabold text-lg md:text-2xl underline">MUN Alumni Entrance Scholarship</h1>
-							<h2 class="font-extrabold md:text-l">$5000 Yearly (Renewable) &#x2022; 2021-2023</h2>
-						</div>
-					</div>
-				</div>
-				<div class="bg-white p-10 ml-5 mr-5 mb-5 rounded-xl border-stone-400 border shadow-xl">
-					<div class="md:flex text-black">
-						<img src="../Loran_logo.png" alt="Loran Scholars Foundation logo" class="object-contain h-20 w-96" loading="lazy" decoding="async" />
-						<div class="md:ml-10">
-							<h1 class="font-extrabold text-lg md:text-2xl underline">Loran Semi-Finalist and Provincial Award</h1>
-							<h2 class="font-extrabold md:text-l">$2500 &#x2022; June 2021</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Engineering Teams -->
-			<div id="teams" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Engineering Teams</h1>
-				<div class="grid grid-cols-1 2xl:grid-cols-2 gap-y-10">
-					<Team name="Eastern Edge Robotics" title="Chief Operating Officer • 2021-2026" logo="../teams/eastern_edge/eastern_edge_logo.png" background="../teams/eastern_edge/edge-ocean.jpg" text="Eastern Edge Robotics is an undergraduate-based team that focuses on designing and operating a Remotely Operated Vehicle (ROV). The team competes annually at the international MATE ROV Competition." link="https://easternedgerobotics.com" />
-
-					<Team name="Paradigm Engineering" title="Path Planning Lead • 2022-2024" logo="../teams/paradigm/paradigm.png" background="../teams/paradigm/white.jpg" text="Paradigm Engineering is an undergraduate-based team that focuses on developing an autonomous self-driving vehicle to compete in the International eV Grand Prix Competition." link="https://munparadigm.com" />
-
-					<Team name="Engineering Student Society" title="Director of Communications • 2023-2025" logo="../teams/engineeringsociety/engineering_logo.png" background="../teams/engineeringsociety/engineering_building.jpg" text="The Engineering Student Society is a student-run organization that represents the interests of engineering students at Memorial University. The society organizes events and initiatives to enhance the student experience." link="https://munengineeringsociety.ca/" />
-				</div>
-			</div>
-
-			<!-- Projects (To Be Automated) (Needs to be Redesigned) (Make Similar to Troake) -->
-			<div id="projects" class="lg:mr-20 lg:ml-20 p-10 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pb-3 font-techmono">My Projects</h1>
-				<div id="select" class="lg:flex gap-5 font-techmono underline pb-5">
-					<h1>Websites</h1>
-					<h1>Applications</h1>
-					<h1>Automation</h1>
-					<h1>Robotics</h1>
-					<h1>Python</h1>
-					<h1>C++</h1>
-				</div>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 place-items-center gap-y-5">
-					{projects.map((project) => <Project title={project.title} body={project.body} more={project.more} href={project.href} image={project.image} />)}
-				</div>
-			</div>
-
-			<!-- Known Applications (To Be Automated)-->
-			<div id="applications" class="flex justify-center relative w-auto h-64">
-				<div class="flex rounded-xl xl:rounded-full border p-10 bg-zinc-300 relative w-full overflow-hidden icon-container" id="applications">
-					<div class="icons gap-x-10">
-						{
-							applications.map((app) => (
-								<div class="icon">
-									<img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-								</div>
-							))
-						}
-						{
-							applications.map((app) => (
-								<div class="icon">
-									<img src={app.icon.src} alt={app.icon.alt} class="w-40 h-40 object-contain hover:scale-125 transition" loading="lazy" decoding="async" />
-								</div>
-							))
-						}
-					</div>
-				</div>
-			</div>
-
-			<!-- Volunteering -->
-			<div id="volunteering" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">My Volunteering</h1>
-				<div class="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 place-items-center gap-y-5 gap-x-5 ml-5 mr-5">
-					<div class="xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl shadow-xl w-full h-full">
-						<img src="../volunteering/relay/relay_logo.png" alt="Relay for Life Logo" class="h-60 w-60 m-10" loading="lazy" decoding="async" />
-						<div class="flex flex-col m-5 bg-relay-blue border rounded-xl p-3">
-							<h1 class="text-4xl font-bold text-center text-relay-yellow">Memorial University</h1>
-							<h1 class="text-5xl font-bold text-center text-relay-yellow">Relay for Life</h1>
-							<p class="text-center text-white mt-3">At Relay For Life events, participants of all ages gather at a community space and take turns walking around a track or path to symbolize the perseverance and action needed to change the future of cancer.</p>
-							<div class="flex justify-center pt-3 pb-3">
-								<img src="../volunteering/relay/relay_group.jpeg" alt="Relay for Life Group" class="h-60 rounded-xl object-contain" loading="lazy" decoding="async" />
-							</div>
-							<p class="text-center text-white">I relay for my Pop. Gerry Robert Russell was a fighter all his life. He lost both his parents by the time he was 5 then was constantly moving houses until he was 10. Later in life, he was in and out of hospital every couple months. From four hip replacements to winning many fights against cancer, he was always optimistic and kept a smile on his face. In August 2022, Gerry passed away but he will always be in our memories.</p>
-							<p class="text-center text-white">Many other members of my family have had run-ins with cancer, some were able to fight it off, some were not. I hope that someday, we can put an end to this disease.</p>
-							<p class="text-center text-white font-bold">Relay for Life is our opportunity to give back to the doctors and researches who put in their time to fight cancer.</p>
-						</div>
-					</div>
-
-					<div class="flex flex-col bg-white border rounded-xl place-items-center shadow-xl w-full h-full">
-						<img src="../teams/eastern_edge/mate_nl.png" alt="MATE ROV Logo" class="h-60 w-60 object-contain" loading="lazy" decoding="async" />
-						<div class="flex flex-col m-5 bg-mate-blue border rounded-xl p-3">
-							<h1 class="text-4xl font-bold text-center text-mate-orange">MATE ROV Regional</h1>
-							<h1 class="text-4xl md:text-5xl font-bold text-center text-mate-orange">Newfoundland</h1>
-							<p class="text-center text-white mt-3">Hosted by: The Fisheries and Marine Institute of the Memorial University of Newfoundland</p>
-							<div class="flex justify-center pt-3 pb-3">
-								<img src="../teams/eastern_edge/camera.webp" alt="Operating Camera Over Pool" class="h-60 rounded-xl object-contain" loading="lazy" decoding="async" />
-							</div>
-						</div>
-					</div>
-
-					<div class="flex flex-col bg-white border rounded-xl place-items-center shadow-xl w-full h-full">
-						<img src="../volunteering/first/fll-logo-horizontal.png" alt="First Lego League Logo" class="w-60 object-contain" loading="lazy" decoding="async" />
-						<div class="flex flex-col m-5 bg-first-blue border rounded-xl p-3">
-							<h1 class="text-4xl font-bold text-center text-white">FIRST Lego League</h1>
-							<p>FIRST LEGO League introduces science, technology, engineering, and math (STEM) to children ages 4-16 through fun, exciting hands-on learning. Participants gain real-world problem-solving experiences through a guided, global robotics program, helping today’s students and teachers build a better future together.</p>
-							<div class="flex justify-center pt-3 pb-3">
-								<img src="../volunteering/first/edge.jpg" alt="FIRST Lego League volunteering event" class="h-48 rounded-xl object-contain" loading="lazy" decoding="async" />
-							</div>
-						</div>
-					</div>
-
-					<div class="xl:col-span-2 flex flex-col place-items-center md:place-items-start md:flex-row bg-white border rounded-xl shadow-xl w-full h-full">
-						<img src="../volunteering/OD4D/od4d_logo.png" alt="OD-4D Logo" class="h-60 w-60 object-contain mt-5" loading="lazy" decoding="async" />
-						<div class="flex flex-col m-5 bg-black border rounded-xl p-3">
-							<h1 class="text-4xl font-bold text-center text-white">O'Donel Senior High School</h1>
-							<h1 class="text-5xl font-bold text-center text-white">OD-4D Robotics</h1>
-							<p class="text-center text-white mt-3">OD-4D is a wholly owned subsidiary of O’Donel High School, in Mount Pearl, Newfoundland, Canada. OD-4D undertakes technological development and fabrication in underwater, sea exploration.</p>
-							<div class="flex justify-center pt-3 pb-3">
-								<img src="../volunteering/OD4D/ice_2_2019.jpg" alt="OD-4D Robotics ice testing event" class="h-60 rounded-xl object-contain" loading="lazy" decoding="async" />
-							</div>
-							<p class="text-center text-white"></p>
-							<p class="text-center text-white"></p>
-							<p class="text-center text-white"></p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Upcoming Events
-			<div id="events" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">Upcoming Events</h1>
-				<div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 md:content-evenly place-items-center gap-y-10">
-					{upcoming_events.map((event) => <UpcomingEvents title={event.title} img={event.img} countdown={event.countdown} location={event.location} call={event.call} link={event.link} />)}
-				</div>
-			</div> -->
-
-			<!-- Contact Me -->
-			<div id="contact" class="lg:mr-20 lg:ml-20 rounded-xl border bg-zinc-300 pt-10 pb-10">
-				<h1 class="text-3xl font-bold underline pl-10 pb-5 font-techmono">Contact Me</h1>
-				<div class="lg:flex lg:justify-evenly lg:space-x-10 space-y-5 lg:space-y-0">
-					<div class="block p-6 max-w-4xl md:w-[30rem] w-full bg-white rounded-lg border-2 border-gray-300 shadow-xl">
-						<div class="flex justify-evenly">
-							<img src="../personal/russell_grad.jpg" alt="RC Logo." class="rounded-full w-40" loading="lazy" decoding="async" />
-							<div class="flex flex-col items-center justify-evenly">
-								<h4 class="block uppercase tracking-wide text-gray-700 text-md font-bold mb-2">Russell Corbett</h4>
-								<a href="mailto:rjcorbett@mun.ca"><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">rjcorbett@mun.ca</h4></a>
-								<a href="tel:709-746-6644"><h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 hover:text-russell-blue">+1 (709) 746-6644</h4></a>
-								<h4 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">St. John's, Newfoundland</h4>
-							</div>
-						</div>
-						<div>
-							<img src="../newfoundland.webp" alt="Newfoundland Location." class="rounded-xl border hidden lg:block mt-5" loading="lazy" decoding="async" />
-						</div>
-						<div class="grid grid-rows-1 justify-center rounded-xl mt-10 border bg-gray-300 pt-5 pb-5">
-							<h1 class="flex justify-center text-3xl font-extrabold bg-gradient-to-r from-russell-red to-russell-blue text-transparent bg-clip-text pb-3">My Resume</h1>
-							<div class="flex justify-evenly space-x-3">
-								<a href="../RussellCorbettResume.pdf" class="bg-gradient-to-r from-russell-red to-russell-blue text-white text-xl font-bold rounded-l-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110">View</a>
-								<a href="../RussellCorbettResume.pdf" class="bg-gradient-to-l from-russell-red to-russell-blue text-white text-xl font-bold rounded-r-full w-40 p-3 text-center border border-black transition ease-in-out hover:-translate-y-1 hover:scale-110" download>Download</a>
+						<img src="/newfoundland.webp" alt="Map of Newfoundland" class="rounded-xl border border-line hidden lg:block mt-5" loading="lazy" decoding="auto" />
+						<div id="resumes" class="rounded-xl mt-5 border border-line bg-panel p-5 scroll-mt-24">
+							<h3 class="text-center text-3xl font-extrabold font-techmono pb-3">My Resume</h3>
+							<div class="space-y-4">
+								{resumes.map((resume) => (
+									<div>
+										{resumes.length > 1 && <p class="text-center font-bold mb-2">{resume.label}</p>}
+										<div class="flex justify-center gap-2">
+											<a href={`/${resume.file}`} class="grad-button rounded-l-full w-36 p-3 text-center" aria-label={`View ${resume.label} resume`}>View</a>
+											<a href={`/${resume.file}`} class="grad-button rounded-r-full w-36 p-3 text-center" download aria-label={`Download ${resume.label} resume`}>Download</a>
+										</div>
+									</div>
+								))}
 							</div>
 						</div>
 					</div>
 					<Form />
 				</div>
-			</div>
-			<div class="h-3"></div>
+			</section>
 		</div>
 	</main>
 </Layout>
 
 <script>
-	var i = 0;
-	var txt = "Hello, World! My name is Russell Corbett"; /* The text */
-	var speed = 50; /* The speed/duration of the effect in milliseconds */
-
-	function typeWriter() {
-		if (i < txt.length) {
-			document.getElementById("introduction")!.innerHTML += txt.charAt(i);
-			i++;
-			setTimeout(typeWriter, speed);
-		}
+	// Typewriter: the full text is always in the page, so layout and screen readers don't depend on it.
+	const typed = document.querySelector<HTMLElement>("[data-typewriter]");
+	const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+	if (typed && !reducedMotion) {
+		const text = typed.textContent ?? "";
+		typed.setAttribute("aria-label", text);
+		const shown = document.createElement("span");
+		const rest = document.createElement("span");
+		shown.setAttribute("aria-hidden", "true");
+		rest.setAttribute("aria-hidden", "true");
+		rest.className = "invisible";
+		rest.textContent = text;
+		typed.replaceChildren(shown, rest);
+		new IntersectionObserver((entries, observer) => {
+			if (!entries[0].isIntersecting) return;
+			observer.disconnect();
+			let i = 0;
+			const timer = setInterval(() => {
+				i++;
+				shown.textContent = text.slice(0, i);
+				rest.textContent = text.slice(i);
+				if (i >= text.length) clearInterval(timer);
+			}, 50);
+		}).observe(typed);
 	}
 
-	var intro = false;
-	window.addEventListener(
-		"scroll",
-		function (event) {
-			if (isInViewport(document.getElementById("introduction")) && intro === false) {
-				intro = true;
-				typeWriter();
-			}
-		},
-		false,
-	);
-
-	function isInViewport(element: HTMLElement | null) {
-		const bounding = element!.getBoundingClientRect();
-		if (bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	// Icon Slideshow
-	var iconContainer = document.querySelector(".icon-container");
-	var containerWidth = (iconContainer as HTMLElement).offsetWidth;
-	var icon = document.querySelector(".icons");
-	icon.style.transform = `translateX(-${containerWidth}px)`;
-	icon.addEventListener("animationiteration", function () {
-		var currentPosition = parseInt(icon.style.transform.replace("translateX(", "").replace(")", ""));
-		var newPosition = currentPosition - containerWidth / 2;
-		icon.style.transform = `translateX(${newPosition}px)`;
-	});
-
-	// Find all buttons with the `non-engineering` class on the page.
-	const non_eng_button = document.querySelectorAll("button.non-engineering");
-	const other_work = document.getElementById("non-engineering");
-	var totalHeight = document.body.scrollHeight;
-	if (other_work != null) {
-		other_work.style.display = "none";
-		other_work.style.opacity = "0";
-		var height = other_work.offsetHeight;
-		var new_height = height + totalHeight;
-	}
-
-	// Handle clicks on each button.
-	non_eng_button.forEach((button) => {
-		button.addEventListener("click", () => {
-			if (other_work != null) {
-				if (other_work.style.display === "none") {
-					other_work.style.opacity = "0";
-					other_work.style.display = "block";
-					var opacity = 0;
-					var intervalID = setInterval(function () {
-						if (opacity < 1) {
-							opacity = opacity + 0.01;
-							other_work.style.opacity = opacity.toString();
-						} else {
-							clearInterval(intervalID);
-						}
-					}, 10);
-					button.innerHTML = "Hide Non-Engineering Positions";
-				} else {
-					other_work.style.display = "none";
-					button.innerHTML = "Show Non-Engineering Positions";
+	// Fade sections in as they scroll into view.
+	const revealer = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("in");
+					revealer.unobserve(entry.target);
 				}
 			}
+		},
+		{ rootMargin: "0px 0px -5% 0px" },
+	);
+	document.querySelectorAll(".reveal").forEach((element) => revealer.observe(element));
+
+	// Show/hide buttons.
+	document.querySelectorAll<HTMLButtonElement>("[data-toggle]").forEach((button) => {
+		button.addEventListener("click", () => {
+			const target = document.getElementById(button.dataset.toggle!)!;
+			target.hidden = !target.hidden;
+			button.setAttribute("aria-expanded", String(!target.hidden));
+			button.textContent = target.hidden ? button.dataset.show! : button.dataset.hide!;
+			target.querySelectorAll(".reveal").forEach((element) => element.classList.add("in"));
 		});
 	});
-</script>
 
-<style>
-	@keyframes gradient {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-	@keyframes scroll {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(-50%);
-		}
-	}
-	@keyframes slide {
-		0% {
-			transform: translateX(0);
-		}
-		100% {
-			transform: translateX(-50%);
-		}
-	}
-
-	.icons {
-		display: flex;
-		position: absolute;
-		width: 8800px;
-		animation: slide 40s linear infinite;
-	}
-</style>
-
-<script>
-	function isPast(element: HTMLElement) {
-		if (!element) return false;
-		const bounding = element.getBoundingClientRect();
-		// Show when the bottom of bio is above the top of the viewport
-		return bounding.bottom <= 0;
-	}
-
-	const sideNav = document.getElementById("side-nav");
-	const landingSection = document.getElementById("landing");
-
-	function toggleSideNav() {
-		if (!sideNav || !landingSection) return;
-		if (isPast(landingSection)) {
-			sideNav.style.opacity = "1";
-			sideNav.style.pointerEvents = "auto";
-		} else {
-			sideNav.style.opacity = "0";
-			sideNav.style.pointerEvents = "none";
-		}
-	}
-
-	window.addEventListener("scroll", toggleSideNav);
-	window.addEventListener("resize", toggleSideNav);
-	document.addEventListener("DOMContentLoaded", toggleSideNav);
+	// Project popups.
+	document.querySelectorAll<HTMLButtonElement>("[data-dialog]").forEach((button) => {
+		const dialog = document.getElementById(button.dataset.dialog!) as HTMLDialogElement;
+		button.addEventListener("click", () => dialog.showModal());
+		dialog.addEventListener("click", (event) => {
+			if (event.target === dialog) dialog.close();
+		});
+	});
 </script>

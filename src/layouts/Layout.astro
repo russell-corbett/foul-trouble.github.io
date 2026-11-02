@@ -7,59 +7,64 @@ export interface Props {
 
 const {
 	title,
-	description = "Russell Corbett — Software, Robotics & Automation portfolio.",
-	image = "/RC_logo_png_transparent.png",
+	description = "Russell Corbett is a Computer Engineering graduate and MBA candidate in St. John's, NL, with experience leading technical teams and building software, robotics, and automation systems. Open to project management and engineering roles.",
+	image = "/og-image.png",
 } = Astro.props;
 import Footer from '../components/Footer.astro'
 import Nav from '../components/Navbar.astro'
 import '../styles/global.css'
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+const person = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Russell Corbett",
+	url: canonical,
+	image: new URL("/personal/russell_grad.webp", Astro.site),
+	email: "mailto:rjcorbett@mun.ca",
+	jobTitle: "Project Management and Computer Engineering",
+	alumniOf: { "@type": "CollegeOrUniversity", name: "Memorial University of Newfoundland" },
+	address: { "@type": "PostalAddress", addressLocality: "St. John's", addressRegion: "NL", addressCountry: "CA" },
+	sameAs: ["https://github.com/russell-corbett", "https://www.linkedin.com/in/russell-corbett/"],
+};
 ---
 
 <!DOCTYPE html>
 <html lang="en" class='scroll-smooth'>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonical} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL(image, Astro.site)} />
-		<meta property="og:url" content={Astro.url} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:url" content={canonical} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<script type="application/ld+json" set:html={JSON.stringify(person)} />
+		<script is:inline>
+			// Runs before first paint so the saved theme never flashes.
+			(function () {
+				var saved = null;
+				try { saved = localStorage.getItem('theme'); } catch (e) {}
+				var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+				document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+				document.documentElement.classList.add('js');
+			})();
+		</script>
 	</head>
 	<body class='bg-black'>
+		<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:bg-white focus:text-black focus:p-3 focus:rounded">Skip to content</a>
+		<Nav />
 		<slot />
 		<Footer />
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 46, 46, 116;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #7f1424 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
-
-<style>
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
-    }
-</style>

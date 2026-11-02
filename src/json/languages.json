@@ -1,0 +1,10 @@
+[
+	{ "name": "Python", "src": "/lang-soft/python.webp" },
+	{ "name": "C++", "src": "/lang-soft/c++.webp" },
+	{ "name": "HTML", "src": "/lang-soft/html.webp" },
+	{ "name": "CSS", "src": "/lang-soft/css.webp" },
+	{ "name": "JavaScript", "src": "/lang-soft/javascript.webp" },
+	{ "name": "Astro", "src": "/lang-soft/astro.webp" },
+	{ "name": "Tailwind", "src": "/lang-soft/tailwind.webp" },
+	{ "name": "React", "src": "/lang-soft/react.webp" }
+]
