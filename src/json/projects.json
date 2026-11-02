@@ -49,6 +49,10 @@
 			{
 				"label": "View on GitHub",
 				"href": "https://github.com/russell-corbett/RoomRelay"
+			},
+			{
+				"label": "Read the Final Report",
+				"href": "/RoomRelayFinalReport.pdf"
 			}
 		]
 	},
