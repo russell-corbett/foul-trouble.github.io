@@ -20,6 +20,7 @@ import skills from "../json/skills.json";
 import languages from "../json/languages.json";
 import applications from "../json/applications.json";
 import awards from "../json/awards.json";
+import certifications from "../json/certifications.json";
 import volunteering from "../json/volunteering.json";
 import resumeList from "../json/resumes.json";
 import minecraft from "../json/minecraft.json";
@@ -232,6 +233,23 @@ if (homeAssistant.devices !== null && homeAssistant.integrations !== null && hom
 				</div>
 			</section>
 
+			<section id="certifications" class="panel">
+				<h2 class="panel-title">My Badges and Certifications</h2>
+				<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+					{certifications.map((cert) => (
+						<a href={cert.href} target="_blank" rel="noopener" class="tile tile-hover reveal p-5 flex items-center gap-4" style={`--brand:${cert.brand}`}>
+							<img src={cert.image} alt="" width="96" height="96" class="w-24 h-24 shrink-0 object-contain" loading="lazy" decoding="async" />
+							<div class="flex flex-col gap-1">
+								<h3 class="font-extrabold text-lg leading-snug">{cert.name}</h3>
+								<p class="text-sm font-bold text-muted">{cert.issuer}</p>
+								<p class="text-sm font-techmono text-muted">{cert.issued}</p>
+								<p class="text-sm font-bold underline mt-1">Verify on {cert.verifier}<span class="sr-only"> (opens in a new tab)</span></p>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
+
 			<section id="volunteering" class="panel">
 				<h2 class="panel-title">My Volunteering</h2>
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -336,14 +354,14 @@ if (homeAssistant.devices !== null && homeAssistant.integrations !== null && hom
 
 	// Due Diligence: opening both resumes.
 	const resumeCount = Number(document.getElementById("resumes")!.dataset.count);
-	document.querySelectorAll<HTMLAnchorElement>('a[href$=".pdf"]').forEach((link) => {
+	document.querySelectorAll<HTMLAnchorElement>('#resumes a[href$=".pdf"]').forEach((link) => {
 		link.addEventListener("click", () => track("resumes", link.pathname.slice(1), resumeCount, "diligence"));
 	});
 
 	// PM / Engineering switch. Reading order changes too, so sections move in the DOM.
 	const sectionOrder: Record<string, string[]> = {
-		pm: ["about", "teams", "experience", "projects", "skills", "awards", "volunteering", "contact"],
-		engineering: ["about", "projects", "skills", "experience", "teams", "awards", "volunteering", "contact"],
+		pm: ["about", "teams", "experience", "projects", "skills", "certifications", "awards", "volunteering", "contact"],
+		engineering: ["about", "projects", "skills", "experience", "teams", "awards", "certifications", "volunteering", "contact"],
 	};
 	const sections = document.getElementById("sections")!;
 

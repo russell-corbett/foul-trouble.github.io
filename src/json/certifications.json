@@ -1,0 +1,38 @@
+[
+	{
+		"name": "Fundamentals of Predictive Project Management",
+		"issuer": "Project Management Institute",
+		"issued": "November 2026",
+		"image": "/badges/pmi_predictive.webp",
+		"brand": "#4f17a8",
+		"href": "https://www.credly.com/badges/dd23d9ab-552c-4ed9-b049-7debd5872d9b/public_url",
+		"verifier": "Credly"
+	},
+	{
+		"name": "Fundamentals of Agile Project Management",
+		"issuer": "Project Management Institute",
+		"issued": "November 2026",
+		"image": "/badges/pmi_agile.webp",
+		"brand": "#4f17a8",
+		"href": "https://www.credly.com/badges/5e586c09-c80e-43a1-a861-af8f32c0ddc1/public_url",
+		"verifier": "Credly"
+	},
+	{
+		"name": "GMAT Data Insights: Scored Top 20%",
+		"issuer": "Graduate Management Admission Council",
+		"issued": "November 2026",
+		"image": "/badges/gmat_data_insights.webp",
+		"brand": "#0f7a4f",
+		"href": "https://badges.gmat.com/4d2231b1-a16e-4a3a-9839-bc8946aaeca6",
+		"verifier": "GMAC"
+	},
+	{
+		"name": "Tech Stewardship Practice Program",
+		"issuer": "Tech Stewardship",
+		"issued": "Fall 2022",
+		"image": "/badges/tech_stewardship.webp",
+		"brand": "#038a9e",
+		"href": "https://verified.sertifier.com/en/verify/09492449794642/",
+		"verifier": "Sertifier"
+	}
+]
