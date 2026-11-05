@@ -10,15 +10,21 @@
 			"Docker",
 			"Zigbee",
 			"Z-Wave",
+			"Matter",
+			"MQTT",
+			"ESPHome",
+			"Wyoming",
 			"Bluetooth"
 		],
 		"details": [
 			"I designed and built a smart home system covering connectivity, data management, climate control, lighting, voice assistance, and motion control. Everything is integrated into a single app so that it stays easy to use and under local control."
 		],
 		"bullets": [
-			"Cut home electricity consumption 30% by automating lighting and heating control",
-			"Integrated 500+ smart home devices across IoT, Zigbee, Z-Wave, and Bluetooth",
-			"Scoped and self-hosted a service suite on a Proxmox and Docker environment",
+			"Used daily by a four-person household, so every automation has to work for people who never open the app",
+			"Cut home electricity consumption 30% by automating lighting and heating control, with circuit-level energy monitoring through Emporia Vue and Powercalc",
+			"Integrated 500+ smart home devices across Zigbee, Z-Wave, Matter, MQTT, ESPHome, and Bluetooth",
+			"Local voice control over the Wyoming protocol, with an OpenAI conversation agent and an MCP server for AI assistants",
+			"Scoped and self-hosted photos, media, recipes, and a Minecraft server on Proxmox and Docker, with uptime monitoring, UPS-aware shutdown, and automated backups",
 			"Prioritized which services to run by weighing maintenance cost against value",
 			"Built my own components when off-the-shelf options fell short, including RoomRelay, mysa2ha, and Russtum Cards"
 		],
