@@ -20,15 +20,15 @@
 		},
 		{
 			"stat": "$435K",
-			"label": "Raised for the Canadian Cancer Society by our events over four years",
-			"note": "Team result, as Relay for Life Tech Lead",
+			"label": "Raised by the Relay for Life committee for the Canadian Cancer Society",
+			"note": "As Relay for Life Tech Lead",
 			"brand": "#3d62ab"
 		}
 	],
 	"engineering": [
 		{
 			"stat": "99.7%",
-			"label": "Less manual processing effort from a Python automation",
+			"label": "A 120-hour bi-weekly task cut to 20 minutes",
 			"note": "Bell Canada Enterprises",
 			"brand": "#00549a"
 		},
@@ -45,8 +45,8 @@
 			"brand": "#164072"
 		},
 		{
-			"stat": "500+",
-			"label": "Smart home devices integrated across Zigbee, Z-Wave, and Bluetooth",
+			"stat": "521 Devices",
+			"label": "And 4000+ entities integrated across Zigbee, Z-Wave, Matter, MQTT, and Bluetooth",
 			"note": "Corbett Homelab, self-hosted on Proxmox and Docker",
 			"brand": "#41bdf5"
 		}

@@ -25,18 +25,14 @@
 				{
 					"label": "Second placement: full-stack development (Winter 2025)",
 					"bullets": [
-						"Turned a high-level product brief into a database schema, API structure, and integration plan for a live financial crime management platform",
-						"Built the frontend UI and backend API, including Add, Edit, Delete, and Get service methods",
-						"Integrated the new functionality into existing case management workflows without disrupting current processes",
-						"Identified repetitive manual workflows and designed scalable, rule-based automation to reduce operational overhead",
-						"Presented the work and forward-looking recommendations to the engineering team and academic supervisors"
+						"On the Copilot (LLM automation) team, built the Intelligent Task Population feature end to end (database schema, Add/Edit/Delete/Get API, frontend) that auto-populates due-diligence cases with preset tasks per risk factor, estimated to save analysts about 6 minutes per case",
+						"Wrote a backend validation test suite and demoed the workflow to the team and application pillar"
 					]
 				},
 				{
 					"label": "First placement: debugging and user support (Summer 2024)",
 					"bullets": [
-						"Worked directly with users to diagnose reported problems, separating the surface request from the underlying need and routing fixes into engineering",
-						"Optimized database import parameters to improve data-transmission performance within the Verafin platform"
+						"On the Canadian Interfaces Team, connected banks' and financial institutions' proprietary systems and data exports to the Verafin platform; debugged and resolved user-reported production issues"
 					]
 				}
 			]
@@ -49,7 +45,7 @@
 			"brand": "#175315",
 			"logo": "/work/angler/angler_logo.webp",
 			"bullets": [
-				"Led a team of three under Agile practices to deliver a Python wind-farm analytics application that determined optimal turbine placement from sensor readings",
+				"As scrum master, led a team of three through an Agile transition to deliver a Python wind-farm analytics app",
 				"Managed the econext Community Workforce Development program, coordinating the deployment and demonstration of 10 companies' green and ocean technologies at the Marine Institute's The Launch facility in Holyrood, NL",
 				"Aligned each company's scope, budget, and schedule with facility capabilities, and led stakeholder engagement across the program",
 				"Configured network systems across the ten partner companies, including secure video transmission, peer-to-peer device communications, and live streams to an online audience"
@@ -64,10 +60,9 @@
 			"logo": "/work/bell/bell_logo_blue.webp",
 			"logoBg": "#00549a",
 			"bullets": [
-				"Identified a high-effort manual workflow and delivered a Python automation that cut processing effort by 99.7%",
-				"Established a repeatable automation process for future co-op students, standardizing design and format across the team",
-				"Identified and solved migration issues, and worked directly with SharePoint end users as needed",
-				"Created system documentation and support procedures for project deliverables"
+				"Wrote Python automations for a 15,000+ site SharePoint Online migration, saving about 150 hours of manual work per week",
+				"Automated analysis of migration-error reports up to 500,000 lines, cutting a 120-hour bi-weekly task to 20 minutes (99.7%)",
+				"Wrote and presented a guide teaching employees to automate their own tasks and maintain existing automations"
 			]
 		},
 		{
@@ -78,7 +73,7 @@
 			"brand": "#faa541",
 			"logo": "/work/avalon_controls/avaloncontrolsbanner.webp",
 			"bullets": [
-				"Architected a communications and networking system that increased throughput 100x, weighing the trade-off against long-term maintainability",
+				"Led a network modernization that increased throughput 100x (3 Mbps to 300 Mbps), after evaluating an outside IT vendor's proposals",
 				"Produced a deployment plan defining how the system would scale beyond the initial build",
 				"Worked with procurement on purchase orders for IT upgrades, and with shop and field service teams on hardware installation",
 				"Assisted the engineering group with the production of design deliverables"

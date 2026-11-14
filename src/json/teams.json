@@ -8,7 +8,9 @@
 		"background": "/teams/eastern_edge/edge-ocean.webp",
 		"text": "An undergraduate team that designs and operates a Remotely Operated Vehicle (ROV) for the international MATE ROV Competition.",
 		"bullets": [
-			"Led a 35-member cross-functional team (software, electrical, mechanical) to a team 1st-place finish at the 2026 MATE EXPLORER World Championship, owning prioritization and trade-off decisions under a fixed budget and deadline",
+			"Co-led a 35-member cross-functional team (software, electrical, mechanical) as COO, with the CEO and CMO, to a team 1st-place finish at the 2026 MATE EXPLORER World Championship, owning prioritization and trade-off decisions under a fixed budget and deadline",
+			"Turned the team around from 9th (2024) to 3rd (2025) to 1st Overall (2026) by shifting focus from what could be built to what was worth building",
+			"Restructured competition roles into dedicated deck teams for three pools, giving 21 members named roles instead of the usual 12; grew the team to 35 members, the largest in its history",
 			"Part of the team that placed 1st in Engineering Presentation at the 2022 and 2023 MATE EXPLORER World Championship",
 			"Decided each season which capabilities to build, defer, or cut by weighing technical effort, risk, and competition value",
 			"Served as the link between technical builders and non-technical stakeholders, including sponsors, judges, and university administration",
@@ -24,11 +26,12 @@
 		"brand": "#2e2e74",
 		"logo": "/teams/paradigm/paradigm.webp",
 		"background": "/teams/paradigm/white.webp",
-		"text": "An undergraduate team developing an autonomous self-driving vehicle for the International eV Grand Prix Competition.",
+		"text": "An undergraduate autonomous vehicle team developing a self-driving vehicle.",
 		"bullets": [
 			"Developed a path-planning algorithm for a high-speed vehicle navigating a dynamic environment",
 			"Designed a vehicle and pit crew communication system for real-time updates using Python and UDP",
-			"Tested the algorithm and system in a ROS2 simulation environment"
+			"Tested the algorithm and system in a ROS2 simulation environment",
+			"My path-planning algorithm ran on FMUNTENTH's autonomous RC car before the team merged into Paradigm"
 		],
 		"link": "https://munparadigm.com"
 	},

@@ -1,7 +1,7 @@
 [
 	{
 		"title": "Smart Home & Homelab",
-		"summary": "A self-hosted smart home running 500+ devices on my own servers, with local control and 30% lower electricity use.",
+		"summary": "A self-hosted smart home running 521 devices on my own servers, with local control and 30% lower electricity use.",
 		"image": "/projects/home_assistant_logo.webp",
 		"brand": "#41bdf5",
 		"stack": [
@@ -22,7 +22,7 @@
 		"bullets": [
 			"Used daily by a four-person household, so every automation has to work for people who never open the app",
 			"Cut home electricity consumption 30% by automating lighting and heating control, with circuit-level energy monitoring through Emporia Vue and Powercalc",
-			"Integrated 500+ smart home devices across Zigbee, Z-Wave, Matter, MQTT, ESPHome, and Bluetooth",
+			"Integrated 521 smart home devices and 4000+ entities across Zigbee, Z-Wave, Matter, MQTT, ESPHome, and Bluetooth",
 			"Local voice control over the Wyoming protocol, with an OpenAI conversation agent and an MCP server for AI assistants",
 			"Scoped and self-hosted photos, media, recipes, and a Minecraft server on Proxmox and Docker, with uptime monitoring, UPS-aware shutdown, and automated backups",
 			"Prioritized which services to run by weighing maintenance cost against value",
@@ -31,25 +31,42 @@
 		"links": []
 	},
 	{
+		"title": "AI Job-Search Agent & MCP Server",
+		"summary": "A self-hosted MCP server that gives Claude my own tools for tracking jobs and building tailored applications.",
+		"initials": "AI",
+		"brand": "#2e2e74",
+		"stack": [
+			"Python",
+			"FastMCP",
+			"Docker",
+			"GitHub Actions",
+			"LaTeX"
+		],
+		"details": [
+			"A self-hosted MCP server (Python, FastMCP, Docker) that gives Claude my own tools. It monitors employer careers sites and job boards, drafts a nightly job report, and builds tailored resumes and cover letters through a fact-checked LaTeX pipeline where every bullet must cite a verified, sourced fact.",
+			"CI on GitHub Actions builds multi-arch (amd64/arm64) images; LaTeX builds run in a locked-down sandbox. I wrote the original job watcher; the rest was built with Claude Code as an AI pair programmer."
+		],
+		"bullets": [],
+		"links": []
+	},
+	{
 		"title": "RoomRelay",
 		"summary": "A privacy-focused smart home voice assistant and intercom that runs fully offline on a Raspberry Pi 5.",
 		"image": "/projects/roomrelay_logo.webp",
 		"brand": "#2e2e74",
 		"stack": [
-			"Python",
+			"Python 3.11",
 			"FastAPI",
-			"Whisper",
-			"MQTT",
+			"SQLite",
+			"Docker",
 			"Flutter"
 		],
 		"details": [
 			"RoomRelay handles wake word detection, voice commands, inter-room communication, environmental sensing, and Home Assistant integration without sending any data to the cloud."
 		],
 		"bullets": [
-			"Offline voice pipeline using OpenWakeWord, Whisper, and Piper",
-			"Multi-room intercom with LAN device discovery and a Bluetooth fallback",
-			"Sensors for temperature, humidity, air quality, light, and presence",
-			"Web dashboard served from the device, plus an optional Flutter companion app"
+			"Wrote all the software: ten supervised services (one thread each), offline voice pipeline (OpenWakeWord, Whisper, Piper), FastAPI backend, Home Assistant + MQTT integration, LAN-to-Bluetooth device fallback, web dashboard, and a Flutter companion app",
+			"Sensors for temperature, humidity, air quality, light, and presence"
 		],
 		"links": [
 			{
@@ -59,6 +76,28 @@
 			{
 				"label": "Read the Final Report",
 				"href": "/RoomRelayFinalReport.pdf"
+			}
+		]
+	},
+	{
+		"title": "Epson ESC/VP21 for Home Assistant",
+		"summary": "A HACS-installable Home Assistant integration that controls my Epson projector over RS-232.",
+		"initials": "EP",
+		"brand": "#003399",
+		"stack": [
+			"Python",
+			"Home Assistant",
+			"HACS",
+			"pytest"
+		],
+		"details": [
+			"A HACS-installable Home Assistant integration that controls my Epson projector over RS-232 through a serial-to-Ethernet bridge, fixing reply mismatches and command bugs in the core integration. Built with Claude Code; tested with pytest against a simulated projector."
+		],
+		"bullets": [],
+		"links": [
+			{
+				"label": "View on GitHub",
+				"href": "https://github.com/russell-corbett/epson-v2"
 			}
 		]
 	},
@@ -171,43 +210,38 @@
 		]
 	},
 	{
-		"title": "Engineering Society Website",
-		"summary": "A hub for all things engineering at Memorial University.",
-		"image": "/projects/engineering_society.webp",
+		"title": "Websites for Student Teams",
+		"summary": "Websites for five Memorial University student teams, including the Engineering Society and Eastern Edge Robotics.",
+		"initials": "WEB",
 		"brand": "#923343",
 		"stack": [
+			"Astro",
 			"Next.js",
-			"Tailwind",
-			"FeathersJS",
-			"Supabase"
+			"React",
+			"Tailwind"
 		],
 		"details": [
-			"The website for Memorial University's Engineering Society, built with Next.js, Tailwind, FeathersJS, and Supabase."
+			"Self-taught web development in 2023; built with Astro or Next.js, React, and Tailwind."
 		],
-		"bullets": [],
+		"bullets": [
+			"Engineering Society: a hub for all things engineering at Memorial, built with Next.js, Tailwind, FeathersJS, and Supabase",
+			"Eastern Edge Robotics: the team's public home for sponsors, students, and the MATE community",
+			"Paradigm Engineering",
+			"FMUNTENTH",
+			"MUN-e-Motorsports"
+		],
 		"links": [
 			{
-				"label": "Visit the site",
+				"label": "Engineering Society",
 				"href": "https://munengineeringsociety.ca/"
-			}
-		]
-	},
-	{
-		"title": "Eastern Edge Website",
-		"summary": "The public website for the Eastern Edge Robotics team.",
-		"image": "/teams/eastern_edge/eastern_edge_logo.webp",
-		"brand": "#164072",
-		"stack": [
-			"Web"
-		],
-		"details": [
-			"The team's public home on the web, showing Eastern Edge Robotics and its work to sponsors, students, and the MATE community."
-		],
-		"bullets": [],
-		"links": [
+			},
 			{
-				"label": "Visit the site",
+				"label": "Eastern Edge",
 				"href": "https://www.easternedgerobotics.com/"
+			},
+			{
+				"label": "Paradigm Engineering",
+				"href": "https://munparadigm.com/"
 			}
 		]
 	},
